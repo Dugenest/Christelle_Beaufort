@@ -1,0 +1,46 @@
+
+main {
+    background-color: rgba(205, 168, 144, 0.1);
+}
+
+#imgLogo {
+    width: 500px;
+    height: 300px;
+}
+
+#photoProfil {
+    width: 290px;
+    height: 380px;
+    margin-left: 12px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.d-block {
+    width: 100vw;
+    height: 500px;
+}
+
+#btnForm {
+    background-color: white;
+}
+
+strong {
+    color: red;
+}
+
+a:hover {
+    text-decoration: solid underline red 2px;
+}
+
+.logoSociaux {
+    width: 55px;
+    height: 60px;
+}
+
+.mentionsLegales{
+    margin-top: 10px;
+    margin-left: 35px;
+}
