@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/assets/css/styleConnexion.css">
+    <link rel="stylesheet" href="./public/assets/css/styleLivredor.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Connexion</title>
+    <title>Livre d'or</title>
 </head>
 <body >
 <!-- Début du header -->
@@ -22,13 +22,13 @@
                             <a class="nav-link active" aria-current="page" href="./index.html"><p>Accueil</p></a>
                         </li>
                         <li>
+                            <a class="nav-link active" aria-current="page" href="./connexion.html"><p>Connexion</p></a>
+                        </li>
+                        <li>
                             <a class="nav-link active" aria-current="page" href="./inscription.html"><p class="navbarItem">Inscription</p></a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="index.html"><p>Livre d'or</p></a>
-                        </li>
-                        <li>
-                            <a class="nav-link active" aria-current="page" href="#galerie"><p>Galerie</p></a>
+                            <a class="nav-link active" aria-current="page" href="./galerie.html"><p>Galerie</p></a>
                         </li>
                         <li>
                             <a class="nav-link active" aria-current="page" href="#tarif"><p>Tarif prestations</p></a>
@@ -48,30 +48,37 @@
 <!-- Début du main -->
     <main>
         <div class="container-fluid py-5">
-            <h1>CONNEXION</h1>
-            <form class="row justify-content-center" id="formulaire">
-                <div class="col-md-6">
-                    <div class="col-12 mb-3 py-5">
-                        <label for="identifiant" class="form-label">Identifiant<strong>*</strong></label>
-                        <input type="text" class="form-control" id="identifiant" aria-describedby="identifiant" placeholder="Votre identifiant">
-                    </div>
-                    <div class="col-12 mb-3 py-3">
-                        <label for="Password" class="form-label">Mot de passe<strong>*</strong></label>
-                        <input type="password" class="form-control" id="Password" aria-describedby="password" placeholder="Votre mot de passe">
-                    </div>
-                    <div class="row text-end py-3">
-                        <a href="./mot_de_passe_oublie.html" alt="Mot de passse oublié" id="MDPO">Mot de passe oublié ?</a>
-                    </div>
-                    <div class="row text-center justify-content-center py-3">
-                        <button type="submit" id="btnConnexion" class="btn btn-light">S'identifier</button>
-                    </div>
+            <h1>LIVRE D'OR</h1>
+
+
+            <!-- commentaires des clients -->
+            <div class="row">
+                <p class="col comment"></p>
+            </div>
+            <hr>
+            <h2>AJOUTER UN COMMENTAIRE</h2>
+            <form class="row py-5" id="formulaire">
+                <div class="col-12 mb-3 py-3">
+                    <label for="identifiant" class="form-label">Identifiant<strong>*</strong></label>
+                    <input type="text" class="form-control" id="identifiant" aria-describedby="identifiant" placeholder="Votre identifiant" required>
+                </div>
+                <div class="col-12 mb-3 py-3">
+                    <label for="prestation" class="form-label">Quelle prestation avons nous partagé ?<strong> *</strong></label>
+                    <input type="text" class="form-control" id="prestation" aria-describedby="prestation" placeholder="Votre prestation" required>
+                </div>
+                <div class="mb-3 py-2">
+                    <label for="disabledTextInput" class="form-label">Message<strong>*</strong></label>
+                    <textarea id="disabledTextInput" class="form-control" rows="8" placeholder="Votre message" required></textarea>
+                </div>
+                <div class="row text-center justify-content-center py-3">
+                    <button type="submit" id="btnLivre" class="btn btn-light">ENVOYER</button>
                 </div>
             </form>
         </div>
-    </main>
-<!-- fin du main -->
 
-    
+    </main>
+    <!-- fin du main -->
+            
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

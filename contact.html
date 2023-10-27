@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/assets/css/styleContact.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Contact</title>
+</head>
+
+<body>
+<!-- Début du header -->
+    <header>
+    <!-- Début de la navbar -->
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid  justify-content-between">
+                    <a class="nav-link active px-0" aria-current="page" href="./livre_dor.html"><p>Livre d'or</p></a>
+                    <a class="nav-link active px-1" aria-current="page" href="./galerie.html"><p>Galerie</p></a>
+                    <a class="nav-link active px-1" aria-current="page" href="#tarif"><p>Tarif prestations</p></a>
+                    <a class="nav-link active px-1" aria-current="page" href="#portfolio"><p>Portfolio</p></a>
+                <button class="navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./inscription.html"><p class="navbarItem">Inscription</p></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./connexion.html"><p class="navbarItem">Connexion</p></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Fin de la Navbar -->
+
+
+    <main>
+        <section class="container-fluid contact py-5">
+            <form class="row justify-content-center">
+                <div class="col-md-6">
+                    <fieldset>
+                        <h1>CONTACT</h1>
+                        <div class="mb-3 py-3">
+                            <label for="identifiant" class="form-label">Identifiant</label>
+                            <input type="text" class="form-control" id="identifiant" aria-describedby="identifiant" placeholder="Votre identifiant si compte créé">
+                        </div>
+                        <div class="mb-3">
+                            <label for="disabledTextInput1" class="form-label">Nom<strong>*</strong></label>
+                            <input type="text" id="disabledTextInput1" class="form-control" placeholder="Votre nom">
+                        </div>
+                        <div class="mb-3">
+                            <label for="disabledTextInput2" class="form-label">Prénom<strong>*</strong></label>
+                            <input type="text" id="disabledTextInput2" class="form-control" placeholder="Votre prénom" required>
+                        </div>
+                        <label for="DataList" class="form-label">Prestations<strong> *</strong></label>
+                            <input class="form-control" list="datalistOptions" id="DataList" placeholder="Quel est votre choix ?" required>
+                            <datalist id="datalistOptions">
+                            <option value="Mariage">
+                            <option value="Portrait de famille">
+                            <option value="Love Yourself">
+                            <option value="Animaux">
+                            <hr class="dropdown-divider">
+                            <option value="Achats de photos">
+                            </datalist>
+                        <div class="mb-3 py-2">
+                            <label for="disabledTextInput4" class="form-label">Message<strong>*</strong></label>
+                            <textarea id="disabledTextInput4" class="form-control" rows="5" placeholder="Votre message" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <label class="form-check-label" for="disabledFieldsetCheck">
+                                <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" required>
+                                    En soumettant ce formulaire, j’accepte que mes informations soient utilisées uniquement dans le cadre de ma demande et de la relation commerciale éthique et personnalisée qui peut en découler
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center py-5">
+                            <button type="submit" class="btn btn-light" id="btnForm">ENVOYER</button>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
