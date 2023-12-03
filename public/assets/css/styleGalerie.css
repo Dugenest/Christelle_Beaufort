@@ -20,6 +20,8 @@ h1, h5 {
     margin-bottom: 10px;
 }
 
-.img {
+.card-img-top {
     background-position: center;
+    height: 300px;
+    width: 405px;
 }
