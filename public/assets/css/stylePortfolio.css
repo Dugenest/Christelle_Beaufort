@@ -1,0 +1,165 @@
+
+.mariage {
+    background-color: rgba(205, 168, 144, 0.1);
+    height: max-content;
+}
+
+h1 {
+    text-align: center;
+    background-color: rgba(205, 168, 144, 0.1);
+}
+
+section {
+    background-color: rgba(205, 168, 144, 0.1);
+    display:flex;
+    width:100%;
+}
+
+#container1, #container2, #container3 {
+    margin:auto;
+    gap: 45px;
+    display:grid;
+    grid-template-columns: 600px 600px;
+    grid-template-rows: 600px 600px;
+    grid-template-areas:
+        "cellule1 cellule2"
+        "cellule3 cellule4"
+        "cellule5 cellule6"
+        "cellule7 cellule7"
+        "cellule8 cellule9"
+        "cellule10 cellule11"
+        "cellule12 cellule13"
+        "cellule14 cellule15"
+        "cellule16 cellule17"
+        "cellule18 cellule19"
+        "cellule20 cellule21";
+}
+
+#container4 {
+    margin:auto;
+    gap: 45px;
+    display:grid;
+    grid-template-columns: 600px 600px;
+    grid-template-rows: 600px 600px;
+    grid-template-areas:
+        "cellule22 cellule22"
+        "cellule23 cellule24"
+        "cellule25 cellule25";
+}
+
+.bloc1 {
+    grid-area: cellule1;
+}
+
+.bloc2 {
+    grid-area: cellule2;
+}
+
+.bloc3 {
+    grid-area: cellule3;
+}
+
+.bloc4 {
+    grid-area: cellule4;
+}
+
+.bloc5 {
+    grid-area: cellule5;
+}
+
+.bloc6 {
+    grid-area: cellule6;
+}
+
+.bloc7 {
+    grid-area: cellule7;
+    text-align: center;
+}
+
+.bloc8 {
+    grid-area: cellule8;
+}
+
+.bloc9 {
+    grid-area: cellule9;
+}
+
+.bloc10 {
+    grid-area: cellule10;
+}
+
+.bloc11 {
+    grid-area: cellule11;
+}
+
+.bloc12 {
+    grid-area: cellule12;
+}
+
+.bloc13 {
+    grid-area: cellule13;
+}
+
+.bloc14 {
+    grid-area: cellule14;
+}
+
+.bloc15 {
+    grid-area: cellule15;
+}
+
+.bloc16 {
+    grid-area: cellule16;
+}
+
+.bloc17 {
+    grid-area: cellule17;
+}
+
+.bloc18 {
+    grid-area: cellule18;
+}
+
+.bloc19 {
+    grid-area: cellule19;
+}
+
+.bloc20 {
+    grid-area: cellule20;
+}
+
+.bloc21 {
+    grid-area: cellule21;
+}
+
+.bloc22 {
+    grid-area: cellule22;
+    text-align: center;
+}
+
+.bloc23 {
+    grid-area: cellule23;
+}
+
+.bloc24 {
+    grid-area: cellule24;
+}
+
+.bloc25 {
+    grid-area: cellule25;
+    text-align: center;
+}
+
+/*ici la cellule fait 600x600px*/
+#crop, #crop2, #crop3, #crop5, #crop6, #crop7, #crop8, #crop9, #crop10, #crop11, #crp3, #crp2, #crp1 {
+    width:600px;
+    height:600px;
+    object-fit: cover;
+}
+
+/* ici la cellule fait 600x900px */
+#crop4, #crp4 {
+    width:600px;
+    height:900px;
+    object-fit: cover;
+}
