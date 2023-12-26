@@ -4,37 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/assets/css/styleTarif.css">
+    <link rel="stylesheet" href="./public/assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Christelle Beaufort</title>
 </head>
 
 <body>
-<!-- Début du header -->
-    <header>
-    <!-- Début de la navbar -->
-        <nav class="navbar navbar-expand-xl navbar-light bg-light">
-            <div class="container-fluid  justify-content-end">
-                    <a class="nav-link active px-0" aria-current="page" href="./livre_dor.html"><p>Livre d'or</p></a>
-                    <a class="nav-link active px-1" aria-current="page" href="./galerie.html"><p>Galerie</p></a>
-                    <a class="nav-link active px-1" aria-current="page" href="./index.html"><p>Accueil</p></a>
-                    <a class="nav-link active px-1" aria-current="page" href="./portfolio.html"><p>Portfolio</p></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./inscription.html"><p class="navbarItem">Inscription</p></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./connexion.html"><p class="navbarItem">Connexion</p></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- Fin de la Navbar -->
+
+    <?php require_once(__DIR__ . '/header.php'); ?>
+
     <h1>TARIF PRESTATIONS</h1>
     <section class="container-fluid logo">
         <div class="row justify-content-center">
@@ -106,12 +84,10 @@
         </div>
             
             <div class="row text-center justify-content-center py-3">
-                <a button type="button" id="btnGalerie" href="./contact.html" class="btn btn-light">CONTACT</button></a>
+                <a button type="button" id="btnGalerie" href="./contact.php" class="btn btn-light">CONTACT</button></a>
             </div>
     </div>
 </main>
 <!-- fin du main -->
                 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+<?php require_once(__DIR__ . '/footer.php'); ?>
