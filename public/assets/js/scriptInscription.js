@@ -63,6 +63,7 @@ lastName.addEventListener("keyup", function () {
 //         errorMessage1.textContent = message1;
 //     }
 // }
+
 // lastName.addEventListener("keyup", validateLastName);
 
 // Création d'un écouteur d'événement pour le firstname
