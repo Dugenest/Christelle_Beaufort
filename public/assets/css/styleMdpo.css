@@ -27,3 +27,18 @@ strong {
 p {
     text-align: bottom;
 }
+
+
+.green {
+    border-color: green;
+    border-width: thick;
+}
+
+.red {
+    border-color: red;
+    border-width: thick;
+}
+
+#error1, .error {
+    color: red;
+}

@@ -1,7 +1,9 @@
 <?php
 
 //création d'une constante pour une régex du nom
-define('NAME', '^[a-zA-Z0-9]{2,30}$');
+define('NAME', '^[a-zA-Z]{2,30}$');
+//création d'une constante pour une régex pour le mot de passe
+define('PSWD', '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
 
 //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -13,19 +15,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error['lastName'] = 'Le Nom est obligatoire';
         } else {
     //Validation de la donnée "lastName" grâce à la regex
-            $isOk = filter_var($lastName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($lastName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.NAME.'/')));
             if ($isOk == false){
                 $error['lastName'] = 'Le Nom n\'est pas valide !';
             }
         }
     
     //Récupération et nettoyage de la récupération de la donnée "firstName"
-    $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_SPECIAL_CHARS);
-    if (empty($firstName)) {
-        $error['firstName'] = 'Le Prénom est obligatoire';
-    } else {
+        $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($firstName)) {
+            $error['firstName'] = 'Le Prénom est obligatoire';
+        } else {
     //Validation de la donnée "firstName" grâce à la regex
-        $isOk = filter_var($firstName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
+        $isOk = filter_var($firstName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.NAME.'/')));
         if ($isOk == false){
             $error['firstName'] = 'Le Prénom n\'est pas valide !';
         }
@@ -56,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $Adress = filter_input(INPUT_POST, 'Adress', FILTER_SANITIZE_SPECIAL_CHARS);
         if (!empty($Adress)) {
     //Validation de la donnée "Adress" grâce à la regex
-        $isOk = filter_var($Adress, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{1,300}$/')));
+        $isOk = filter_var($Adress, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,300}$/')));
         if ($isOk == false){
             $error['Adress'] = 'L\'Adresse décrite n\'est pas valide !';
         }
@@ -79,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (empty($Password1)) {
             $error['Password1'] = 'Le Mot de Passe est obligatoire';
         } else {
-            $isOk = filter_var($Password1, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            $isOk = filter_var($Password1, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.PSWD.'/')));
             if ($isOk == false){
                 $error['Password1'] = 'Le Mot de Passe n\'est pas valide !';
             }
@@ -90,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (empty($Password2)) {
             $error['Password2'] = 'Le Mot de Passe est obligatoire';
         } else {
-            $isOk = filter_var($Password2, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            $isOk = filter_var($Password2, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.PSWD.'/')));
             if ($isOk == false){
                 $error['Password2'] = 'Le Mot de Passe n\'est pas valide !';
             }
@@ -99,16 +101,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require_once(__DIR__ . '/head.php'); ?>
+
     <link rel="stylesheet" href="./public/assets/css/styleInscription.css">
-    <link rel="stylesheet" href="./public/assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Inscription</title>
 </head>
+
 <body>
 
     <?php require_once(__DIR__ . '/header.php'); ?>
@@ -201,16 +199,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </form>
                 <?php } else { ?>
-                <div class="Data"><br><br>
-                    <h2>Récapitulatif des données du formulaire</h2>
-                        <p>Nom : <?=$lastName?></p>
-                        <p>Prénom : <?=$firstName?></p> 
-                        <p>Email : <?=$Email?></p> 
-                        <p>Téléphone : <?=$Phone?></p> 
-                        <p>Adresse : <?=$Adress?></p> 
-                        <p>Identifiant : <?=$userName?></p>
-                    <?php } ?>
-                </div>
+                    <div class="Data"><br><br>
+                        <h2>Récapitulatif des données du formulaire</h2>
+                            <p>Nom : <?=$lastName?></p>
+                            <p>Prénom : <?=$firstName?></p> 
+                            <p>Email : <?=$Email?></p> 
+                            <p>Téléphone : <?=$Phone?></p> 
+                            <p>Adresse : <?=$Adress?></p> 
+                            <p>Identifiant : <?=$userName?></p>
+                    </div>
+                <?php } ?>
         </div>
     </main>
 <!-- fin du main -->

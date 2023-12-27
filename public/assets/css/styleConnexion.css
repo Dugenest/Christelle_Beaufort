@@ -30,3 +30,17 @@ strong {
 #MDPO {
     justify-content: end;
 }
+
+.green {
+    border-color: green;
+    border-width: thick;
+}
+
+.red {
+    border-color: red;
+    border-width: thick;
+}
+
+#error1, #error2, .error {
+    color: red;
+}

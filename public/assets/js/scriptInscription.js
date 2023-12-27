@@ -50,6 +50,21 @@ lastName.addEventListener("keyup", function () {
         errorMessage1.textContent = message1; }; 
 });
 
+// function validateLastName() {
+//     lastName.classList.remove("red", "green");
+//     errorMessage1.classList.add("d-none");
+
+//     if (regexName.test(lastName.value)) {
+//         lastName.classList.add("green");
+//         errorMessage1.classList.add("d-none");
+//     } else {
+//         lastName.classList.add("red");
+//         errorMessage1.classList.remove("d-none");
+//         errorMessage1.textContent = message1;
+//     }
+// }
+// lastName.addEventListener("keyup", validateLastName);
+
 // Création d'un écouteur d'événement pour le firstname
 firstName.addEventListener("keyup", function () { 
     // Supprimer les classes "red" et "green" à chaque saisie 
@@ -83,7 +98,7 @@ phone.addEventListener("keyup", function () {
     // Supprimer les classes "red" et "green" à chaque saisie 
         phone.classList.remove("red", "green"); 
         errorMessage4.classList.add("d-none");
-    //Test de la regexName pour tester la valeur
+    //Test de la regexPhone pour tester la valeur
         if (regexPhone.test(phone.value)) { 
             phone.classList.add("green"); 
             errorMessage4.classList.add("d-none");
@@ -93,30 +108,60 @@ phone.addEventListener("keyup", function () {
             errorMessage4.textContent = message1; }; 
     });
 
+// Création d'un écouteur d'événement pour l'Adress
+adress.addEventListener("keyup", function () { 
+    // Supprimer les classes "red" et "green" à chaque saisie 
+        adress.classList.remove("red", "green"); 
+        errorMessage5.classList.add("d-none");
+    //Test de la regexAdress pour tester la valeur
+        if (regexAdress.test(adress.value)) { 
+            adress.classList.add("green"); 
+            errorMessage5.classList.add("d-none");
+        } else { 
+            adress.classList.add("red"); 
+            errorMessage5.classList.remove("d-none");
+            errorMessage5.textContent = message1; }; 
+    });
+
+// Création d'un écouteur d'événement pour le userName
+userName.addEventListener("keyup", function () { 
+    // Supprimer les classes "red" et "green" à chaque saisie 
+        userName.classList.remove("red", "green"); 
+        errorMessage6.classList.add("d-none");
+    //Test de la regexName pour tester la valeur
+        if (regexName.test(userName.value)) { 
+            userName.classList.add("green"); 
+            errorMessage6.classList.add("d-none");
+        } else { 
+            userName.classList.add("red"); 
+            errorMessage6.classList.remove("d-none");
+            errorMessage6.textContent = message1; }; 
+    });
+
 // Création d'un écouteur d'événement pour le mot de passe
 pwdMedium.addEventListener("input", function () { 
     pwdMedium.classList.remove("red", "green",);
-    errorMessage4.classList.add("d-none");  
+    errorMessage7.classList.add("d-none");  
     if (regexPwdStrong.test(pwdMedium.value)) { 
         pwdMedium.classList.add("green"); 
-        errorMessage4.classList.add("d-none");
+        errorMessage7.classList.add("d-none");
     } else { 
         pwdMedium.classList.add("red"); 
-        errorMessage4.classList.remove("d-none");
-        errorMessage4.textContent = message4; };
+        errorMessage7.classList.remove("d-none");
+        errorMessage7.textContent = message4; };
 }); 
 
 // Création d'un écouteur d'événement pour la confirmation du mot de passe
 pwdStrong.addEventListener("input", function () { 
     pwdStrong.classList.remove("red", "green",);
-    errorMessage5.classList.add("d-none");  
+    errorMessage8.classList.add("d-none");  
     if (regexPwdStrong.test(pwdStrong.value)) { 
         pwdStrong.classList.add("green"); 
-        errorMessage5.classList.add("d-none");
+        errorMessage8.classList.add("d-none");
     } else { 
         pwdStrong.classList.add("red"); 
-        errorMessage5.classList.remove("d-none");
-        errorMessage5.textContent = message4; };
+        errorMessage8.classList.remove("d-none");
+        errorMessage8.textContent = message4; };
 }); 
 
 // Fonction vérification des mots de passe

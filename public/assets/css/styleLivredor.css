@@ -28,3 +28,17 @@ strong {
     background-color: white;
     height: 400px;
 }
+
+.green {
+    border-color: green;
+    border-width: thick;
+}
+
+.red {
+    border-color: red;
+    border-width: thick;
+}
+
+#error1, #error2, #error3, .error {
+    color: red;
+}

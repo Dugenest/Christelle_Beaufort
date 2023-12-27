@@ -1,13 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/assets/css/styleMotdepasseoublie.css">
-    <link rel="stylesheet" href="./public/assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<?php
+//Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //Récupération, nettoyage et validation de la donnée "Email"
+        $Email = filter_input(INPUT_POST, 'Email', FILTER_SANITIZE_EMAIL);
+        if (empty($Email)) {
+            $errorEmail = 'L\'Email est obligatoire';
+        } else {
+            $isOk = filter_var($Email, FILTER_VALIDATE_EMAIL);
+            if ($isOk == false){
+                $errorEmail = 'l\'Email n\'est pas valide !';
+            }
+        }
+    }
+
+?>
+
+    
+    <?php require_once(__DIR__ . '/head.php'); ?>
+
+    <link rel="stylesheet" href="./public/assets/css/styleMdpo.css">
     <title>Mot de passe oublié</title>
 </head>
+
 <body>
 
     <?php require_once(__DIR__ . '/header.php'); ?>
@@ -16,18 +30,29 @@
     <main>
         <div class="container-fluid py-5">
         <h1>MOT DE PASSE OUBLIE</h1>
-            <form class="row justify-content-center" id="formulaire">
-                <div class="col-md-6 mb-3 py-5">
-                    <label for="email" class="form-label">Email<strong>*</strong></label>
-                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Votre email" required>
-                </div>
-                <div class="col-12 text-end py-2">
-                    <a href="./connexion.php" alt="Connexion" id="retourConnexion">Retour à la page de connexion</a>
-                </div>
-                <div class="col-12 text-center justify-content-center py-3">
-                    <button type="submit" id="btnReinitialise" class="btn btn-light justify-content-center">Envoyer un lien pour réinitialiser mon mot de passe</button>
-                </div>
-            </form>
+            <?php if ($_SERVER['REQUEST_METHOD'] != 'POST' || !empty($errorEmail)) { ?>
+                <form class="row justify-content-center" id="formulaire" method="post">
+                    <div class="col-md-6 mb-3 py-5">
+                        <label for="Email" class="form-label">Email<strong>*</strong></label>
+                        <input type="email" class="form-control" id="Email" aria-describedby="email" name="Email" value="<?=$Email??''?>" autocomplete="Email" placeholder="Votre email" required>
+                        <div class="error">
+                            <p id="error1" class="d-none"></p><br>
+                            <?= $errorEmail ?? ''?><br>
+                        </div>
+                    </div>
+                    <div class="col-12 text-end py-2">
+                        <a href="./connexion.php" alt="Connexion" id="retourConnexion">Retour à la page de connexion</a>
+                    </div>
+                    <div class="col-12 text-center justify-content-center py-3">
+                        <button type="submit" id="btnReinitialise" class="btn btn-light justify-content-center">Envoyer un lien pour réinitialiser mon mot de passe</button>
+                    </div>
+                </form>
+                <?php } else { ?>
+                    <div class="Data"><br><br>
+                        <h2>Récapitulatif des données du formulaire</h2>
+                            <p>Email : <?=$Email?></p> 
+                    </div>
+                <?php } ?>
         </div>
     </main>
 
@@ -39,4 +64,5 @@
         </div>
     </footer>
 
+    <script src="./public/assets/js/scriptMdpo.js"></script>
     <?php require_once(__DIR__ . '/footer.php'); ?>

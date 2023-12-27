@@ -22,7 +22,7 @@ main {
     z-index: -1;
 }
 
-li {
+.card-body ul li {
     list-style: circle;
 }
 

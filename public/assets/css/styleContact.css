@@ -28,3 +28,18 @@ strong {
 a:hover {
     text-decoration: solid underline red 2px;
 }
+
+
+.green {
+    border-color: green;
+    border-width: thick;
+}
+
+.red {
+    border-color: red;
+    border-width: thick;
+}
+
+#error1, #error2, #error3, #error4, #error5, .error {
+    color: red;
+}
