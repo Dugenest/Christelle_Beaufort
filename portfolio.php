@@ -13,7 +13,7 @@
         <div class="container-fluid py-5">
             <h1>PORTFOLIO</h1>
                 <div class="row py-3">
-                    <ul class="navbar-nav flex-row justify-content-around">
+                    <ul class="navbar-nav col flex-row text-center justify-content-around">
                         <li>
                             <a class="nav-link active" id="wedding" aria-current="page" href="#sectionWedding"><p>Mariage</p></a>
                         </li>

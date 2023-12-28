@@ -36,10 +36,10 @@
             </div>
         </section>
 
-        <section class="container-fluid portfolio py-5">
-            <div class="row">
+        <section class="container-fluid text-center portfolio py-5">
+            <div class="row d-flex text-center justify-content-center">
                 <h2>PORTFOLIO</h2>
-                <div class="col carousel slide" id="carouselExampleIndicators"  data-bs-ride="carousel">
+                <div class="col col-8 carousel slide" id="carouselExampleIndicators"  data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>

@@ -9,6 +9,10 @@ h1 {
     background-color: rgba(205, 168, 144, 0.1);
 }
 
+.navbar-nav {
+    padding: 0;
+}
+
 section {
     background-color: rgba(205, 168, 144, 0.1);
     display:flex;
@@ -19,8 +23,8 @@ section {
     margin:auto;
     gap: 45px;
     display:grid;
-    grid-template-columns: 600px 600px;
-    grid-template-rows: 600px 600px;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 400px 400px;
     grid-template-areas:
         "cellule1 cellule2"
         "cellule3 cellule4"
@@ -39,8 +43,8 @@ section {
     margin:auto;
     gap: 45px;
     display:grid;
-    grid-template-columns: 600px 600px;
-    grid-template-rows: 600px 600px;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 400px 400px;
     grid-template-areas:
         "cellule22 cellule22"
         "cellule23 cellule24"
@@ -152,14 +156,14 @@ section {
 
 /*ici la cellule fait 600x600px*/
 #crop, #crop2, #crop3, #crop5, #crop6, #crop7, #crop8, #crop9, #crop10, #crop11, #crp3, #crp2, #crp1 {
-    width:600px;
-    height:600px;
+    width:400px;
+    height:400px;
     object-fit: cover;
 }
 
 /* ici la cellule fait 600x900px */
 #crop4, #crp4 {
-    width:600px;
-    height:900px;
+    width:400px;
+    height:700px;
     object-fit: cover;
 }
