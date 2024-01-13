@@ -10,17 +10,21 @@ main {
 
 #photoProfil {
     width: 290px;
-    height: 440px;
+    height: 380px;
     margin-left: 12px;
+    margin-top: 8px;
 }
 
 h2 {
     text-align: center;
+    margin-top: 5px;
 }
 
-.d-block {
-    width: 80vw;
-    height: 60vh;
+img {
+    width: 65vw;
+    height: 400px;
+    text-align: center;
+    justify-content: center;
     
 }
 
@@ -44,4 +48,8 @@ strong {
 
 a:hover {
     text-decoration: solid underline red 2px;
+}
+
+.carousel-item, .row {
+    text-align: center;
 }

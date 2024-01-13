@@ -1,12 +1,12 @@
 <!-- Début du footer -->
 <footer>
         <div class="container-fluid">
-            <section class="row reseaux text-center">
+            <section class="row reseaux py-2 text-center">
                 <div class="col-4">
                     <a href="https://www.facebook.com/ChristelleFeryPhotographie" target="_blank"><img src="./public/assets/img/fb.png" class="logoSociaux" alt="Logo facebook"></a>
                 </div>
                 <div class="col-4">
-                    <a href="./contact.php" target="_blank"><img src="./public/assets/img/15895.png" class="logoSociaux" alt="Logo contact"></a>
+                    <a href="./contact.php" target="_blank"><img src="./public/assets/img/téléchargement.jpeg" class="logoSociaux" alt="Logo contact"></a>
                 </div>
                 <div class="col-4">
                     <a href="https://www.instagram.com/christelle_beaufort" target="_blank"><img src="./public/assets/img/insta.png" class="logoSociaux" alt="Logo instagram"></a>
@@ -14,9 +14,8 @@
             </section>
 
             <section class="row mentionsLegales text-center py-3">
-                <a href="" target="_blank">© Christelle-Beaufort _ Tous droits réservés</a>
-                <a href="" target="_blank">RGPD</a>
-                <a href="" target="_blank">CGU</a>
+                <a target="_blank">© Christelle-Beaufort - 2024</a>
+                <a href="" target="_blank">Politique de confidentialité</a>
                 <a href="" target="_blank">Mentions Légales</a>
             </section>
         </div>

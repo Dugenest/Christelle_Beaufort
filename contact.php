@@ -88,7 +88,7 @@ define('NAME', '^[a-zA-Z]{2,30}$');
                     <div class="col-md-6">
                         <fieldset>
                             <h1>CONTACT</h1>
-                            <div class="mb-3 py-3">
+                            <div class="mb-3">
                                 <label for="identifiant" class="form-label">Identifiant</label>
                                 <input type="text" class="form-control" id="userName" aria-describedby="identifiant" name="userName" value="<?=$userName??''?>" maxlength='30' autocomplete="userName" placeholder="Votre identifiant si inscription" required>
                                 <div class="error">
@@ -96,7 +96,7 @@ define('NAME', '^[a-zA-Z]{2,30}$');
                                     <?= $error['userName'] ?? ''?><br>
                                 </div>
                             </div>
-                            <div class="mb-3 py-3">
+                            <div class="mb-3">
                                 <label for="lastName" class="form-label">Nom<strong>*</strong></label>
                                 <input type="text" class="form-control" id="lastName" aria-describedby="nom" name="lastName" value="<?=$lastName??''?>" maxlength='30' autocomplete="lastName" placeholder="Votre nom" required>
                                 <div class="error">
@@ -104,7 +104,7 @@ define('NAME', '^[a-zA-Z]{2,30}$');
                                     <?= $error['lastName'] ?? ''?><br>
                                 </div>
                             </div>
-                            <div class="mb-3 py-3">
+                            <div class="mb-3">
                                 <label for="firstName" class="form-label">Prénom<strong>*</strong></label>
                                 <input type="text" class="form-control" id="firstName" aria-describedby="prénom" name="firstName" value="<?=$firstName??''?>" maxlength='30' autocomplete="firstName" placeholder="Votre prénom" required>
                                 <div class="error">
@@ -112,7 +112,7 @@ define('NAME', '^[a-zA-Z]{2,30}$');
                                     <?= $error['firstName'] ?? ''?><br>
                                 </div>
                             </div>
-                            <div class="mb-3 py-3">
+                            <div class="mb-3">
                                 <label for="Performance" class="form-label">Prestations<strong> *</strong></label>
                                 <input class="form-control" list="datalistOptions" id="Performance" aria-describedby="prestations" name="Performance" placeholder="Quel est votre choix ?" required>
                                 <datalist id="datalistOptions">
@@ -128,7 +128,7 @@ define('NAME', '^[a-zA-Z]{2,30}$');
                                     <?= $error['Performance'] ?? ''?><br>
                                 </div>
                             </div>
-                            <div class="mb-3 py-3">
+                            <div class="mb-3">
                                 <label for="Message" class="form-label">Message<strong>*</strong></label>
                                 <textarea id="Message" class="form-control" rows="5" aria-describedby="nom" name="Message" value="<?=$Message??''?>" maxlength='300' autocomplete="Message" placeholder="Votre message" required></textarea>
                                 <div class="error">

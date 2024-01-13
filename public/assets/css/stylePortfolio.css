@@ -9,6 +9,10 @@ h1 {
     background-color: rgba(205, 168, 144, 0.1);
 }
 
+h2 {
+    justify-items: center;
+}
+
 .navbar-nav {
     padding: 0;
 }

@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php if ($_SERVER['REQUEST_METHOD'] != 'POST' || !empty($error)) { ?>
                 <form class="row d-flex justify-content-center" id="formulaire" method="post">
                     <div class="col-md-6">
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="lastName" class="form-label">Nom<strong>*</strong></label>
                             <input type="text" class="form-control" id="lastName" aria-describedby="nom" name="lastName" value="<?=$lastName??''?>" maxlength='30' autocomplete="lastName" placeholder="Votre nom" required>
                             <div class="error">
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <?= $error['lastName'] ?? ''?><br>
                             </div>
                         </div>
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="firstName" class="form-label">Prénom<strong>*</strong></label>
                             <input type="text" class="form-control" id="firstName" aria-describedby="prénom" name="firstName" value="<?=$firstName??''?>" maxlength='30' autocomplete="firstName" placeholder="Votre prénom" required>
                             <div class="error">
@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <?= $error['firstName'] ?? ''?><br>
                             </div>
                         </div>
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="Email" class="form-label">Email<strong>*</strong></label>
                             <input type="email" class="form-control" id="Email" aria-describedby="email" name="Email" value="<?=$Email??''?>" autocomplete="Email" placeholder="Votre email" required>
                             <div class="error">
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <?= $error['Email'] ?? ''?><br>
                             </div>
                         </div>
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="Phone" class="form-label">Téléphone</label>
                             <input type="tel" class="form-control" id="Phone" aria-describedby="téléphone" name="Phone" value="<?=$Phone??''?>" autocomplete="Phone" placeholder="Votre numéro de téléphone">
                             <div class="error">
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <?= $error['Phone'] ?? ''?><br>
                             </div>
                         </div>
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="Adress" class="form-label">Adresse</label>
                             <textarea id="Adress" class="form-control" rows="3" name="Adress" value="<?=$Adress??''?>" autocomplete="Adress" placeholder="Votre adresse"></textarea>
                             <div class="error">
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <?= $error['Adress'] ?? ''?><br>
                             </div>
                         </div>
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="userName" class="form-label">Identifiant<strong>*</strong></label>
                             <input type="text" class="form-control" id="userName" aria-describedby="identifiant" name="userName" value="<?=$userName??''?>" maxlength='30' autocomplete="userName" placeholder="Votre identifiant" required>
                             <div class="error">
@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <?= $error['userName'] ?? ''?><br>
                             </div>
                         </div>
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="Password1" class="form-label">Mot de passe<strong>*</strong></label>
                             <input type="password" class="form-control" id="Password1" aria-describedby="password" name="Password1" value="<?=$Password1??''?>" placeholder="Votre mot de passe" required>
                             <div class="error">
@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <?= $error['Password1'] ?? ''?><br>
                             </div>                   
                         </div>
-                        <div class="col-12  mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="Password2" class="form-label">Confirmation mot de passe<strong>*</strong></label>
                             <input type="password" class="form-control" id="Password2" aria-describedby="password" name="Password2" value="<?=$Password2??''?>" placeholder="Confirmer votre mot de passe" required>
                             <div class="error">

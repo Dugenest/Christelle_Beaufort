@@ -12,6 +12,7 @@ hr {
 
 #imgLogo {
     height: 500px;
+    width: 800px;
 }
 
 main {
@@ -26,9 +27,14 @@ main {
     list-style: circle;
 }
 
+.row {
+    justify-content: space-around;
+}
+
 .card {
     margin-top: 35px;
-    opacity: 0.7;
+    margin-left: 15px;
+    opacity: 0.8;
 }
 
 .card-body, h3 {

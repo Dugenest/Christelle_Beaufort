@@ -35,9 +35,6 @@
                                     <li><a class="dropdown-item" href="./connexion.php">Connexion</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./tarif.php">Dashboard</a>
-                            </li>
                         </ul>
                         <form class="d-flex mt-3" role="search">
                             <input class="form-control me-2" type="search" placeholder="Mot clé" aria-label="Search">

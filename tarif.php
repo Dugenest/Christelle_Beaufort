@@ -21,7 +21,7 @@
     <div class="container-fluid py-md-5">
         <div class="row py-5">
             <h2 class="titleH2 py-5">TARIFS PRESTATIONS MARIAGE</h2>
-            <div class="col-12 col-md-4 py-md-5 card" >
+            <div class="col-12 col-md-3 py-md-5 card" >
                 <h3>∞  Engagement  ∞</h3><hr>
                 <div class="card-body">
                     <h5 class="card-title"><U>Cette option comprend :</U></h5>
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-4 py-md-5 card" >
+            <div class="col-12 col-md-3 py-md-5 card" >
                 <h3>∞  Passion  ∞</h3><hr>
                 <div class="card-body">
                     <h5 class="card-title"><U>Cette option comprend :</U></h5>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-4 py-md-5 card" >
+            <div class="col-12 col-md-3 py-md-5 card" >
                 <h3>∞  Inconditionnel  ∞</h3><hr>
                 <div class="card-body">
                     <h5 class="card-title"><U>Cette option comprend :</U></h5>

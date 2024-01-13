@@ -59,10 +59,9 @@
         <div class="container-fluid py-5">
             <h1>LIVRE D'OR</h1>
 
-
             <!-- commentaires des clients -->
             <div class="row">
-                <p class="col comment"></p>
+                <div class="col comment">Vos commentaires sur mes prestations effectuées ...</div>
             </div>
             <hr>
             <h2>AJOUTER UN COMMENTAIRE</h2>
@@ -77,7 +76,7 @@
                                     <?= $error['userName'] ?? ''?><br>
                                 </div>
                             </div>
-                        <div class="col-12 mb-3 py-3">
+                        <div class="col-12 mb-3">
                             <label for="Performance" class="form-label">Quelle prestation avons nous partagé ?<strong> *</strong></label>
                             <input type="text" class="form-control" id="Performance" aria-describedby="prestation" name="Performance" value="<?=$Performance??''?>" maxlength='50' autocomplete="Performance" placeholder="Votre prestation" required>
                                 <div class="error">
@@ -85,7 +84,7 @@
                                     <?= $error['Performance'] ?? ''?><br>
                                 </div>
                             </div>
-                        <div class="col-12 mb-3 py-2">
+                        <div class="col-12 mb-3">
                             <label for="Message" class="form-label">Message<strong>*</strong></label>
                             <textarea id="Message" class="form-control" rows="8" aria-describedby="message" name="Message" value="<?=$Message??''?>" maxlength='300' autocomplete="Message" placeholder="Votre message" required></textarea>
                                 <div class="error">

@@ -27,19 +27,21 @@
                 <div class="col-12 col-lg-8">
                     <h2>BIOGRAPHIE</h2>
                     <p class="px-5">Bienvenue dans mon univers photographique,
-                        Je suis une jeune Maman qui pratique la photographie depuis plus de 10 ans. Cette passion est devenue virale depuis le décès de mon papa. En effet je faisais malheureusement partie de ceux qui ont oublié que la vie pouvait s’arrêter un jour et qu’à se moment, les seuls souvenirs qu’il nous reste sont principalement les photographies … Depuis je voudrais offrir la possibilité à tous de graver les moments de bonheur et des les garder précieusement.
+                        Je suis une jeune Maman qui pratique la photographie depuis plus de 10 ans. Cette passion est devenue virale depuis le décès de mon papa. En effet je faisais malheureusement partie de ceux qui ont oublié que la vie pouvait s’arrêter un jour et qu’à se moment, les seuls souvenirs qu’il nous reste sont principalement les photographies … Depuis je voudrais offrir la possibilité à tous de graver les moments de bonheur et de les garder précieusement.
+                        <details>
                         Grâce aux nombreuses personnes qui ont cru en moi, j’ai développé durant toutes ces années, de manière autodidacte, mes compétences lors des évènements importants d’une vie (mariages, séances grossesse…etc).
                         Je suis aujourd’hui professionnelle et prête à immortaliser vos moments d’amour à transmettre de génération en génération.
                         En parallèle, j’ai aussi développé mes compétences pour la photographie animalière et de paysage grâce à plusieurs voyages effectués au coté de grand professionnels de la photographie. (Tony Crocetta, Eric LeGo). Grâce à ces voyages, je peux également vous transmettre les plus belles choses que j’ai vu et immortalisé. Nous sommes loin d’imaginer ce que la nature peut nous offrir tant que nous ne l’avons pas vu de nos yeux … laissez moi vous faire voyager l’espace de quelques clichés.vg
+                        </details>
                     </p>
                 </div>
             </div>
         </section>
 
         <section class="container-fluid text-center portfolio py-5">
-            <div class="row d-flex text-center justify-content-center">
+            <div class="row d-flex text-center justify-content-center py-5">
                 <h2>PORTFOLIO</h2>
-                <div class="col col-8 carousel slide" id="carouselExampleIndicators"  data-bs-ride="carousel">
+                <div class="col col-8 text-center carousel slide" id="carouselExampleIndicators"  data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>

@@ -27,6 +27,8 @@ strong {
 .comment {
     background-color: white;
     height: 400px;
+    text-align: center;
+    justify-content: center;
 }
 
 .green {
