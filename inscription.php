@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-    <?php require_once(__DIR__ . '/head.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/head.php'); ?>
 
     <link rel="stylesheet" href="./public/assets/css/styleInscription.css">
     <title>Inscription</title>
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 
-    <?php require_once(__DIR__ . '/header.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/header.php'); ?>
 
 <!-- Début du main -->
     <main>
@@ -214,4 +214,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!-- fin du main -->
 
     <script src="./public/assets/js/scriptInscription.js"></script>
-    <?php require_once(__DIR__ . '/footer.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/footer.php'); ?>

@@ -16,7 +16,7 @@
 ?>
 
     
-    <?php require_once(__DIR__ . '/head.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/head.php'); ?>
 
     <link rel="stylesheet" href="./public/assets/css/styleMdpo.css">
     <title>Mot de passe oublié</title>
@@ -24,7 +24,7 @@
 
 <body>
 
-    <?php require_once(__DIR__ . '/header.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/header.php'); ?>
 
 <!-- Début du main -->
     <main>
@@ -43,7 +43,7 @@
                     <div class="col-12 text-end py-2">
                         <a href="./connexion.php" alt="Connexion" id="retourConnexion">Retour à la page de connexion</a>
                     </div>
-                    <div class="col-12 text-center justify-content-center py-3">
+                    <div class="col-12 text-center justify-content-center">
                         <button type="submit" id="btnReinitialise" class="btn btn-light justify-content-center">Envoyer un lien pour réinitialiser mon mot de passe</button>
                     </div>
                 </form>
@@ -58,11 +58,11 @@
 
     <footer class="container-fluid">
         <div class="row">
-            <div class="col-12 py-5 text-start">
+            <div class="col-12 text-start">
                 <p>Politique de confidentialité des données personnelles</p>
             </div>
         </div>
     </footer>
 
     <script src="./public/assets/js/scriptMdpo.js"></script>
-    <?php require_once(__DIR__ . '/footer.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/footer.php'); ?>

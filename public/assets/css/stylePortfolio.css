@@ -1,16 +1,31 @@
 
-.mariage {
+/* .mariage {
     background-color: rgba(205, 168, 144, 0.1);
     height: max-content;
-}
+} */
 
 h1 {
     text-align: center;
     background-color: rgba(205, 168, 144, 0.1);
+    margin-bottom: 10px;
 }
 
 h2 {
-    justify-items: center;
+    text-align: center;
+    margin-top: 20px;    
+}
+
+button {
+        font-size: 16px;
+        background: white;
+        border: rgba(48, 48, 48, 0.5) solid 1px;
+        border-radius: 5px;
+        box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+        background-color: rgba(205, 168, 144, 0.1);
+}
+
+.info {
+    text-align: center;
 }
 
 .navbar-nav {
@@ -24,7 +39,8 @@ section {
 }
 
 #container1, #container2, #container3 {
-    margin:auto;
+    margin-top: 25px;
+    margin: auto;
     gap: 45px;
     display:grid;
     grid-template-columns: 400px 400px;

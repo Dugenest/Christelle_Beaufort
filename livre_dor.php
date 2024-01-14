@@ -44,7 +44,7 @@
 
 ?>
 
-    <?php require_once(__DIR__ . '/head.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/head.php'); ?>
 
     <link rel="stylesheet" href="./public/assets/css/styleLivredor.css">
     <title>Livre d'or</title>
@@ -52,7 +52,7 @@
 
 <body >
 
-    <?php require_once(__DIR__ . '/header.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/header.php'); ?>
 
 <!-- Début du main -->
     <main>
@@ -111,4 +111,4 @@
     <!-- fin du main -->
             
     <script src="./public/assets/js/scriptLivreDor.js"></script>
-    <?php require_once(__DIR__ . '/footer.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/footer.php'); ?>

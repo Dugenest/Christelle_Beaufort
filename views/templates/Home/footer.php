@@ -1,4 +1,10 @@
 <!-- Début du footer -->
+<?php
+// Obtenir l'année actuelle
+$currentYear = date("Y");
+$year = (!empty($_GET['year'])) ? $_GET['year'] : $currentYear;
+?>
+
 <footer>
         <div class="container-fluid">
             <section class="row reseaux py-2 text-center">
@@ -14,7 +20,7 @@
             </section>
 
             <section class="row mentionsLegales text-center py-3">
-                <a target="_blank">© Christelle-Beaufort - 2024</a>
+                <a target="_blank">© Christelle-Beaufort - <?="$year"?></a>
                 <a href="" target="_blank">Politique de confidentialité</a>
                 <a href="" target="_blank">Mentions Légales</a>
             </section>

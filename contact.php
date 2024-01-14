@@ -71,7 +71,7 @@ define('NAME', '^[a-zA-Z]{2,30}$');
 
 ?>
 
-    <?php require_once(__DIR__ . '/head.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/head.php'); ?>
 
     <link rel="stylesheet" href="./public/assets/css/styleContact.css">
     <title>Contact</title>
@@ -79,7 +79,7 @@ define('NAME', '^[a-zA-Z]{2,30}$');
 
 <body>
 
-    <?php require_once(__DIR__ . '/header.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/header.php'); ?>
 
     <main>
         <section class="container-fluid contact py-5">
@@ -164,4 +164,4 @@ define('NAME', '^[a-zA-Z]{2,30}$');
     </main>
 
     <script src="./public/assets/js/scriptContact.js"></script>
-    <?php require_once(__DIR__ . '/footer.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/footer.php'); ?>

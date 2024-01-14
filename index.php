@@ -1,5 +1,5 @@
 
-    <?php require_once(__DIR__ . '/head.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/head.php'); ?>
 
     <link rel="stylesheet" href="./public/assets/css/styleIndex.css">
     <title>Christelle Beaufort</title>
@@ -7,7 +7,7 @@
 
 <body>
 
-    <?php require_once(__DIR__ . '/header.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/header.php'); ?>
 
         <h1 class="d-none">Présentation Christelle Beaufort</h1>
         <section class="container-fluid logo">
@@ -79,4 +79,4 @@
         </section>
     </main>
 
-    <?php require_once(__DIR__ . '/footer.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/footer.php'); ?>

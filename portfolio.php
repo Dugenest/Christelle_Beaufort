@@ -1,4 +1,4 @@
-    <?php require_once(__DIR__ . '/head.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/head.php'); ?>
 
     <link rel="stylesheet" href="./public/assets/css/stylePortfolio.css">
     <title>Portfolio</title>
@@ -6,32 +6,33 @@
 
 <body >
 
-    <?php require_once(__DIR__ . '/header.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/header.php'); ?>
 
 <!-- Début du main -->
     <main>
         <div class="container-fluid py-5">
             <h1>PORTFOLIO</h1>
-                <div class="row py-3">
+                <div class="row justify-content-end py-3">
                     <ul class="navbar-nav col flex-row text-center justify-content-around">
                         <li>
-                            <a class="nav-link active" id="wedding" aria-current="page" href="#sectionWedding"><p>Mariage</p></a>
+                            <a class="nav-link active" id="wedding" aria-current="page" href="#sectionWedding"><button>Mariage</button></a>
                         </li>
                         <li>
-                            <a class="nav-link active" id="portrait" aria-current="page" href="#sectionPortrait"><p>Portrait de famille</p></a>
+                            <a class="nav-link active" id="portrait" aria-current="page" href="#sectionPortrait"><button>Portrait de famille</button></a>
                         </li>
                         <li>
-                            <a class="nav-link active" id="love" aria-current="page" href="#sectionLove"><p>Love yourself</p></a>
+                            <a class="nav-link active" id="love" aria-current="page" href="#sectionLove"><button>Love yourself</button></a>
                         </li>
                         <li>
-                            <a class="nav-link active" id="pets" aria-current="page" href="#sectionPets"><p>Annimaux de compagnie</p></a>
+                            <a class="nav-link active" id="pets" aria-current="page" href="#sectionPets"><button>Annimaux de compagnie</button></a>
                         </li>
                     </ul>
+                    <p class="info"><-------------------- Merci de cliquer sur un boutton pour voir les photos --------------------></p>
                 </div>
 
-            <div class="row py-5">
+            <div class="row py-3">
                 <section id="sectionWedding" class="d-none">
-                    <h2><U>Mariage</U></h2>
+                        <h2><u>Mariage</u></h2>
                     <div id="container1">
                         <div class="bloc1"><img id="crop" src="./public/assets/img/Mariage/DSC_6556-2.jpg"></div>
                         <div class="bloc2"><img id="crop" src="./public/assets/img/Mariage/_DSC2005.jpg"></div>
@@ -77,7 +78,7 @@
                 </section>
 
                 <section id="sectionLove" class="d-none">
-                    <h2><U>Love Yourself</U></h2>
+                    <h2><U>Love</U></h2>
                     <div id="container3">
                         <div class="bloc1"><img id="crop" src="./public/assets/img/Love Yourself/DSC_5450-2.jpg"></div>
                         <div class="bloc2"><img id="crop" src="./public/assets/img/Love Yourself/DSC_5460-2.jpg"></div>
@@ -90,7 +91,7 @@
                 </section>
 
                 <section id="sectionPets" class="d-none">
-                    <h2><U>Annimaux de Compagnie</U></h2>
+                    <h2><U>Annimaux</U></h2>
                     <div id="container4">
                         <div class="bloc22"><img id="crp1" src="./public/assets/img/Animaux de compagnie/_DSC0597-2.jpg"></div>
                         <div class="bloc23"><img id="crp2" src="./public/assets/img/Animaux de compagnie/_DSC0618-2.jpg"></div>
@@ -104,4 +105,4 @@
     <!-- fin du main -->
             
     <script src="./public/assets/js/scriptPortfolio.js"></script>
-    <?php require_once(__DIR__ . '/footer.php'); ?>
+    <?php require_once(__DIR__ . '/views/templates/Home/footer.php'); ?>

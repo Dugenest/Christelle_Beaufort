@@ -5,11 +5,11 @@ require_once __DIR__ . '/../helpers/Database.php';
 
 
 // ! création de la classe
-class Category
+class User
 {
 
     // ! création des attributs
-    private ?int $id_category; // le ? précise si la donnée est obligatoire ou pas
+    private ?int $id_user; // le ? précise si la donnée est obligatoire ou pas
     private string $name;
 
 
