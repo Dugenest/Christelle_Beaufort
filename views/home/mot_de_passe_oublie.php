@@ -1,30 +1,3 @@
-<?php
-//Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //Récupération, nettoyage et validation de la donnée "Email"
-        $Email = filter_input(INPUT_POST, 'Email', FILTER_SANITIZE_EMAIL);
-        if (empty($Email)) {
-            $errorEmail = 'L\'Email est obligatoire';
-        } else {
-            $isOk = filter_var($Email, FILTER_VALIDATE_EMAIL);
-            if ($isOk == false){
-                $errorEmail = 'l\'Email n\'est pas valide !';
-            }
-        }
-    }
-
-?>
-
-    
-    <?php require_once(__DIR__ . '/views/templates/Home/head.php'); ?>
-
-    <link rel="stylesheet" href="./public/assets/css/styleMdpo.css">
-    <title>Mot de passe oublié</title>
-</head>
-
-<body>
-
-    <?php require_once(__DIR__ . '/views/templates/Home/header.php'); ?>
 
 <!-- Début du main -->
     <main>
@@ -55,14 +28,4 @@
                 <?php } ?>
         </div>
     </main>
-
-    <footer class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-start">
-                <p>Politique de confidentialité des données personnelles</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./public/assets/js/scriptMdpo.js"></script>
-    <?php require_once(__DIR__ . '/views/templates/Home/footer.php'); ?>
+<!-- Fin du main -->

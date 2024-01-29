@@ -10,8 +10,7 @@
     </title>
 </head>
 
-<body>
-
+<main>
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -21,7 +20,7 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a href="./../../../index.php" class="nav-link align-middle px-0">
+                            <a href="/controllers/home/home-ctrl.php" class="nav-link align-middle px-0">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Accueil</span>
                             </a>
                         </li>
@@ -30,40 +29,23 @@
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="/controllers/dashboard/categories/list-ctrl.php" class="nav-link px-4"><img src=""><span class="d-none d-sm-inline"> Utilisateurs</span></a>
+                                    <a href="/controllers/dashboard/users/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Utilisateurs</span></a>
                                 </li>
                                 <li> 
-                                    <a href="#" class="nav-link px-4"><img src=""><span class="d-none d-sm-inline">Commentaires</span></a>
+                                    <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Commentaires</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-4"><img src=""><span class="d-none d-sm-inline"> Messages</span></a>
+                                    <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Photos</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-4"><img src=""><span class="d-none d-sm-inline"> Galerie</span></a>
+                                    <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Messages</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-4"><img src=""><span class="d-none d-sm-inline"> Portfolio</span></a>
+                                    <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Tarifs</span></a>
                                 </li>
-                                <li>
-                                    <a href="#" class="nav-link px-4"><img src=""><span class="d-none d-sm-inline"> Prestations</span></a>
-                                </li>
+                                
                             </ul>
                         </li>
-                    <!-- <hr>
-                    <div class="dropdown pb-4">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/Dugenest.png" alt="photoProfil" width="30" height="30" class="rounded-circle">
-                            <span class="d-none d-sm-inline mx-1">Seb</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">Paramètres</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Déconnexion</a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
             <div class="col py-3">

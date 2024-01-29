@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Noto+Sans+Tai+Le&family=Roboto+Condensed:ital,wght@0,100..900;1,100.. 900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body, main, h1 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-style: normal;
+}
+
+title, h1 {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#name {
+    border: solid;
+}
+
+.green {
+    border-color: green;
+    border-width: thick;
+}
+
+.red {
+    border-color: red;
+    border-width: thick;
+}
+
+#error1, .error {
+    color: red;
+}
+
+img {
+    width: 20px;
+    height: 22px;
+}
+
+.insert {
+    text-align: center;
+}
+
+.button, button {
+    background-color: #0A58CA;
+    color: white;
+    margin-top: 15px;
+}
+
+thead, tbody {
+    text-align: center;
+}
+
+.cancel, .insert {
+    text-align: center;
+    justify-content: center;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.success {
+    text-align: center;
+    color: blue;
+}
+
+.img {
+    width: 80px;
+    height: 60px;
+}
+
+#pictureVehicle {
+    width: 150px;
+    height: 100px;
+}
