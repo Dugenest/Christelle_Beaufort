@@ -1,7 +1,4 @@
 
-<?php
-$delete = '';
-?>
 
     <h1>Liste des utilisateurs</h1>
     
@@ -48,6 +45,8 @@ $delete = '';
         </div>
         <div class="error">
             <?= $error['name'] ?? ''?><br>
+        </div><br>
+        <div class="success">
             <?= $msg['success'] ?? '' ?><br>
-            </div><br>
+        </div>
     <?php endif; ?>

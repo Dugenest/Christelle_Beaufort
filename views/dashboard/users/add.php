@@ -31,7 +31,7 @@
             </div><br>
 
             <label for="adress" class="form-label"><strong>Adresse</strong></label>
-            <input type="area" class="form-control" id="adress" name="adress" value="<?=$adress??''?>" maxlength='50' aria-describedby="adressHelp" placeholder="Veuillez entrer votre prénom svp?">
+            <textarea class="form-control" id="adress" name="adress" value="<?=$user->adress??''?>" maxlength='50' aria-describedby="adressHelp" placeholder="Veuillez entrer votre adresse svp?"></textarea>
             <div class="error">
                 <?= $error['adress'] ?? ''?>
                 <?= $msg['success'] ?? '' ?>
@@ -47,8 +47,8 @@
             <label for="role" class="form-label"><strong>Rôle</strong></label>
             <select class="form-select"  id="role" name="role" value="<?=$role??''?>">
                 <option selected>Selection du rôle</option>
-                <option value="1">Administrateur</option>
-                <option value="2">Utilisateur</option>
+                <option value="Administrateur">Administrateur</option>
+                <option value="Utilisateur">Utilisateur</option>
             </select>
             <div class="error">
                 <?= $error['role'] ?? ''?>
@@ -56,7 +56,7 @@
             </div><br>
 
             <label for="password" class="form-label"><strong>Mot de passe</strong></label>
-            <input type="text" class="form-control" id="password" name="password" value="<?=$password??''?>" maxlength='30' aria-describedby="passwordHelp" placeholder="Veuillez entrer votre mot de passe svp?">
+            <input type="password" class="form-control" id="password" name="password" value="<?=$password??''?>" maxlength='30' aria-describedby="passwordHelp" placeholder="Veuillez entrer votre mot de passe svp?">
             <div class="error">
                 <?= $error['password'] ?? ''?>
                 <?= $msg['success'] ?? '' ?>

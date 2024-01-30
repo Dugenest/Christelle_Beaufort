@@ -90,12 +90,12 @@ try
         }
 
         //Récupération et nettoyage de la récupération de la donnée "role"
-        $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_NUMBER_INT);
+        $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($role)) {
             $error['role'] = 'Le rôle est obligatoire';
         } else {
         //Validation de la donnée "role" grâce à la regex
-            $isOk = filter_var($role, FILTER_VALIDATE_INT);
+            $isOk = filter_var($role, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,20}$/')));
             if ($isOk == false){
                 $error['role'] = 'Le rôle n\'est pas valide !';
             }
@@ -125,10 +125,9 @@ try
             $user->setPhone($phone);
             $user->setRole($role);
             $user->setPassword($password);
-            $result = $user->insert();
             
-            var_dump($result);
-            die;
+            $result = $user->insert();
+    
             if($result) {
                 $msg['success'] = 'La donnée a bien été insérée !';
             } else {

@@ -2,6 +2,8 @@
 <?php
 
 require_once __DIR__ . '/../helpers/Database.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 
 // ! création de la classe
@@ -15,7 +17,7 @@ class User
     private string $email;
     private string $adress;
     private string $phone;
-    private int $role;
+    private string $role;
     private string $password;
     private ?string $created_at;
     private ?string $updated_at;
@@ -24,7 +26,7 @@ class User
 
 
     // ! création de la méthode magique construct
-    public function __construct(string $username = '', string $lastname = '', string $firstname = '', string $email = '', string $adress = '', string $phone = '', int $role = 0, string $password = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_user = NULL)
+    public function __construct(string $username = '', string $lastname = '', string $firstname = '', string $email = '', string $adress = '', string $phone = '', string $role = '', string $password = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_user = NULL)
     {
         $this->username = $username;
         $this->lastname = $lastname;
@@ -99,10 +101,11 @@ class User
         return $this->phone;
     }
 
+    
     /**
-     * @return int
+     * @return string
      */
-    public function getRole(): int
+    public function getRole(): string
     {
         return $this->role;
     }
@@ -214,12 +217,13 @@ class User
         $this->phone = $phone;
     }
 
+    
     /**
-     * @param int $role
+     * @param string $role
      * 
      * @return [type]
      */
-    public function setRole(int $role)
+    public function setRole(string $role)
     {
         $this->role = $role;
     }
@@ -287,7 +291,7 @@ class User
         $sth->bindValue(':email', $this->getEmail());
         $sth->bindValue(':adress', $this->getAdress());
         $sth->bindValue(':phone', $this->getPhone());
-        $sth->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
+        $sth->bindValue(':role', $this->getRole(),);
         $sth->bindValue(':password', $this->getPassword());
         
         $sth->execute();
@@ -344,20 +348,53 @@ class User
     /**
      * @return [type]
      */
-    public function update() 
-    {
-        $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
+    // public function update() 
+    // {
+    //     $pdo = Database::connect();  
         
-        // Requête mysql pour insérer des données
+    //     // Requête mysql pour insérer des données
+    //     $sql = 'UPDATE `users` 
+    //             SET `username` = :username, 
+    //                 `lastname` = :lastname,
+    //                 `firstname` = :firstname,
+    //                 `email` = :email,
+    //                 `adress` = :adress,
+    //                 `phone` = :phone,
+    //                 `role` = :role,
+    //                 `password` = :password
+    //             WHERE `id_user` = :id_user';
+
+    //     $sth = $pdo->prepare($sql);
+    //     $sth->bindValue(':username', $this->getUsername());
+    //     $sth->bindValue(':lastname', $this->getLastname());
+    //     $sth->bindValue(':firstname', $this->getFirstname());
+    //     $sth->bindValue(':email', $this->getEmail());
+    //     $sth->bindValue(':adress', $this->getAdress());
+    //     $sth->bindValue(':phone', $this->getPhone());
+    //     $sth->bindValue(':role', $this->getRole());
+    //     $sth->bindValue(':password', $this->getPassword());
+    //     $sth->bindValue(':id_user', $this->getIdUser(), PDO::PARAM_INT);
+    //     $result = $sth->execute();
+
+    //     return $result;
+    // }
+
+    public function update() 
+{
+    $pdo = Database::connect();  
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    try {
+        // Requête MySQL pour mettre à jour des données
         $sql = 'UPDATE `users` 
-                SET `username` = :username 
-                    `lastname` = :lastname
-                    `firstname` = :firstname
-                    `email` = :email
-                    `adress` = :adress
-                    `phone` = :phone
-                    `role` = :role
+                SET 
+                    `username` = :username, 
+                    `lastname` = :lastname,
+                    `firstname` = :firstname,
+                    `email` = :email,
+                    `adress` = :adress,
+                    `phone` = :phone,
+                    `role` = :role,
                     `password` = :password
                 WHERE `id_user` = :id';
 
@@ -368,13 +405,23 @@ class User
         $sth->bindValue(':email', $this->getEmail());
         $sth->bindValue(':adress', $this->getAdress());
         $sth->bindValue(':phone', $this->getPhone());
-        $sth->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
+        $sth->bindValue(':role', $this->getRole());
         $sth->bindValue(':password', $this->getPassword());
-        $sth->bindValue(':id_user', $this->getIdUser(), PDO::PARAM_INT);
-        $result = $sth->execute();
-
-        return $result;
+        $sth->bindValue(':id', $this->getIdUser(), PDO::PARAM_INT);
+        
+        if ($sth->execute()) {
+            return true; // La mise à jour s'est bien déroulée
+        } else {
+            // En cas d'échec, afficher les détails de l'erreur
+            $errorInfo = $sth->errorInfo();
+            throw new Exception("Erreur lors de la mise à jour : {$errorInfo[2]}");
+        }
+    } catch (Exception $e) {
+        // En cas d'exception, afficher le message d'erreur
+        die('Erreur : ' . $e->getMessage());
     }
+}
+
 
 
     /**
