@@ -69,10 +69,10 @@
                                 <a class="nav-link active" aria-current="page" href="./../../../controllers/dashboard/users/list-ctrl.php">Dashboard</a>
                             </li>
                         </ul>
-                        <form class="d-flex mt-3" role="search">
+                        <!-- <form class="d-flex mt-3" role="search">
                             <input class="form-control me-2" type="search" placeholder="Mot clé" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Recherche</button>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>

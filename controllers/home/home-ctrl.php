@@ -3,7 +3,7 @@
 try
 {
     $title = 'Christelle Beaufort';
-
+    
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }

@@ -25,14 +25,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <a data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="/controllers/dashboard/users/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Utilisateurs</span></a>
                                 </li>
                                 <li> 
-                                    <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Commentaires</span></a>
+                                    <a href="/controllers/dashboard/comments/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Commentaires</span></a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Photos</span></a>

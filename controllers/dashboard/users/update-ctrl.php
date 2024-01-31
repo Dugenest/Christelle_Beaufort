@@ -93,7 +93,7 @@ try {
             $error['phone'] = 'Le numéro de téléphone est obligatoire';
         } else {
         //Validation de la donnée "phone" grâce à la regex
-            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[0-9]{2,30}$/')));
+            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[0-9]{10}$/')));
             if ($isOk == false){
                 $error['phone'] = 'Le numéro de téléphone n\'est pas valide !';
             }
@@ -105,7 +105,7 @@ try {
             $error['role'] = 'Le rôle est obligatoire';
         } else {
         //Validation de la donnée "role" grâce à la regex
-            $isOk = filter_var($role, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,20}$/')));
+            $isOk = filter_var($role, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
             if ($isOk == false){
                 $error['role'] = 'Le rôle n\'est pas valide !';
             }
@@ -117,7 +117,7 @@ try {
             $error['password'] = 'Le mot de passe est obligatoire';
         } else {
         //Validation de la donnée "password" grâce à la regex
-            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
             if ($isOk == false){
                 $error['password'] = 'Le mot de passe n\'est pas valide !';
             }

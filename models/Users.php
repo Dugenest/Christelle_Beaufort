@@ -2,8 +2,6 @@
 <?php
 
 require_once __DIR__ . '/../helpers/Database.php';
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 
 // ! création de la classe
