@@ -25,7 +25,7 @@
                     <td class="tableMessage"><?= $message->message ?></td>
                     <td class="message">
                         <div class="message-container">
-                            <div class="message" id="message<?= $message->id_message ?>">
+                            <div class="message text-danger" id="message<?= $message->id_message ?>">
                                 <p id="status<?= $message->id_message ?>">Message reçu</p>
                                 <a href="/controllers/dashboard/messages/messageDescription-ctrl.php?id=<?= $message->id_message ?>" class="btn btn-primary mark-as-read" data-message-id="<?= $message->id_message ?>">Marquer comme lu</a>
                             </div>
