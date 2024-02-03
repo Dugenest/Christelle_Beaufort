@@ -99,7 +99,7 @@ class User
         return $this->phone;
     }
 
-    
+
     /**
      * @return string
      */
@@ -142,7 +142,7 @@ class User
 
 
     // ! création des setters
-    
+
 
     /**
      * @param int|null $id_user
@@ -153,7 +153,7 @@ class User
     {
         $this->id_user = $id_user;
     }
-    
+
 
     /**
      * @param string $username
@@ -215,7 +215,7 @@ class User
         $this->phone = $phone;
     }
 
-    
+
     /**
      * @param string $role
      * 
@@ -291,7 +291,7 @@ class User
         $sth->bindValue(':phone', $this->getPhone());
         $sth->bindValue(':role', $this->getRole(),);
         $sth->bindValue(':password', $this->getPassword());
-        
+
         $sth->execute();
         $nbrows = $sth->rowCount();
 
@@ -302,13 +302,13 @@ class User
     /**
      * @return [type]
      */
-    public static function getAll() 
+    public static function getAll()
     {
         $pdo = Database::connect();
 
         /*Sélectionne toutes les valeurs dans la table categories*/
-        $sql = 'SELECT * FROM users'; 
-        
+        $sql = 'SELECT * FROM users';
+
         $sth = $pdo->prepare($sql);
         $sth->execute();
 
@@ -317,7 +317,7 @@ class User
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
-    
+
 
 
     /**
@@ -349,7 +349,7 @@ class User
     // public function update() 
     // {
     //     $pdo = Database::connect();  
-        
+
     //     // Requête mysql pour insérer des données
     //     $sql = 'UPDATE `users` 
     //             SET `username` = :username, 
@@ -377,14 +377,14 @@ class User
     //     return $result;
     // }
 
-    public function update() 
-{
-    $pdo = Database::connect();  
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    try {
-        // Requête MySQL pour mettre à jour des données
-        $sql = 'UPDATE `users` 
+    public function update()
+    {
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        try {
+            // Requête MySQL pour mettre à jour des données
+            $sql = 'UPDATE `users` 
                 SET 
                     `username` = :username, 
                     `lastname` = :lastname,
@@ -396,29 +396,29 @@ class User
                     `password` = :password
                 WHERE `id_user` = :id';
 
-        $sth = $pdo->prepare($sql);
-        $sth->bindValue(':username', $this->getUsername());
-        $sth->bindValue(':lastname', $this->getLastname());
-        $sth->bindValue(':firstname', $this->getFirstname());
-        $sth->bindValue(':email', $this->getEmail());
-        $sth->bindValue(':adress', $this->getAdress());
-        $sth->bindValue(':phone', $this->getPhone());
-        $sth->bindValue(':role', $this->getRole());
-        $sth->bindValue(':password', $this->getPassword());
-        $sth->bindValue(':id', $this->getIdUser(), PDO::PARAM_INT);
-        
-        if ($sth->execute()) {
-            return true; // La mise à jour s'est bien déroulée
-        } else {
-            // En cas d'échec, afficher les détails de l'erreur
-            $errorInfo = $sth->errorInfo();
-            throw new Exception("Erreur lors de la mise à jour : {$errorInfo[2]}");
+            $sth = $pdo->prepare($sql);
+            $sth->bindValue(':username', $this->getUsername());
+            $sth->bindValue(':lastname', $this->getLastname());
+            $sth->bindValue(':firstname', $this->getFirstname());
+            $sth->bindValue(':email', $this->getEmail());
+            $sth->bindValue(':adress', $this->getAdress());
+            $sth->bindValue(':phone', $this->getPhone());
+            $sth->bindValue(':role', $this->getRole());
+            $sth->bindValue(':password', $this->getPassword());
+            $sth->bindValue(':id', $this->getIdUser(), PDO::PARAM_INT);
+
+            if ($sth->execute()) {
+                return true; // La mise à jour s'est bien déroulée
+            } else {
+                // En cas d'échec, afficher les détails de l'erreur
+                $errorInfo = $sth->errorInfo();
+                throw new Exception("Erreur lors de la mise à jour : {$errorInfo[2]}");
+            }
+        } catch (Exception $e) {
+            // En cas d'exception, afficher le message d'erreur
+            die('Erreur : ' . $e->getMessage());
         }
-    } catch (Exception $e) {
-        // En cas d'exception, afficher le message d'erreur
-        die('Erreur : ' . $e->getMessage());
     }
-}
 
 
 
@@ -427,7 +427,8 @@ class User
      * 
      * @return [type]
      */
-    public static function delete(int $id) {
+    public static function delete(int $id)
+    {
         $pdo = Database::connect();
 
         $sql = 'DELETE 
@@ -439,5 +440,28 @@ class User
         $result = $sth->execute();
 
         return $result;
+    }
+
+
+    /**
+     * @param mixed $username
+     * 
+     * @return [type]
+     */
+    public function getIdUserByUsername($username)
+    {
+        $pdo = Database::connect();
+
+        $sql = "SELECT id_user FROM users WHERE username = :username";
+        $sth = $pdo->prepare($sql);
+        $sth->bindParam(':username', $username, PDO::PARAM_STR);
+        $sth->execute();
+
+        if ($sth->rowCount() > 0) {
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+            return $row['id_user'];
+        }
+
+        return null;
     }
 }

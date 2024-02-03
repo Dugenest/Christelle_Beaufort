@@ -37,7 +37,7 @@
         <script src="/public/assets/js/scriptLivreDor.js"></script>
     <?php } elseif ($title == 'Portfolio') { ?>
         <script src="/public/assets/js/scriptPortfolio.js"></script>
-    <?php } elseif ($title == 'Portfolio') { ?>
+    <?php } elseif ($title == 'Mot de passe oublié') { ?>
         <script src="./public/assets/js/scriptMdpo.js"></script>
     <?php } ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

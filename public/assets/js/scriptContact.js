@@ -1,8 +1,8 @@
-const userName = document.getElementById("userName");
-const lastName = document.getElementById("lastName");
-const firstName = document.getElementById("firstName"); 
-const performance = document.getElementById("Performance"); 
-const message = document.getElementById("Message"); 
+const userName = document.getElementById("username");
+const lastName = document.getElementById("lastname");
+const firstName = document.getElementById("firstname"); 
+const performance = document.getElementById("performance"); 
+const message = document.getElementById("message"); 
 
 const message1 = "Identifiant incorrect !";
 const message2 = "Caractères non pris en compte !";

@@ -6,8 +6,8 @@ const emailText = document.getElementById("email");
 const adressText = document.getElementById("adress");
 const phoneText = document.getElementById("phone");
 const roleText = document.getElementById("role");
-const pwdMedium = document.getElementById("Password");
-const pwdStrong = document.getElementById("Password1");
+const pwdMedium = document.getElementById("password");
+const pwdStrong = document.getElementById("password1");
 
 
 const message1 = "Caractères non pris en compte !";
@@ -28,7 +28,6 @@ const errorMessage7 = document.getElementById("error7");
 const errorMessage8 = document.getElementById("error8");
 const errorMessage9 = document.getElementById("error9");
 const errorMessage10 = document.getElementById("error10");
-
 
 // Création des regex
 const regexName = /^[a-zA-Z0-9]{2,30}$/;
@@ -197,5 +196,32 @@ pwdStrong.addEventListener("keyup", function () {
         pwdStrong.classList.add("red");
         errorMessage10.classList.remove("d-none");
         errorMessage10.textContent = message5;
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var messages = document.querySelectorAll('.message');
+
+    messages.forEach(function (message) {
+        var button = message.querySelector('.mark-as-read');
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // Pour éviter le rechargement de la page
+            markAsRead(message);
+        });
+    });
+
+    function markAsRead(message) {
+        // Obtenez l'ID du message à partir de l'attribut data
+        var messageId = message.querySelector('.mark-as-read').getAttribute('data-message-id');
+        
+        // Modifiez le texte du message
+        var statusElement = document.getElementById('status' + messageId);
+        if (statusElement.textContent.trim() === 'Message reçu') {
+            statusElement.textContent = 'Message lu';
+        }
+        
+        // Ajoute la classe "read" au message
+        message.classList.add('read');
     }
 });

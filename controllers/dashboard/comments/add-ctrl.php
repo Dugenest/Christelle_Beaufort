@@ -33,7 +33,7 @@ try
     // Insertion des données
         if (empty($error)) {
             $comments = new Comment();
-            $comments->setcomment($comment);
+            $comments->setMessage($message);
             
             $result = $comments->insert();
     

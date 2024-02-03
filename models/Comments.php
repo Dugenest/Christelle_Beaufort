@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../models/Users.php';
 require_once __DIR__ . '/../helpers/Database.php';
 
 
@@ -90,14 +91,14 @@ class Comment
     }
 
 
-    // ! création des setters
+    // ! création des Setters
 
     /**
      * @param string $message
      * 
-     * @return [type]
+     * @return void
      */
-    public function setMessage(string $message)
+    public function setMessage(string $message): void
     {
         $this->message = $message;
     }
@@ -105,108 +106,122 @@ class Comment
     /**
      * @param string $performance
      * 
-     * @return [type]
+     * @return void
      */
-    public function setPerformance(string $performance)
+    public function setPerformance(string $performance): void
     {
         $this->performance = $performance;
     }
 
     /**
-     * @param string $created_at
+     * @param string|null $created_at
      * 
-     * @return [type]
+     * @return void
      */
-    public function setCreatedAt(?string $created_at)
+    public function setCreatedAt(?string $created_at): void
     {
         $this->created_at = $created_at;
     }
 
     /**
-     * @param string $validated_at
+     * @param string|null $validated_at
      * 
-     * @return [type]
+     * @return void
      */
-    public function setValidatedAt(?string $validated_at)
+    public function setValidatedAt(?string $validated_at): void
     {
         $this->validated_at = $validated_at;
     }
 
     /**
-     * @param string $deleted_at
+     * @param string|null $deleted_at
      * 
-     * @return [type]
+     * @return void
      */
-    public function setDeletedAt(?string $deleted_at)
+    public function setDeletedAt(?string $deleted_at): void
     {
         $this->deleted_at = $deleted_at;
     }
 
     /**
-     * @param string|null $id_comment
+     * @param int|null $id_comment
      * 
-     * @return [type]
+     * @return void
      */
-    public function setIdComment(?int $id_comment)
+    public function setIdComment(?int $id_comment): void
     {
-        $this->$id_comment = $id_comment;
+        $this->id_comment = $id_comment;
     }
-    
+
     /**
      * @param int|null $id_user
      * 
-     * @return [type]
+     * @return void
      */
-    public function setIdUser(?int $id_user)
+    public function setIdUser(?int $id_user): void
     {
-        $this->$id_user = $id_user;
+        $this->id_user = $id_user;
     }
     
-
+    
     // ! création de ma méthode
-
+    
+    /**
+     * @return bool
+     */
     public function insert(): bool
     {
         $pdo = Database::connect();
-
-        $sql = 'INSERT INTO `comments` (`id_comment`, `message`, `performance`, `id_user`) 
-                VALUES (:id_comment, :message, :performance, :id_user);';
-
-        $sth = $pdo->prepare($sql);
-
-        $sth->bindValue(':id_comment', $this->getIdComment(), PDO::PARAM_INT);
-        $sth->bindValue(':message', $this->getMessage());
-        $sth->bindValue(':performance', $this->getPerformance());
-        $sth->bindValue(':id_user', $this->getIdUser(), PDO::PARAM_INT);
         
-        $sth->execute();
-        $nbrows = $sth->rowCount();
+        // Insérer les données dans la table comments
+        $sqlInsert = 'INSERT INTO `comments` (`id_comment`, `message`, `performance`, `id_user`) 
+                    VALUES (:id_comment, :message, :performance, :id_user);';
+        $sthInsert = $pdo->prepare($sqlInsert);
+        
+        $sthInsert->bindValue(':id_comment', $this->getIdComment(), PDO::PARAM_INT);
+        $sthInsert->bindValue(':message', $this->getMessage());
+        $sthInsert->bindValue(':performance', $this->getPerformance());
+        $sthInsert->bindValue(':id_user', $this->getIdUser(), PDO::PARAM_INT);
 
-        return $nbrows > 0 ? true : false;
+        $sthInsert->execute();
+        $nbrows = $sthInsert->rowCount();
+
+        return $nbrows > 0;
     }
 
 
     /**
      * @return [type]
      */
-    public static function getAll(int $id_user = 0) 
+    public static function getAll(int $id_user = 0)
     {
         $pdo = Database::connect();
 
-        /*Sélectionne toutes les valeurs dans la table comments*/
-        $sql = 'SELECT * 
-                FROM comments
-                INNER JOIN users ON comments.id_user = users.id_user'; 
-                
+        
+        // Sélectionner les colonnes nécessaires avec une jointure sur la table users
+        $sql = 'SELECT comments.id_comment, comments.message, comments.performance, comments.created_at, users.username
+            FROM comments
+            INNER JOIN users ON comments.id_user = users.id_user';
+
+        // Ajouter la clause WHERE si id_user est spécifié
+        if ($id_user != 0) {
+            $sql .= ' WHERE comments.id_user = :id_user';
+        }
+
         $sth = $pdo->prepare($sql);
+
+        // Bind id_user si spécifié
         if ($id_user != 0) {
             $sth->bindValue(':id_user', $id_user, PDO::PARAM_INT);
         }
+
         $sth->execute();
 
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
+
+
 
 
     /**
@@ -237,19 +252,20 @@ class Comment
      * 
      * @return [type]
      */
-    public static function validate(int $id) {
+    public static function validate(int $id)
+    {
         $pdo = Database::connect();
-    
+
         // Sélection du commentaire
         $sql = 'SELECT `message`
                 FROM `comments` 
                 WHERE `id_comment` = :id;';
-    
+
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         $sth->execute();
         $comment = $sth->fetch(PDO::FETCH_ASSOC);
-    
+
         // Validation basique (ajustez selon vos critères de validation)
         if ($comment) {
             header("Location: /./controllers/home/livre_dor-ctrl.php");
@@ -266,7 +282,8 @@ class Comment
      * 
      * @return [type]
      */
-    public static function delete(int $id) {
+    public static function delete(int $id)
+    {
         $pdo = Database::connect();
 
         $sql = 'DELETE 

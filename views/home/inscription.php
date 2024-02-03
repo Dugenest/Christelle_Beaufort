@@ -7,69 +7,69 @@
                 <form class="row d-flex justify-content-center" id="formulaire" method="post">
                     <div class="col-md-6">
                         <div class="col-12 mb-3">
-                            <label for="lastName" class="form-label">Nom<strong>*</strong></label>
-                            <input type="text" class="form-control" id="lastName" aria-describedby="nom" name="lastName" value="<?=$lastName??''?>" maxlength='30' autocomplete="lastName" placeholder="Votre nom" required>
+                            <label for="lastname" class="form-label">Nom<strong>*</strong></label>
+                            <input type="text" class="form-control" id="lastname" aria-describedby="nom" name="lastname" value="<?=$lastname??''?>" maxlength='30' autocomplete="lastname" placeholder="Votre nom" required>
                             <div class="error">
                                 <p id="error1" class="d-none"></p><br>
-                                <!-- coalescente du message d'erreur de lastName -->
-                                <?= $error['lastName'] ?? ''?><br>
+                                <!-- coalescente du message d'erreur de lastname -->
+                                <?= $error['lastname'] ?? ''?><br>
                             </div>
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="firstName" class="form-label">Prénom<strong>*</strong></label>
-                            <input type="text" class="form-control" id="firstName" aria-describedby="prénom" name="firstName" value="<?=$firstName??''?>" maxlength='30' autocomplete="firstName" placeholder="Votre prénom" required>
+                            <label for="firstname" class="form-label">Prénom<strong>*</strong></label>
+                            <input type="text" class="form-control" id="firstname" aria-describedby="prénom" name="firstname" value="<?=$firstname??''?>" maxlength='30' autocomplete="firstname" placeholder="Votre prénom" required>
                             <div class="error">
                                 <p id="error2" class="d-none"></p><br>
-                                <?= $error['firstName'] ?? ''?><br>
+                                <?= $error['firstname'] ?? ''?><br>
                             </div>
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="Email" class="form-label">Email<strong>*</strong></label>
-                            <input type="email" class="form-control" id="Email" aria-describedby="email" name="Email" value="<?=$Email??''?>" autocomplete="Email" placeholder="Votre email" required>
+                            <label for="email" class="form-label">Email<strong>*</strong></label>
+                            <input type="email" class="form-control" id="email" aria-describedby="email" name="email" value="<?=$email??''?>" autocomplete="email" placeholder="Votre email" required>
                             <div class="error">
                                 <p id="error3" class="d-none"></p><br>
-                                <?= $error['Email'] ?? ''?><br>
+                                <?= $error['email'] ?? ''?><br>
                             </div>
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="Phone" class="form-label">Téléphone</label>
-                            <input type="tel" class="form-control" id="Phone" aria-describedby="téléphone" name="Phone" value="<?=$Phone??''?>" autocomplete="Phone" placeholder="Votre numéro de téléphone">
+                            <label for="phone" class="form-label">Téléphone</label>
+                            <input type="tel" class="form-control" id="phone" aria-describedby="téléphone" name="phone" value="<?=$phone??''?>" autocomplete="phone" placeholder="Votre numéro de téléphone">
                             <div class="error">
                                 <p id="error4" class="d-none"></p><br>
-                                <?= $error['Phone'] ?? ''?><br>
+                                <?= $error['phone'] ?? ''?><br>
                             </div>
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="Adress" class="form-label">Adresse</label>
-                            <textarea id="Adress" class="form-control" rows="3" name="Adress" value="<?=$Adress??''?>" autocomplete="Adress" placeholder="Votre adresse"></textarea>
+                            <label for="adress" class="form-label">Adresse</label>
+                            <textarea id="adress" class="form-control" rows="3" name="adress" value="<?=$adress??''?>" autocomplete="adress" placeholder="Votre adresse"></textarea>
                             <div class="error">
                                 <p id="error5" class="d-none"></p><br>
-                                <?= $error['Adress'] ?? ''?><br>
+                                <?= $error['adress'] ?? ''?><br>
                             </div>
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="userName" class="form-label">Identifiant<strong>*</strong></label>
-                            <input type="text" class="form-control" id="userName" aria-describedby="identifiant" name="userName" value="<?=$userName??''?>" maxlength='30' autocomplete="userName" placeholder="Votre identifiant" required>
+                            <label for="username" class="form-label">Identifiant<strong>*</strong></label>
+                            <input type="text" class="form-control" id="username" aria-describedby="identifiant" name="username" value="<?=$username??''?>" maxlength='30' autocomplete="username" placeholder="Votre identifiant" required>
                             <div class="error">
                                 <p id="error6" class="d-none"></p><br>
-                                <?= $error['userName'] ?? ''?><br>
+                                <?= $error['username'] ?? ''?><br>
                             </div>
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="Password1" class="form-label">Mot de passe<strong>*</strong></label>
-                            <input type="password" class="form-control" id="Password1" aria-describedby="password" name="Password1" value="<?=$Password1??''?>" placeholder="Votre mot de passe" required>
+                            <label for="password" class="form-label">Mot de passe<strong>*</strong></label>
+                            <input type="password" class="form-control" id="password" aria-describedby="password" name="password" value="<?=$password??''?>" placeholder="Votre mot de passe" required>
                             <div class="error">
                                 <p id="error7" class="d-none"></p><br>
-                                <?= $error['Password1'] ?? ''?><br>
+                                <?= $error['password'] ?? ''?><br>
                             </div>                   
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="Password2" class="form-label">Confirmation mot de passe<strong>*</strong></label>
-                            <input type="password" class="form-control" id="Password2" aria-describedby="password" name="Password2" value="<?=$Password2??''?>" placeholder="Confirmer votre mot de passe" required>
+                            <label for="password1" class="form-label">Confirmation mot de passe<strong>*</strong></label>
+                            <input type="password" class="form-control" id="password1" aria-describedby="password" name="password1" value="<?=$password1??''?>" placeholder="Confirmer votre mot de passe" required>
                             <div class="error">
                                 <p id="error8" class="d-none"></p><br>
                                 <p id="error9" class="d-none"></p><br>
-                                <?= $error['Password2'] ?? ''?><br>
+                                <?= $error['password1'] ?? ''?><br>
                             </div>
                         <div class="mb-3">
                             <div class="form-check">
@@ -86,16 +86,6 @@
                         </div>
                     </div>
                 </form>
-                <?php } else { ?>
-                    <div class="Data"><br><br>
-                        <h2>Récapitulatif des données du formulaire</h2>
-                            <p>Nom : <?=$lastName?></p>
-                            <p>Prénom : <?=$firstName?></p> 
-                            <p>Email : <?=$Email?></p> 
-                            <p>Téléphone : <?=$Phone?></p> 
-                            <p>Adresse : <?=$Adress?></p> 
-                            <p>Identifiant : <?=$userName?></p>
-                    </div>
                 <?php } ?>
         </div>
     </main>

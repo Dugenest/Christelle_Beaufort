@@ -1,108 +1,143 @@
 <?php
 
+session_start();
+
+require_once __DIR__ . '/../../models/Users.php';
 require_once __DIR__ . '/../../config/init.php';
 
-try
+
+try 
 {
     $title = 'Inscription';
+
+    // Initialisation des tableaux pour les messages d'erreur
+    $error = [];
+    $msg = [];
+
     //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //Création d'un tableau d'erreurs
-            $error = [];
-        //Récupération et nettoyage de la récupération de la donnée "lastName"
-            $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_SPECIAL_CHARS);
-            if (empty($lastName)) {
-                $error['lastName'] = 'Le Nom est obligatoire';
-            } else {
-        //Validation de la donnée "lastName" grâce à la regex
-                $isOk = filter_var($lastName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.NAME.'/')));
-                if ($isOk == false){
-                    $error['lastName'] = 'Le Nom n\'est pas valide !';
-                }
-            }
-        
-        //Récupération et nettoyage de la récupération de la donnée "firstName"
-            $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_SPECIAL_CHARS);
-            if (empty($firstName)) {
-                $error['firstName'] = 'Le Prénom est obligatoire';
-            } else {
-        //Validation de la donnée "firstName" grâce à la regex
-            $isOk = filter_var($firstName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.NAME.'/')));
+
+        //Récupération et nettoyage de la récupération de la donnée "username"
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($username)) {
+            $error['username'] = 'L\'identifiant est obligatoire';
+        } else {
+        //Validation de la donnée "username" grâce à la regex
+            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
             if ($isOk == false){
-                $error['firstName'] = 'Le Prénom n\'est pas valide !';
+                $error['username'] = 'L\'identifiant n\'est pas valide !';
             }
         }
 
-        //Récupération, nettoyage et validation de la donnée "Email"
-            $Email = filter_input(INPUT_POST, 'Email', FILTER_SANITIZE_EMAIL);
-            if (empty($Email)) {
-                $error['Email'] = 'L\'Email est obligatoire';
-            } else {
-                $isOk = filter_var($Email, FILTER_VALIDATE_EMAIL);
-                if ($isOk == false){
-                    $error['Email'] = 'l\'Email n\'est pas valide !';
-                }
-            }
-        
-        //Récupération et nettoyage de la récupération de la donnée "Phone"
-            $Phone = filter_input(INPUT_POST, 'Phone', FILTER_SANITIZE_NUMBER_INT);
-            if (empty($Phone)) {
-        //Validation de la donnée "Phone" grâce à la regex
-            $isOk = filter_var($Phone, FILTER_VALIDATE_INT);
+        //Récupération et nettoyage de la récupération de la donnée "lastname"
+        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($lastname)) {
+            $error['lastname'] = 'Le nom est obligatoire';
+        } else {
+        //Validation de la donnée "lastname" grâce à la regex
+            $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
             if ($isOk == false){
-                $error['Phone'] = 'Le numéro de téléphone n\'est pas valide !';
+                $error['lastname'] = 'Le nom n\'est pas valide !';
             }
         }
 
-        //Récupération, nettoyage et validation de la donnée "Adress"
-            $Adress = filter_input(INPUT_POST, 'Adress', FILTER_SANITIZE_SPECIAL_CHARS);
-            if (!empty($Adress)) {
-        //Validation de la donnée "Adress" grâce à la regex
-            $isOk = filter_var($Adress, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,300}$/')));
+        //Récupération et nettoyage de la récupération de la donnée "firstname"
+        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($firstname)) {
+            $error['firstname'] = 'Le prénom est obligatoire';
+        } else {
+        //Validation de la donnée "firstname" grâce à la regex
+            $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
             if ($isOk == false){
-                $error['Adress'] = 'L\'Adresse décrite n\'est pas valide !';
+                $error['firstname'] = 'Le prénom n\'est pas valide !';
             }
         }
 
-        //Récupération et nettoyage de la récupération de la donnée "userName"
-            $userName = filter_input(INPUT_POST, 'userName', FILTER_SANITIZE_SPECIAL_CHARS);
-            if (empty($userName)) {
-                $error['userName'] = 'L\'identifiant est obligatoire';
-            } else {
-        //Validation de la donnée "userName" grâce à la regex
-            $isOk = filter_var($userName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
+        //Récupération et nettoyage de la récupération de la donnée "email"
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        if (empty($email)) {
+            $error['email'] = 'L\'email est obligatoire';
+        } else {
+        //Validation de la donnée "email" grâce à la regex
+            $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
             if ($isOk == false){
-                $error['userName'] = 'L\'identifiant n\'est pas valide !';
+                $error['email'] = 'L\'email n\'est pas valide !';
             }
         }
 
-        //Récupération, nettoyage et validation de la donnée "Mot de passe"
-            $Password1 = filter_input(INPUT_POST, 'Password1', FILTER_SANITIZE_SPECIAL_CHARS);
-            if (empty($Password1)) {
-                $error['Password1'] = 'Le Mot de Passe est obligatoire';
-            } else {
-                $isOk = filter_var($Password1, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.PSWD.'/')));
-                if ($isOk == false){
-                    $error['Password1'] = 'Le Mot de Passe n\'est pas valide !';
-                }
+        //Récupération et nettoyage de la récupération de la donnée "adress"
+        $adress = filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($adress)) {
+            $error['adress'] = 'L\'adresse est obligatoire';
+        } else {
+        //Validation de la donnée "adress" grâce à la regex
+            $isOk = filter_var($adress, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9 ]{2,50}$/')));
+            if ($isOk == false){
+                $error['adress'] = 'L\'adresse n\'est pas valide !';
             }
-        
-        //Récupération, nettoyage et validation de la donnée "Mot de passe"
-            $Password2 = filter_input(INPUT_POST, 'Password2', FILTER_SANITIZE_SPECIAL_CHARS);
-            if (empty($Password2)) {
-                $error['Password2'] = 'Le Mot de Passe est obligatoire';
-            } else {
-                $isOk = filter_var($Password2, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.PSWD.'/')));
-                if ($isOk == false){
-                    $error['Password2'] = 'Le Mot de Passe n\'est pas valide !';
-                }
+        }
+
+        //Récupération et nettoyage de la récupération de la donnée "phone"
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($phone)) {
+            $error['phone'] = 'Le numéro de téléphone est obligatoire';
+        } else {
+        //Validation de la donnée "phone" grâce à la regex
+            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[0-9]{10}$/')));
+            if ($isOk == false){
+                $error['phone'] = 'Le numéro de téléphone n\'est pas valide !';
             }
+        }
+
+
+        //Récupération et nettoyage de la récupération de la donnée "password"
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($password)) {
+            $error['password'] = 'Le mot de passe est obligatoire';
+        } else {
+        //Validation de la donnée "password" grâce à la regex
+            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            if ($isOk == false){
+                $error['password'] = 'Le mot de passe n\'est pas valide !';
+            }
+        }
+
+
+    // Insertion des données
+        if (empty($error)) { 
+            $role = 'utilisateur';
+            $user = new User();
+            $user->setUsername($username);
+            $user->setLastname($lastname);
+            $user->setFirstname($firstname);
+            $user->setEmail($email);
+            $user->setAdress($adress);
+            $user->setPhone($phone);
+            $user->setRole($role);
+            $user->setPassword($password);
+            
+            $result = $user->insert();
+    
+            if($result) {
+                $msg['success'] = 'La donnée a bien été insérée !';
+            } else {
+                $msg['error'] = 'Erreur, la donnée n\'a pas été insérée';
+            }
+
+            // Utilisation de sessions pour stocker temporairement les messages
+            $_SESSION['msg'] = $msg;
+            $_SESSION['error'] = $error;
+
+            header('Location:/../../controllers/home/inscription-ctrl.php');
+            exit;
+        }
+
     }
-
 } catch (PDOException $e) {
-    die('Erreur : ' . $e->getMessage());
+die('Erreur : ' . $e->getMessage());
 }
 
-include_once __DIR__ . '/../../views/templates/Home/header.php';
-include_once __DIR__ . '/../../views/home/inscription.php';
-include_once __DIR__ . '/../../views/templates/Home/footer.php';
+
+include __DIR__ . '/../../views/templates/home/header.php';
+include __DIR__ . '/../../views/home/inscription.php';
+include __DIR__ . '/../../views/templates/home/footer.php';

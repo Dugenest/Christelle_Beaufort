@@ -1,12 +1,12 @@
 // Déclaration des variables
-const lastName = document.getElementById("lastName");
-const firstName = document.getElementById("firstName"); 
-const email = document.getElementById("Email"); 
-const phone = document.getElementById("Phone");
-const adress = document.getElementById("Adress");
-const userName = document.getElementById("userName");
-const pwdMedium = document.getElementById("Password1");
-const pwdStrong = document.getElementById("Password2");
+const lastname = document.getElementById("lastname");
+const firstname = document.getElementById("firstname"); 
+const email = document.getElementById("email"); 
+const phone = document.getElementById("phone");
+const adress = document.getElementById("adress");
+const username = document.getElementById("username");
+const pwdMedium = document.getElementById("password");
+const pwdStrong = document.getElementById("password1");
 
 
 const message1 = "Caractères non pris en compte !";
@@ -35,48 +35,32 @@ const regexPwdStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@
 
 
 // Création d'un écouteur d'événement pour le lastname
-lastName.addEventListener("keyup", function () { 
+lastname.addEventListener("keyup", function () { 
 // Supprimer les classes "red" et "green" à chaque saisie 
-    lastName.classList.remove("red", "green"); 
+    lastname.classList.remove("red", "green"); 
     errorMessage1.classList.add("d-none");
 // Utilisation de regexName.test() pour tester la valeur 
 // par défaut ici c'est === True
-    if (regexName.test(lastName.value)) { 
-        lastName.classList.add("green"); 
+    if (regexName.test(lastname.value)) { 
+        lastname.classList.add("green"); 
         errorMessage1.classList.add("d-none");
     } else { 
-        lastName.classList.add("red"); 
+        lastname.classList.add("red"); 
         errorMessage1.classList.remove("d-none");
         errorMessage1.textContent = message1; }; 
 });
 
-// function validateLastName() {
-//     lastName.classList.remove("red", "green");
-//     errorMessage1.classList.add("d-none");
-
-//     if (regexName.test(lastName.value)) {
-//         lastName.classList.add("green");
-//         errorMessage1.classList.add("d-none");
-//     } else {
-//         lastName.classList.add("red");
-//         errorMessage1.classList.remove("d-none");
-//         errorMessage1.textContent = message1;
-//     }
-// }
-
-// lastName.addEventListener("keyup", validateLastName);
-
 // Création d'un écouteur d'événement pour le firstname
-firstName.addEventListener("keyup", function () { 
+firstname.addEventListener("keyup", function () { 
     // Supprimer les classes "red" et "green" à chaque saisie 
-        firstName.classList.remove("red", "green"); 
+        firstname.classList.remove("red", "green"); 
         errorMessage2.classList.add("d-none");
     //Test de la regexName pour tester la valeur
-        if (regexName.test(firstName.value)) { 
-            firstName.classList.add("green"); 
+        if (regexName.test(firstname.value)) { 
+            firstname.classList.add("green"); 
             errorMessage2.classList.add("d-none");
         } else { 
-            firstName.classList.add("red"); 
+            firstname.classList.add("red"); 
             errorMessage2.classList.remove("d-none");
             errorMessage2.textContent = message1; }; 
     });
@@ -125,16 +109,16 @@ adress.addEventListener("keyup", function () {
     });
 
 // Création d'un écouteur d'événement pour le userName
-userName.addEventListener("keyup", function () { 
+username.addEventListener("keyup", function () { 
     // Supprimer les classes "red" et "green" à chaque saisie 
-        userName.classList.remove("red", "green"); 
+        username.classList.remove("red", "green"); 
         errorMessage6.classList.add("d-none");
     //Test de la regexName pour tester la valeur
-        if (regexName.test(userName.value)) { 
-            userName.classList.add("green"); 
+        if (regexName.test(username.value)) { 
+            username.classList.add("green"); 
             errorMessage6.classList.add("d-none");
         } else { 
-            userName.classList.add("red"); 
+            username.classList.add("red"); 
             errorMessage6.classList.remove("d-none");
             errorMessage6.textContent = message1; }; 
     });
