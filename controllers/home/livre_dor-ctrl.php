@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 require_once __DIR__ . '/../../models/Comments.php';
 require_once __DIR__ . '/../../models/Users.php';
@@ -8,8 +7,9 @@ require_once __DIR__ . '/../../config/init.php';
 
 
 try {
-    $title = 'Livre d\'or';
-    $users = User::getAll();
+    $title = 'Livre d\'or';    
+    $user = User::getAll();
+    $result = Comment::getAll();
 
     // Initialisation des tableaux pour les messages d'erreur
     $error = [];
@@ -20,15 +20,27 @@ try {
         //Création d'un tableau d'erreurs
         $error = [];
 
+        // //Récupération, nettoyage et validation de la donnée "Performance"
+        // $id_user = intval(filter_input(INPUT_POST, 'id_user', FILTER_SANITIZE_NUMBER_INT));
+        // if (empty($id_user)) {
+        //     $error['id_user'] = 'La prestation est obligatoire';
+        // } else {
+        //     //Validation de la donnée "id_user" grâce à la regex
+        //     $isOk = filter_var($id_user, FILTER_VALIDATE_INT);
+        //     if ($isOk == false) {
+        //         $error['id_user'] = 'La prestation décrite n\'est pas valide !';
+        //     }
+        // }
+
         //Récupération, nettoyage et validation de la donnée "Performance"
-        $id_user = intval(filter_input(INPUT_POST, 'id_user', FILTER_SANITIZE_NUMBER_INT));
-        if (empty($id_user)) {
-            $error['id_user'] = 'La prestation est obligatoire';
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($username)) {
+            $error['username'] = 'La prestation est obligatoire';
         } else {
-            //Validation de la donnée "id_user" grâce à la regex
-            $isOk = filter_var($id_user, FILTER_VALIDATE_INT);
+            //Validation de la donnée "username" grâce à la regex
+            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false) {
-                $error['id_user'] = 'La prestation décrite n\'est pas valide !';
+                $error['username'] = 'La prestation décrite n\'est pas valide !';
             }
         }
 
@@ -56,15 +68,15 @@ try {
             }
         }
     }
+var_dump($error);
 
 
     // Insertion des données
     if (empty($error) && !empty($message) && !empty($performance)) {
-        $comments = new Comment($message, $performance, NULL, NULL, NULL, NULL, $id_user);
+        $comments = new Comment($message, $performance, NULL, NULL, NULL, $id_comment, $id_user);
+        $results = $comments->insert();
 
-        $result = $comments->insert();
-
-        if ($result) {
+        if ($results) {
             $msg['success'] = 'La donnée a bien été insérée !';
         } else {
             $msg['error'] = 'Erreur, la donnée n\'a pas été insérée';

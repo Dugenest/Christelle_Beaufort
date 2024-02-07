@@ -65,8 +65,8 @@
             <label for="role" class="form-label"><strong>Rôle <strong class="danger">*</strong></strong></label>
             <select class="form-select"  id="role" name="role" value="<?=$role??''?>" required>
                 <option selected>Selection du rôle</option>
-                <option value="Administrateur">Administrateur</option>
-                <option value="Utilisateur">Utilisateur</option>
+                <option value="1">Administrateur</option>
+                <option value="0">Utilisateur</option>
             </select>
             <div class="error">
                 <p id="error7" class="d-none"></p><br>

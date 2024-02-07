@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 //Constantes de connexion à PHPMyAdmin
 define('DSN', 'mysql:dbname=ChristelleBeaufort;host=localhost');
 define('USERNAME', 'sebastien_christellebeaufort');

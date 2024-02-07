@@ -1,10 +1,17 @@
 <?php
 
-session_start();
 
+require_once __DIR__ . '/../../../config/auth.php';
 require_once __DIR__ . '/../../../models/Comments.php';
 require_once __DIR__ . '/../../../models/Users.php';
 require_once __DIR__ . '/../../../config/init.php';
+
+// if(empty($_SESSION['user']) || $_SESSION['user']->role != 1) {
+//     header('location: /controllers/home/connexion-ctrl.php');
+//     exit;
+// } 
+
+Auth::check();
 
 try 
 {

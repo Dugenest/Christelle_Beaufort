@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 require_once __DIR__ . '/../../../models/Users.php';
 require_once __DIR__ . '/../../../config/init.php';
@@ -90,12 +89,12 @@ try
         }
 
         //Récupération et nettoyage de la récupération de la donnée "role"
-        $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_SPECIAL_CHARS);
+        $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_NUMBER_INT);
         if (empty($role)) {
             $error['role'] = 'Le rôle est obligatoire';
         } else {
         //Validation de la donnée "role" grâce à la regex
-            $isOk = filter_var($role, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
+            $isOk = filter_var($role, FILTER_VALIDATE_INT);
             if ($isOk == false){
                 $error['role'] = 'Le rôle n\'est pas valide !';
             }

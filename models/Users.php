@@ -15,7 +15,7 @@ class User
     private string $email;
     private string $adress;
     private string $phone;
-    private string $role;
+    private int $role;
     private string $password;
     private ?string $created_at;
     private ?string $updated_at;
@@ -24,7 +24,7 @@ class User
 
 
     // ! création de la méthode magique construct
-    public function __construct(string $username = '', string $lastname = '', string $firstname = '', string $email = '', string $adress = '', string $phone = '', string $role = '', string $password = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_user = NULL)
+    public function __construct(string $username = '', string $lastname = '', string $firstname = '', string $email = '', string $adress = '', string $phone = '', int $role = 0, string $password = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_user = NULL)
     {
         $this->username = $username;
         $this->lastname = $lastname;
@@ -103,7 +103,7 @@ class User
     /**
      * @return string
      */
-    public function getRole(): string
+    public function getRole(): int
     {
         return $this->role;
     }
@@ -216,12 +216,13 @@ class User
     }
 
 
+    
     /**
-     * @param string $role
+     * @param int $role
      * 
      * @return [type]
      */
-    public function setRole(string $role)
+    public function setRole(int $role)
     {
         $this->role = $role;
     }
@@ -289,7 +290,7 @@ class User
         $sth->bindValue(':email', $this->getEmail());
         $sth->bindValue(':adress', $this->getAdress());
         $sth->bindValue(':phone', $this->getPhone());
-        $sth->bindValue(':role', $this->getRole(),);
+        $sth->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
         $sth->bindValue(':password', $this->getPassword());
 
         $sth->execute();
@@ -325,7 +326,7 @@ class User
      * 
      * @return object
      */
-    public static function get(int $id): object|false
+    public static function getId(int $id): object|false
     {
         $pdo = Database::connect();
 
@@ -403,7 +404,7 @@ class User
             $sth->bindValue(':email', $this->getEmail());
             $sth->bindValue(':adress', $this->getAdress());
             $sth->bindValue(':phone', $this->getPhone());
-            $sth->bindValue(':role', $this->getRole());
+            $sth->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
             $sth->bindValue(':password', $this->getPassword());
             $sth->bindValue(':id', $this->getIdUser(), PDO::PARAM_INT);
 
@@ -464,4 +465,45 @@ class User
 
         return null;
     }
+
+    /**
+     * @param string $username
+     * 
+     * @return object
+     */
+    public static function getByUsername(string $username): object|false
+    {
+        $pdo = Database::connect();
+        $sql = 'SELECT *
+                FROM `users`
+                WHERE `username` = :username;';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':username', $username);
+        $sth->execute();
+
+        if ($sth->rowCount() > 0) {
+            $row = $sth->fetch(PDO::FETCH_OBJ);
+            return $row;
+        }
+
+        return null;
+    }
+
+    // public static function confirm(string $email): bool {
+    //     $pdo = Database::connect();
+    //     $sql = 'UPDATE `users`
+    //             SET confirmed_at = now()
+    //             WHERE `email` = :email;'; 
+
+    //     $sth = $pdo->prepare($sql);
+    //     $sth->bindValue(':email', $email);
+    //     $sth->execute();
+    //     if ($sth->rowCount() <= 0) {
+    //         throw new Exception();
+    //         return true;
+    //     } else {
+    //     return false;
+    //     }
+    // }
+
 }

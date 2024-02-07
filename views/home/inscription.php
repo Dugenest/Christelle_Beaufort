@@ -64,12 +64,12 @@
                             </div>                   
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="password1" class="form-label">Confirmation mot de passe<strong>*</strong></label>
-                            <input type="password" class="form-control" id="password1" aria-describedby="password" name="password1" value="<?=$password1??''?>" placeholder="Confirmer votre mot de passe" required>
+                            <label for="confirmPassword" class="form-label">Confirmation mot de passe<strong>*</strong></label>
+                            <input type="password" class="form-control" id="confirmPassword" aria-describedby="confirmPassword" name="confirmPassword" value="<?=$confirmPassword??''?>" placeholder="Confirmer votre mot de passe" required>
                             <div class="error">
                                 <p id="error8" class="d-none"></p><br>
                                 <p id="error9" class="d-none"></p><br>
-                                <?= $error['password1'] ?? ''?><br>
+                                <?= $error['password'] ?? ''?><br>
                             </div>
                         <div class="mb-3">
                             <div class="form-check">

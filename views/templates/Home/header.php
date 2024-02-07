@@ -61,8 +61,16 @@
                                     Connexion / Inscription
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/controllers/home/inscription-ctrl.php">Inscription</a></li>
-                                    <li><a class="dropdown-item" href="/controllers/home/connexion-ctrl.php">Connexion</a></li>
+                                <?php if(empty($_SESSION['user'])) { ?>
+                                        <li><a class="dropdown-item" href="/controllers/home/inscription-ctrl.php">Inscription</a></li>
+                                        <li><a class="dropdown-item" href="/controllers/home/connexion-ctrl.php">Connexion</a></li>
+                                <?php } ?>   
+                                <?php if(!empty($_SESSION['user'])) { ?>
+                                        <li><a class="dropdown-item" href="/controllers/home/logout-ctrl.php">Déconnexion</a></li>
+                                <?php } ?>
+                                <?php if(!empty($_SESSION['user']) && $_SESSION['user']->role == 1) { ?>
+                                        <li><a class="dropdown-item" href="/controllers/dashboard/users/list-ctrl.php">Dashboard</a></li>
+                                <?php } ?>
                                 </ul>
                             </li>
                             <li class="nav-item">

@@ -1,10 +1,12 @@
 <?php
 
-session_start();
 
+require_once __DIR__ . '/../../../config/auth.php';
 require_once __DIR__ . '/../../../models/Users.php';
 require_once __DIR__ . '/../../../models/Messages.php';
 require_once __DIR__ . '/../../../config/init.php';
+
+Auth::check();
 
 try 
 {

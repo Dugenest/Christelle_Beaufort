@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 require_once __DIR__ . '/../../../models/Comments.php';
 require_once __DIR__ . '/../../../config/init.php';

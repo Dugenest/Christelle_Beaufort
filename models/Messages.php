@@ -267,12 +267,13 @@ class Message
      * 
      * @return object
      */
-    public static function get(int $id): object|false
+    public static function getId(int $id): object|false
     {
         $pdo = Database::connect();
 
         $sql = 'SELECT *    
                 FROM `messages` 
+                INNER JOIN `users` ON `users`.id_user = `messages`.id_user
                 WHERE `id_message`=:id;';
 
         $sth = $pdo->prepare($sql);

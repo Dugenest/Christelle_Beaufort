@@ -1,13 +1,11 @@
 <?php
 
-session_start();
 
 require_once __DIR__ . '/../../models/Users.php';
 require_once __DIR__ . '/../../config/init.php';
 
 
-try 
-{
+try {
     $title = 'Inscription';
 
     // Initialisation des tableaux pour les messages d'erreur
@@ -22,9 +20,9 @@ try
         if (empty($username)) {
             $error['username'] = 'L\'identifiant est obligatoire';
         } else {
-        //Validation de la donnée "username" grâce à la regex
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
-            if ($isOk == false){
+            //Validation de la donnée "username" grâce à la regex
+            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9]{2,30}$/')));
+            if ($isOk == false) {
                 $error['username'] = 'L\'identifiant n\'est pas valide !';
             }
         }
@@ -34,9 +32,9 @@ try
         if (empty($lastname)) {
             $error['lastname'] = 'Le nom est obligatoire';
         } else {
-        //Validation de la donnée "lastname" grâce à la regex
-            $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
-            if ($isOk == false){
+            //Validation de la donnée "lastname" grâce à la regex
+            $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z]{2,30}$/')));
+            if ($isOk == false) {
                 $error['lastname'] = 'Le nom n\'est pas valide !';
             }
         }
@@ -46,9 +44,9 @@ try
         if (empty($firstname)) {
             $error['firstname'] = 'Le prénom est obligatoire';
         } else {
-        //Validation de la donnée "firstname" grâce à la regex
-            $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
-            if ($isOk == false){
+            //Validation de la donnée "firstname" grâce à la regex
+            $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z]{2,30}$/')));
+            if ($isOk == false) {
                 $error['firstname'] = 'Le prénom n\'est pas valide !';
             }
         }
@@ -58,9 +56,9 @@ try
         if (empty($email)) {
             $error['email'] = 'L\'email est obligatoire';
         } else {
-        //Validation de la donnée "email" grâce à la regex
+            //Validation de la donnée "email" grâce à la regex
             $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
-            if ($isOk == false){
+            if ($isOk == false) {
                 $error['email'] = 'L\'email n\'est pas valide !';
             }
         }
@@ -70,9 +68,9 @@ try
         if (empty($adress)) {
             $error['adress'] = 'L\'adresse est obligatoire';
         } else {
-        //Validation de la donnée "adress" grâce à la regex
-            $isOk = filter_var($adress, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9 ]{2,50}$/')));
-            if ($isOk == false){
+            //Validation de la donnée "adress" grâce à la regex
+            $isOk = filter_var($adress, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9 ]{2,50}$/')));
+            if ($isOk == false) {
                 $error['adress'] = 'L\'adresse n\'est pas valide !';
             }
         }
@@ -82,9 +80,9 @@ try
         if (empty($phone)) {
             $error['phone'] = 'Le numéro de téléphone est obligatoire';
         } else {
-        //Validation de la donnée "phone" grâce à la regex
-            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[0-9]{10}$/')));
-            if ($isOk == false){
+            //Validation de la donnée "phone" grâce à la regex
+            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[0-9]{10}$/')));
+            if ($isOk == false) {
                 $error['phone'] = 'Le numéro de téléphone n\'est pas valide !';
             }
         }
@@ -95,17 +93,35 @@ try
         if (empty($password)) {
             $error['password'] = 'Le mot de passe est obligatoire';
         } else {
-        //Validation de la donnée "password" grâce à la regex
-            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
-            if ($isOk == false){
+            //Validation de la donnée "password" grâce à la regex
+            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            if ($isOk == false) {
                 $error['password'] = 'Le mot de passe n\'est pas valide !';
             }
         }
 
+        //Récupération et nettoyage de la récupération de la donnée "password"
+        $confirmPassword = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($confirmPassword)) {
+            $error['confirmPassword'] = 'Le mot de passe est obligatoire';
+        } else {
+            //Validation de la donnée "confirmPassword" grâce à la regex
+            $isOk = filter_var($confirmPassword, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            if ($isOk == false) {
+                $error['confirmPassword'] = 'Le mot de passe n\'est pas valide !';
+            }
+        }
 
-    // Insertion des données
-        if (empty($error)) { 
-            $role = 'utilisateur';
+        if ($password != $confirmPassword) {
+            $errors["password"] = "les mots de passe ne correspondent pas";
+        }
+
+        // Insertion des données
+        if (empty($error)) {
+
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $role = 0;
+
             $user = new User();
             $user->setUsername($username);
             $user->setLastname($lastname);
@@ -114,12 +130,17 @@ try
             $user->setAdress($adress);
             $user->setPhone($phone);
             $user->setRole($role);
-            $user->setPassword($password);
-            
+            $user->setPassword($passwordHash);
+
             $result = $user->insert();
-    
-            if($result) {
-                $msg['success'] = 'La donnée a bien été insérée !';
+
+
+            if ($result) {
+                $msg['success'] = 'Merci pour votre incription, un mail de confirmation vous a été envoyé!';
+                // $to = $email;
+                // $subject = 'Confirmation de votre inscription';
+                // $message = '<a href="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/users/confirmedAt-ctrl.php?email=' . urlencode($email) . '">clique sur le lien</a>';
+                // mail($to, $subject, $message);
             } else {
                 $msg['error'] = 'Erreur, la donnée n\'a pas été insérée';
             }
@@ -131,10 +152,9 @@ try
             header('Location:/../../controllers/home/inscription-ctrl.php');
             exit;
         }
-
     }
 } catch (PDOException $e) {
-die('Erreur : ' . $e->getMessage());
+    die('Erreur : ' . $e->getMessage());
 }
 
 

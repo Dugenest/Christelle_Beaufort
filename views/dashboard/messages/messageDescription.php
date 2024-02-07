@@ -3,6 +3,7 @@
 <div class="container-fluid">
     <form method="post" class="row align-items-center py-5" action="">
         <div class="col col-md-6 description text-start">
+            <p class="tableMessage"><strong>Identifiant : </strong><?= $idMessage->username ?? '' ?></p> 
             <p class="tableMessage"><strong>Nom : </strong><?= $idMessage->lastname ?? '' ?></p> 
             <p class="tableMessage"><strong>Prénom : </strong><?= $idMessage->firstname ?? '' ?></p>
             <p class="tableMessage"><strong>Prestation : </strong><?= $idMessage->performance ?? '' ?></p>

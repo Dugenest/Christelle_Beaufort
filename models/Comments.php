@@ -229,12 +229,13 @@ class Comment
      * 
      * @return object
      */
-    public static function get(int $id): object|false
+    public static function getId(int $id): object|false
     {
         $pdo = Database::connect();
 
         $sql = 'SELECT *    
-                FROM `comments` 
+                FROM `comments`
+                INNER JOIN `users` ON `users`.id_user = `comments`.id_user
                 WHERE `id_comment`=:id;';
 
         $sth = $pdo->prepare($sql);

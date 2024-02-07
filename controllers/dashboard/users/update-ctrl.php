@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 require_once __DIR__ . '/../../../models/Users.php';
 require_once __DIR__ . '/../../../config/init.php';
@@ -16,7 +15,7 @@ try {
     $result = User::getAll();
     
     $id_user = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-    $user = User::get($id_user);
+    $user = User::getId($id_user);
 
     if(!$user) {
         header('Location: /controllers/dashboard/users/list-ctrl.php');
@@ -145,7 +144,7 @@ try {
             exit;
         }
 
-    $id_user = User::get($id_user);
+    $id_user = User::getId($id_user);
 
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());

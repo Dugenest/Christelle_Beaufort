@@ -4,7 +4,6 @@ require_once __DIR__ . '/../../../models/Messages.php';
 require_once __DIR__ . '/../../../models/Users.php';
 require_once __DIR__ . '/../../../config/init.php';
 
-session_start();
 
 // Initialisation des tableaux pour les messages d'erreur
 $error = [];
@@ -16,7 +15,7 @@ try {
     $result = Message::getAll();
 
     $id_message = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-    $idMessage = Message::get($id_message);
+    $idMessage = Message::getId($id_message);
 
     //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -34,7 +33,7 @@ try {
                 $error['id_user'] = 'L\'id n\'est pas valide !';
             }
         }
-        $users = User::get($id_user);
+        $users = User::getId($id_user);
 
         //Récupération et nettoyage de la récupération de la donnée "lastname"
         $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -98,7 +97,7 @@ try {
         exit;
     }
 
-    $idMessage = Message::get($id_message);
+    $idMessage = Message::getId($id_message);
 
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
