@@ -8,8 +8,8 @@ require_once __DIR__ . '/../../config/init.php';
 
 try {
     $title = 'Livre d\'or';    
-    $user = User::getAll();
-    $result = Comment::getAll();
+
+    $comments = Comment::getAll();
 
     // Initialisation des tableaux pour les messages d'erreur
     $error = [];
@@ -19,18 +19,6 @@ try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Création d'un tableau d'erreurs
         $error = [];
-
-        // //Récupération, nettoyage et validation de la donnée "Performance"
-        // $id_user = intval(filter_input(INPUT_POST, 'id_user', FILTER_SANITIZE_NUMBER_INT));
-        // if (empty($id_user)) {
-        //     $error['id_user'] = 'La prestation est obligatoire';
-        // } else {
-        //     //Validation de la donnée "id_user" grâce à la regex
-        //     $isOk = filter_var($id_user, FILTER_VALIDATE_INT);
-        //     if ($isOk == false) {
-        //         $error['id_user'] = 'La prestation décrite n\'est pas valide !';
-        //     }
-        // }
 
         //Récupération, nettoyage et validation de la donnée "Performance"
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -68,11 +56,23 @@ try {
             }
         }
     }
-var_dump($error);
+
+
+    if (!empty($username) && $username != NULL) {
+        $isexistUsername = User::isExist($username);
+        if ($isexistUsername) {
+            $errorMessage = 'Identifiant correct!';
+        } else {
+            $errorMessage = 'Identifiant incorrect!';
+        }
+    }
 
 
     // Insertion des données
-    if (empty($error) && !empty($message) && !empty($performance)) {
+    if (empty($error) && !empty($message) && !empty($performance) && isset($username)) {       
+        $users = User::getByUsername($username);
+        $id_user = $users->id_user;
+
         $comments = new Comment($message, $performance, NULL, NULL, NULL, $id_comment, $id_user);
         $results = $comments->insert();
 
@@ -82,13 +82,17 @@ var_dump($error);
             $msg['error'] = 'Erreur, la donnée n\'a pas été insérée';
         }
 
-        // Utilisation de sessions pour stocker temporairement les messages
-        $_SESSION['msg'] = $msg;
-        $_SESSION['error'] = $error;
 
-        header('Location:livre_dor-ctrl.php');
-        exit;
+
+    } else {
+        $errorMessage = 'Identifiant incorrect!';
+        
     }
+    
+    // Utilisation de sessions pour stocker temporairement les messages
+    $_SESSION['msg'] = $msg;
+    $_SESSION['error'] = $error;
+    $_SESSION['errorMessage'] = $errorMessage;
 
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
@@ -98,3 +102,5 @@ var_dump($error);
 include __DIR__ . '/../../views/templates/home/header.php';
 include __DIR__ . '/../../views/home/livre_dor.php';
 include __DIR__ . '/../../views/templates/home/footer.php';
+
+

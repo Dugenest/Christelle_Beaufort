@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../../config/init.php';
 try 
 {
     $title = 'Ajout d\'un utilisateur';
-
+    
     // Initialisation des tableaux pour les messages d'erreur
     $error = [];
     $msg = [];
@@ -112,9 +112,27 @@ try
             }
         }
 
+        //Récupération et nettoyage de la récupération de la donnée "password"
+        $confirmPassword = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($confirmPassword)) {
+            $error['confirmPassword'] = 'Le mot de passe est obligatoire';
+        } else {
+            //Validation de la donnée "confirmPassword" grâce à la regex
+            $isOk = filter_var($confirmPassword, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            if ($isOk == false) {
+                $error['confirmPassword'] = 'Le mot de passe n\'est pas valide !';
+            }
+        }
+
+        if ($password != $confirmPassword) {
+            $error["password"] = "les mots de passe ne correspondent pas";
+        }
+
 
     // Insertion des données
         if (empty($error)) {
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
             $user = new User();
             $user->setUsername($username);
             $user->setLastname($lastname);
@@ -123,7 +141,7 @@ try
             $user->setAdress($adress);
             $user->setPhone($phone);
             $user->setRole($role);
-            $user->setPassword($password);
+            $user->setPassword($passwordHash);
             
             $result = $user->insert();
     

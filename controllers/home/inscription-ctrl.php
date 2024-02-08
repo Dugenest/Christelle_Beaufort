@@ -118,9 +118,8 @@ try {
 
         // Insertion des données
         if (empty($error)) {
-
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-            $role = 0;
+            $role = 2;
 
             $user = new User();
             $user->setUsername($username);

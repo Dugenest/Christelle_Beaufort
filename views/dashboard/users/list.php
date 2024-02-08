@@ -31,7 +31,7 @@
                     <td><?= htmlspecialchars($user->phone) ?></td>
                     <td><?php if (htmlspecialchars($user->role) == 1) { ?>
                             Administrateur
-                        <?php } elseif (htmlspecialchars($user->role) == 0) { ?>
+                        <?php } elseif (htmlspecialchars($user->role) == 2) { ?>
                             Utilisateur
                         <?php } else { ?>
                             Pas inscrit

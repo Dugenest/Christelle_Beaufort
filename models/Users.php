@@ -320,7 +320,6 @@ class User
     }
 
 
-
     /**
      * @param int $id
      * 
@@ -347,37 +346,6 @@ class User
     /**
      * @return [type]
      */
-    // public function update() 
-    // {
-    //     $pdo = Database::connect();  
-
-    //     // Requête mysql pour insérer des données
-    //     $sql = 'UPDATE `users` 
-    //             SET `username` = :username, 
-    //                 `lastname` = :lastname,
-    //                 `firstname` = :firstname,
-    //                 `email` = :email,
-    //                 `adress` = :adress,
-    //                 `phone` = :phone,
-    //                 `role` = :role,
-    //                 `password` = :password
-    //             WHERE `id_user` = :id_user';
-
-    //     $sth = $pdo->prepare($sql);
-    //     $sth->bindValue(':username', $this->getUsername());
-    //     $sth->bindValue(':lastname', $this->getLastname());
-    //     $sth->bindValue(':firstname', $this->getFirstname());
-    //     $sth->bindValue(':email', $this->getEmail());
-    //     $sth->bindValue(':adress', $this->getAdress());
-    //     $sth->bindValue(':phone', $this->getPhone());
-    //     $sth->bindValue(':role', $this->getRole());
-    //     $sth->bindValue(':password', $this->getPassword());
-    //     $sth->bindValue(':id_user', $this->getIdUser(), PDO::PARAM_INT);
-    //     $result = $sth->execute();
-
-    //     return $result;
-    // }
-
     public function update()
     {
         $pdo = Database::connect();
@@ -459,7 +427,7 @@ class User
         $sth->execute();
 
         if ($sth->rowCount() > 0) {
-            $row = $sth->fetch(PDO::FETCH_ASSOC);
+            $row = $sth->fetch(PDO::FETCH_OBJ);
             return $row['id_user'];
         }
 
@@ -488,6 +456,30 @@ class User
 
         return null;
     }
+
+    
+    /**
+     * @param mixed $username
+     * 
+     * @return bool
+     */
+    public static function isExist($username): bool
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT COUNT(`id_user`) AS "count"
+                FROM `users` 
+                WHERE `username`=:username;';
+
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':username', $username, PDO::PARAM_STR);
+        $sth->execute();
+
+        $count = $sth->fetchColumn();
+
+        return (bool) $count > 0;
+    }
+
 
     // public static function confirm(string $email): bool {
     //     $pdo = Database::connect();

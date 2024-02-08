@@ -12,6 +12,7 @@
                     <th scope="col">Commentaire</th>
                     <th scope="col">Prestation</th>
                     <th scope="col">Date de création</th>
+                    <th scope="col">Date de validation</th>
                     <th scope="col">Valider</th>
                     <th scope="col">Supprimer</th>
                 </tr>
@@ -23,6 +24,7 @@
                     <td class="tableComment"><?= $value->message ?></td>
                     <td class="tableComment"><?= $value->performance ?></td>
                     <td class="tableComment"><?= $value->created_at ?></td>
+                    <td class="tableComment"><?= $value->validated_at ?></td>
                     <td><a href="/controllers/dashboard/comments/validate-ctrl.php?id=<?= $value->id_comment ?>"><img src="/public/assets/img/Microsoft OneNote.jpeg"></a></td>
                     <td><a href="/controllers/dashboard/comments/delete-ctrl.php?id=<?= $value->id_comment ?>"><img src="/public/assets/img/téléchargement (4).png"></a></td>
                 </tr>

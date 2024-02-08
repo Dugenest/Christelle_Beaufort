@@ -71,6 +71,7 @@
                                 <p id="error9" class="d-none"></p><br>
                                 <?= $error['password'] ?? ''?><br>
                             </div>
+                        </div>
                         <div class="mb-3">
                             <div class="form-check">
                                 <label class="form-check-label" for="disabledFieldsetCheck">

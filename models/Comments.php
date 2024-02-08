@@ -198,10 +198,10 @@ class Comment
         $pdo = Database::connect();
 
         
-        // Sélectionner les colonnes nécessaires avec une jointure sur la table users
-        $sql = 'SELECT comments.id_comment, comments.message, comments.performance, comments.created_at, users.username
-            FROM comments
-            INNER JOIN users ON comments.id_user = users.id_user';
+        // Sélectionner les colonnes nécessaires avec une jointure sur la table comments
+        $sql = 'SELECT users.username, comments.message, comments.performance, comments.created_at, comments.id_comment, comments.validated_at
+                FROM `comments`
+                INNER JOIN `users` ON comments.id_user = users.id_user';
 
         // Ajouter la clause WHERE si id_user est spécifié
         if ($id_user != 0) {
@@ -258,14 +258,14 @@ class Comment
         $pdo = Database::connect();
 
         // Sélection du commentaire
-        $sql = 'SELECT `message`
-                FROM `comments` 
-                WHERE `id_comment` = :id;';
+        $sql = 'UPDATE `comments` 
+                SET `validated_at` = now() 
+                WHERE `id_comment` = :id';
 
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         $sth->execute();
-        $comment = $sth->fetch(PDO::FETCH_ASSOC);
+        $comment = $sth->fetch(PDO::FETCH_OBJ);
 
         // Validation basique (ajustez selon vos critères de validation)
         if ($comment) {
