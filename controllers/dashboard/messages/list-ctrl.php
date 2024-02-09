@@ -11,7 +11,7 @@ Auth::check();
 try 
 {
     $title = 'Liste des messages';
-    $users = User::getAll();
+    $result = Message::getAll();
 
     // Utilisation de sessions pour récupérer les messages
     $msg = $_SESSION['msg'] ?? [];
@@ -22,7 +22,6 @@ try
     unset($_SESSION['msg']);
     unset($_SESSION['error']);
 
-    $result = Message::getAll();
 
 } catch (PDOException $e) {
 die('Erreur : ' . $e->getMessage());

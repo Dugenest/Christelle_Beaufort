@@ -129,7 +129,7 @@ try
         }
 
 
-    // Insertion des données
+        // Insertion des données
         if (empty($error)) {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -158,8 +158,8 @@ try
             header('Location:list-ctrl.php');
             exit;
         }
-
     }
+
 } catch (PDOException $e) {
 die('Erreur : ' . $e->getMessage());
 }

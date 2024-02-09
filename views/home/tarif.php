@@ -69,7 +69,7 @@
             </div>
                 
                 <div class="row text-center justify-content-center py-3">
-                    <a button type="button" id="btnGalerie" href="./contact.php" class="btn btn-light">CONTACT</button></a>
+                    <a button type="button" id="btnGalerie" href="/controllers/home/contact-ctrl.php" class="btn btn-light">CONTACT</button></a>
                 </div>
         </div>
     </main>

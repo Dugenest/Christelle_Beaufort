@@ -87,6 +87,6 @@ thead, tbody {
     vertical-align: middle;
 }
 
-.tableMessage, tableComment {
+.tableMessage, .tableComment {
     word-wrap: normal;
 }

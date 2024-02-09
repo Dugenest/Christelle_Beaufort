@@ -198,30 +198,3 @@ pwdStrong.addEventListener("keyup", function () {
         errorMessage10.textContent = message5;
     }
 });
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    var messages = document.querySelectorAll('.message');
-
-    messages.forEach(function (message) {
-        var button = message.querySelector('.mark-as-read');
-        button.addEventListener('click', function (event) {
-            event.preventDefault(); // Pour éviter le rechargement de la page
-            markAsRead(message);
-        });
-    });
-
-    function markAsRead(message) {
-        // Obtenez l'ID du message à partir de l'attribut data
-        var messageId = message.querySelector('.mark-as-read').getAttribute('data-message-id');
-        
-        // Modifiez le texte du message
-        var statusElement = document.getElementById('status' + messageId);
-        if (statusElement.textContent.trim() === 'Message reçu') {
-            statusElement.textContent = 'Message lu';
-        }
-        
-        // Ajoute la classe "read" au message
-        message.classList.add('read');
-    }
-});

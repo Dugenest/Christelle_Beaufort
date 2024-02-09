@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../config/init.php';
 
 
 try {
-    $title = 'Livre d\'or';    
+    $title = 'Livre d\'or';
 
     $comments = Comment::getAll();
 
@@ -52,48 +52,30 @@ try {
             //Validation de la donnée "message" grâce à la regex
             $isOk = filter_var($message, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
             if ($isOk == false) {
-                $error['message'] = 'Le message n\'est pas valide !';
+                $error['Message'] = 'Le message n\'est pas valide !';
             }
         }
-    }
 
+        if (!empty($username) && $username != NULL) {
+            $isexistUsername = User::isExist($username);
+            if ($isexistUsername) {
+                if (empty($error)) {
+                    $users = User::getByUsername($username);
+                    $id_user = $users->id_user;
 
-    if (!empty($username) && $username != NULL) {
-        $isexistUsername = User::isExist($username);
-        if ($isexistUsername) {
-            $errorMessage = 'Identifiant correct!';
-        } else {
-            $errorMessage = 'Identifiant incorrect!';
-        }
-    }
-
-
-    // Insertion des données
-    if (empty($error) && !empty($message) && !empty($performance) && isset($username)) {       
-        $users = User::getByUsername($username);
-        $id_user = $users->id_user;
-
-        $comments = new Comment($message, $performance, NULL, NULL, NULL, $id_comment, $id_user);
-        $results = $comments->insert();
-
-        if ($results) {
-            $msg['success'] = 'La donnée a bien été insérée !';
-        } else {
-            $msg['error'] = 'Erreur, la donnée n\'a pas été insérée';
+                    $comments = new Comment($message, $performance, NULL, NULL, NULL, NULL, $id_user);
+                    $results = $comments->insert();
+                    $error['message'] = 'Identifiant correct! Votre message a été envoyé à l\'admin pour validation.';
+                }
+            } else {
+                $error['message'] = 'Identifiant incorrect! Message non envoyé!';
+            }
         }
 
-
-
-    } else {
-        $errorMessage = 'Identifiant incorrect!';
-        
+        // Utilisation de sessions pour stocker temporairement les messages
+        $_SESSION['msg'] = $msg;
+        $_SESSION['error'] = $error;
     }
-    
-    // Utilisation de sessions pour stocker temporairement les messages
-    $_SESSION['msg'] = $msg;
-    $_SESSION['error'] = $error;
-    $_SESSION['errorMessage'] = $errorMessage;
-
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -102,5 +84,3 @@ try {
 include __DIR__ . '/../../views/templates/home/header.php';
 include __DIR__ . '/../../views/home/livre_dor.php';
 include __DIR__ . '/../../views/templates/home/footer.php';
-
-

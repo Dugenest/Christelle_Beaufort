@@ -142,9 +142,10 @@ try {
 
         header('Location: /controllers/dashboard/users/list-ctrl.php');
         exit;
-    }
 
-    $id_user = User::getId($id_user);
+        $id_user = User::getId($id_user);
+    }
+    
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }

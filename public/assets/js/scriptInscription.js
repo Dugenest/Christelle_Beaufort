@@ -6,7 +6,7 @@ const phone = document.getElementById("phone");
 const adress = document.getElementById("adress");
 const username = document.getElementById("username");
 const pwdMedium = document.getElementById("password");
-const pwdStrong = document.getElementById("password1");
+const pwdStrong = document.getElementById("confirmPassword");
 
 
 const message1 = "Caractères non pris en compte !";
