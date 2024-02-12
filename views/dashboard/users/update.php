@@ -28,7 +28,7 @@
 
         <div class="col-sm-12 col-md-6 mb-3">
             <label for="firstname" class="form-label"><strong>Nom</strong></label>
-            <input type="text" class="form-control" id="firstname" name="firstname" value="<?= $user->firstname ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre nom svp?">
+            <input type="text" class="form-control" id="firstname" name="firstname" value="<?= $user->firstname ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre prénom svp?">
             <div class="error">
                 <p id="error3" class="d-none alert alert-danger"></p><br>
                 <?= $error['firstname'] ?? '' ?>
@@ -40,7 +40,7 @@
 
         <div class="col-sm-12 col-md-6 mb-3">
             <label for="email" class="form-label"><strong>Nom</strong></label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= $user->email ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre nom svp?">
+            <input type="email" class="form-control" id="email" name="email" value="<?= $user->email ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre email svp?">
             <div class="error">
                 <p id="error4" class="d-none alert alert-danger"></p><br>
                 <?= $error['email'] ?? '' ?>
@@ -77,8 +77,13 @@
         <div class="col-sm-12 col-md-6 mb-3">
             <label for="role" class="form-label"><strong>Rôle</strong></label>
             <select class="form-select" id="role" name="role" required>
-                <option value="1" <?= isset($user->role) && $user->role == "Administrateur" ? "selected" : "" ?>>Administrateur</option>
-                <option value="2" <?= isset($user->role) && $user->role == "Utilisateur" ? "selected" : "" ?>>Utilisateur</option>
+                <option value="1" <?= $user->role == 1 ? "selected" : "" ?>>Administrateur</option>
+                <option value="2" <?= $user->role == 2 ? "selected" : "" ?>>Utilisateur</option>
+                <!-- <?php if (htmlspecialchars($user->role) == 1) { ?>
+                    Administrateur
+                <?php } elseif (htmlspecialchars($user->role) == 2) { ?>
+                    Utilisateur
+                <?php } ?> -->
             </select>
             <div class="error">
                 <p id="error7" class="d-none alert alert-danger"></p><br>
@@ -91,7 +96,7 @@
 
         <div class="col-sm-12 col-md-6 mb-3">
             <label for="password" class="form-label"><strong>Mot de passe</strong></label>
-            <input type="password" class="form-control" id="password" name="password" value="<?= $user->password ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre nom svp?">
+            <input type="password" class="form-control" id="password" name="password" value="<?= $user->password ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre mot de passe svp?">
             <div class="error">
                 <p id="error8" class="d-none alert alert-danger"></p><br>
                 <?= $error['password'] ?? '' ?>

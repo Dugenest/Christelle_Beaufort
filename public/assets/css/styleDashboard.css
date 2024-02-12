@@ -58,7 +58,7 @@ thead, tbody {
     color: blue;
 }
 
-.img {
+.img, #pictureImg {
     width: 80px;
     height: 60px;
 }
@@ -83,10 +83,10 @@ thead, tbody {
     color: blue;
 }
 
-.tableMessage, .tableImg {
+.tableMessage, .tableImg, .tablePicture {
     vertical-align: middle;
 }
 
-.tableMessage, .tableComment {
+.tableMessage, .tableComment, .tablePicture {
     word-wrap: normal;
 }

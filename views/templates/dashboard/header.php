@@ -34,8 +34,11 @@
                                 <li> 
                                     <a href="/controllers/dashboard/comments/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Commentaires</span></a>
                                 </li>
+                                <li> 
+                                    <a href="/controllers/dashboard/categories/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Catégories des photos</span></a>
+                                </li>
                                 <li>
-                                    <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Photos</span></a>
+                                    <a href="/controllers/dashboard/pictures/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Photos</span></a>
                                 </li>
                                 <li>
                                     <a href="/controllers/dashboard/messages/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Messages</span></a>

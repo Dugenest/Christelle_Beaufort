@@ -1,0 +1,263 @@
+
+<?php
+
+require_once __DIR__ . '/../helpers/Database.php';
+
+
+// ! création de la classe
+class Category
+{
+
+    // ! création des attributs
+    private string $category;
+    private ?string $created_at;
+    private ?string $deleted_at;
+    private ?int $id_category; 
+
+
+    // ! création de la méthode magique construct
+    public function __construct(string $category = '', ?string $created_at = NULL, ?string $deleted_at = NULL, ?int $id_category = NULL)
+    {
+        $this->category = $category;
+        $this->created_at = $created_at;
+        $this->deleted_at = $deleted_at;
+        $this->id_category = $id_category;
+    }
+
+
+    // ! création des getters
+
+
+    /**
+     * @return string
+     */
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): ?string
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeletedAt(): ?string
+    {
+        return $this->deleted_at;
+    }
+    
+    /**
+     * @return int|null
+     */
+    public function getIdCategory(): ?int
+    {
+        return $this->id_category;
+    }
+    
+
+    // ! création des setters
+
+    
+    /**
+     * @param string $category
+     * 
+     * @return [type]
+     */
+    public function setCategory(string $category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @param string $created_at
+     * 
+     * @return [type]
+     */
+    public function setCreatedAt(?string $created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+    /**
+     * @param string $deleted_at
+     * 
+     * @return [type]
+     */
+    public function setDeletedAt(?string $deleted_at)
+    {
+        $this->deleted_at = $deleted_at;
+    }
+
+    /**
+     * @param int|null $id_category
+     * 
+     * @return [type]
+     */
+    public function setIdCategory(?int $id_category)
+    {
+        $this->id_category = $id_category;
+    }
+
+
+    // ! création de mes méthodes
+
+
+    /**
+     * @return [type]
+     */
+    public function insert()
+    {
+        $pdo = Database::connect(); 
+
+        $sql =  'INSERT INTO `categories`(`id_category`, `category`)
+                VALUES (:id_category, :category);';  
+
+        $sth = $pdo->prepare($sql); 
+        $sth->bindValue(':id_category', $this->getIdCategory());
+        $sth->bindValue(':category', $this->getCategory()); 
+        $result = $sth->execute(); 
+        
+        return $result;
+    }
+
+
+    /**
+     * @return [type]
+     */
+    public static function getAll() : array
+    {
+        $pdo = Database::connect(); 
+
+        //gérer les erreurs et les exceptions (a utiliser uniquement sur php 7)
+        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        /*Sélectionne toutes les valeurs dans la table categories*/
+        $sql = 'SELECT * FROM categories'; 
+        // $sql = 'SELECT `portfolio`, ìd_category` FROM `categories`;' //autre méthode en choisissant les colonnes 
+        
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        // $sth = $pdo->query($sql); //autre méthode a la place de prepare() et execute() mais uniquement lorsqu'il n'y a pas de marqueurs nominatifs
+        
+        /*Retourne un tableau associatif pour chaque entrée de notre table
+         *avec le nom des colonnes sélectionnées en clefs*/
+        $result = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+    
+
+
+    /**
+     * @param int $id
+     * 
+     * @return object
+     */
+    public static function get(int $id): object|false
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT *    
+                FROM `categories` 
+                WHERE `id_category`=:id;';
+
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->execute();
+
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+
+    /**
+     * @return [type]
+     */
+    public function update() {
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
+        
+        // Requête mysql pour insérer des données
+        $sql = 'UPDATE `categories` 
+                SET `category` = :category
+                WHERE `id_category` = :id';
+
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':category', $this->getCategory());
+        $sth->bindValue(':id', $this->getIdCategory(), PDO::PARAM_INT);
+        $result = $sth->execute();
+
+        return $result;
+    }
+
+
+    /**
+     * @param mixed $id
+     * 
+     * @return [type]
+     */
+    public static function delete(int $id) {
+        $pdo = Database::connect();
+
+        $sql = 'DELETE 
+                FROM categories 
+                WHERE id_category = :id;';
+
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $result = $sth->execute();
+
+        return $result;
+    }
+
+
+    /**
+     * @param int $id
+     * 
+     * @return object
+     */
+    public static function getId(int $id): object|false
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT *    
+                FROM `categories` 
+                WHERE `id_category`=:id;';
+
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->execute();
+
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+
+    /**
+     * @return [type]
+     */
+    public static function isExist(string $category): bool { 
+        $pdo = Database::connect();
+
+        $sql = 'SELECT COUNT(*) AS `nbcolumn`
+                FROM `categories` 
+                WHERE `category`= :category;';
+                
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':category', $category, PDO::PARAM_STR);
+        $sth->execute();
+
+        $result = $sth->fetchColumn();
+
+        return $result > 0;
+    }
+    
+}

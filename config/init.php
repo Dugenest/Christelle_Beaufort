@@ -11,3 +11,7 @@ define('PASSWORD', '?N#GsGoFgLM#N66D');
 define('NAME', '^[a-zA-Z ]{2,30}$');
 //création d'une constante pour une régex pour le mot de passe
 define('PSWD', '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
+
+//création des constantes pour définir les photos
+define('ARRAY_TYPES', ['image/jpeg', 'image/png']);
+define('UPLOAD_MAXSIZE', 2*1024*1024);
