@@ -1,40 +1,77 @@
-<h1>Ajout d'une photo</h1>
+<h1 class="text-center">Ajout d'une photo</h1>
 
 <form method="post" enctype="multipart/form-data" action="">
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-6 mb-3">
+        <div class="col-md-6 mb-3">
             <label for="picture" class="form-label"><strong>Photo</strong></label>
             <input type="file" class="form-control" id="picture" name="picture" accept=".jpeg, .pdf, .gif, .png" value="<?= $pictures->picture ?? '' ?>" maxlength='30' aria-describedby="pictureHelp" placeholder="Veuillez insérer la photo svp?">
+            <div class="error">
+                <p id="error1" class="d-none"></p><br>
+                <?= $error['picture'] ?? '' ?>
+            </div>
         </div>
-        <div class="error">
-            <p id="error1" class="d-none"></p><br>
-            <?= $error['picture'] ?? '' ?>
+
+        <div class="col-md-6 mb-3">
+            <label for="pictureTitle" class="form-label"><strong>Titre</strong></label>
+            <input type="text" class="form-control" id="pictureTitle" aria-describedby="pictureTitle" name="pictureTitle" value="<?= $pictureTitle ?? '' ?>" maxlength='30' autocomplete="pictureTitle" placeholder="Votre titre svp?" required>
+            <div class="error">
+                <p id="error2" class="d-none"></p><br>
+                <?= $error['pictureTitle'] ?? '' ?><br>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="description" class="form-label"><strong>Description</strong></label>
+            <textarea class="form-control" rows="5" id="description" aria-describedby="description" name="description" maxlength="30" autocomplete="description" placeholder="Votre description"><?= $description ?? '' ?></textarea>
+            <div class="error">
+                <p id="error3" class="d-none"></p><br>
+                <?= $error['description'] ?? '' ?><br>
+            </div>
+        </div>
+
+        <!-- <div class="col col-md-6 mb-3">
+            <label for="category" class="form-label"><strong>Catégories <strong class="danger">*</strong></strong></label>
+            <select class="form-control" id="category" name="category" aria-describedby="categoryHelp" required>
+                <option value="Gallerie">Gallerie</option>
+                <option value="Portfolio">Portfolio</option>
+            </select>
+            <div class="error"></div>
+            <p id="error4" class="d-none"></p><br>
+            <?= $error['category'] ?? '' ?>
         </div>
         <div class="success">
             <?= $msg['success'] ?? '' ?>
-        </div><br>
+        </div><br> -->
 
-        <div class="col-sm-12 col-md-6 mb-3">
+        <div class="col-md-6 mb-3">
             <label for="id_category" class="form-label"><strong>Catégories</strong></label>
-            <select name="id_category" id="id_category">
+            <select name="id_category" id="id_category" class="form-select">
                 <?php foreach ($categories as $category) { ?>
-                    <option value="<?= $category->id_category ?>"><?= $category->category ?></option>
+                    <option value="<?= $category->id_category ?>"><?= $category->category ?> <?= $category->sub_category ?></option>
                 <?php } ?>
             </select>
+            <div class="error">
+                <p id="error4" class="d-none"></p><br>
+                <?= $error['category'] ?? '' ?>
+            </div>
         </div>
-        <div class="error">
-            <p id="error1" class="d-none"></p><br>
-            <?= $error['picture'] ?? '' ?>
-        </div>
-        <div class="success">
-            <?= $msg['success'] ?? '' ?>
-        </div><br>
 
-        <div class="insert">
-            <input class="button" type="submit" name="insert" value="Ajouter une photo">
+        <div class="col-md-6 mb-3">
+            <label for="price" class="form-label"><strong>Prix</strong></label>
+            <input type="number" class="form-control" id="price" aria-describedby="price" name="price" value="<?= $price ?? '' ?>" maxlength='30' autocomplete="price" placeholder="Votre prix en €">
+            <div class="error">
+                <p id="error5" class="d-none"></p><br>
+                <?= $error['price'] ?? '' ?><br>
+            </div>
         </div>
-        <div class="cancel">
-            <a href="/controllers/dashboard/pictures/list-ctrl.php"><input class="button" type="submit" name="cancel" value="Annuler"></a>
+
+        <div class="col-12 text-center">
+            <div class="insert mb-3">
+                <input class="btn btn-primary" type="submit" name="insert" value="Ajouter une photo">
+            </div>
+            <div class="cancel">
+                <a href="/controllers/dashboard/pictures/list-ctrl.php"><input class="btn btn-secondary" type="submit" name="cancel" value="Annuler"></a>
+            </div>
         </div>
     </div>
 </form>

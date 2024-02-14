@@ -109,24 +109,20 @@ try {
                 $error['role'] = 'Le rôle n\'est pas valide !';
             }
         }
-
-        //Récupération et nettoyage de la récupération de la donnée "password"
-        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (empty($password)) {
-            $error['password'] = 'Le mot de passe est obligatoire';
-        } else {
-            //Validation de la donnée "password" grâce à la regex
-            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
-            if ($isOk == false) {
-                $error['password'] = 'Le mot de passe n\'est pas valide !';
-            }
-        }
-
+        
 
         // Si aucune erreur n'est détectée, effectuer la mise à jour
         if (empty($error)) {
-            $user = new User($username, $lastname, $firstname, $email, $adress, $phone, $role, $password, NULL, NULL, NULL, $id_user);
-
+            $user = new User();
+            $user->setUsername($username);
+            $user->setLastname($lastname);
+            $user->setFirstname($firstname);
+            $user->setEmail($email);
+            $user->setAdress($adress);
+            $user->setPhone($phone);
+            $user->setRole($role);
+            $user->setIduser($id_user);
+            
             $result = $user->update();
 
             if ($result) {

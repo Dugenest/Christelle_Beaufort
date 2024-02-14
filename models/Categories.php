@@ -10,16 +10,20 @@ class Category
 
     // ! création des attributs
     private string $category;
+    private ?string $sub_category;
     private ?string $created_at;
+    private ?string $updated_at;
     private ?string $deleted_at;
     private ?int $id_category; 
 
 
     // ! création de la méthode magique construct
-    public function __construct(string $category = '', ?string $created_at = NULL, ?string $deleted_at = NULL, ?int $id_category = NULL)
+    public function __construct(string $category = '', ?string $sub_category = NULL, ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_category = NULL)
     {
         $this->category = $category;
+        $this->sub_category = $sub_category;
         $this->created_at = $created_at;
+        $this->created_at = $updated_at;
         $this->deleted_at = $deleted_at;
         $this->id_category = $id_category;
     }
@@ -36,6 +40,13 @@ class Category
         return $this->category;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getSubCategory(): ?string
+    {
+        return $this->sub_category;
+    }
 
     /**
      * @return string
@@ -43,6 +54,14 @@ class Category
     public function getCreatedAt(): ?string
     {
         return $this->created_at;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUpdatedAt(): ?string
+    {
+        return $this->updated_at;
     }
 
     /**
@@ -76,6 +95,16 @@ class Category
     }
 
     /**
+     * @param string|null $sub_category
+     * 
+     * @return [type]
+     */
+    public function setSubCategory(?string $sub_category)
+    {
+        $this->sub_category = $sub_category;
+    }
+
+    /**
      * @param string $created_at
      * 
      * @return [type]
@@ -83,6 +112,16 @@ class Category
     public function setCreatedAt(?string $created_at)
     {
         $this->created_at = $created_at;
+    }
+
+    /**
+     * @param string|null $updated_at
+     * 
+     * @return [type]
+     */
+    public function setUpdatedAt(?string $updated_at)
+    {
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -116,12 +155,13 @@ class Category
     {
         $pdo = Database::connect(); 
 
-        $sql =  'INSERT INTO `categories`(`id_category`, `category`)
-                VALUES (:id_category, :category);';  
+        $sql =  'INSERT INTO `categories`(`id_category`, `category`, `sub_category`)
+                VALUES (:id_category, :category, :sub_category);';  
 
         $sth = $pdo->prepare($sql); 
-        $sth->bindValue(':id_category', $this->getIdCategory());
-        $sth->bindValue(':category', $this->getCategory()); 
+        $sth->bindValue(':id_category', $this->getIdCategory(), PDO::PARAM_INT);
+        $sth->bindValue(':category', $this->getCategory());
+        $sth->bindValue(':sub_category', $this->getSubCategory());
         $result = $sth->execute(); 
         
         return $result;
@@ -135,16 +175,12 @@ class Category
     {
         $pdo = Database::connect(); 
 
-        //gérer les erreurs et les exceptions (a utiliser uniquement sur php 7)
-        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         /*Sélectionne toutes les valeurs dans la table categories*/
-        $sql = 'SELECT * FROM categories'; 
-        // $sql = 'SELECT `portfolio`, ìd_category` FROM `categories`;' //autre méthode en choisissant les colonnes 
+        $sql = 'SELECT * 
+                FROM categories'; 
         
         $sth = $pdo->prepare($sql);
         $sth->execute();
-        // $sth = $pdo->query($sql); //autre méthode a la place de prepare() et execute() mais uniquement lorsqu'il n'y a pas de marqueurs nominatifs
         
         /*Retourne un tableau associatif pour chaque entrée de notre table
          *avec le nom des colonnes sélectionnées en clefs*/
@@ -186,11 +222,13 @@ class Category
         
         // Requête mysql pour insérer des données
         $sql = 'UPDATE `categories` 
-                SET `category` = :category
+                SET `category` = :category,
+                    `sub_category` = :sub_category
                 WHERE `id_category` = :id';
 
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':category', $this->getCategory());
+        $sth->bindValue(':sub_category', $this->getSubCategory());
         $sth->bindValue(':id', $this->getIdCategory(), PDO::PARAM_INT);
         $result = $sth->execute();
 

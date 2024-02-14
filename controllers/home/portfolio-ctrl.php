@@ -1,8 +1,12 @@
 <?php
 
+require_once __DIR__ . '/../../models/Pictures.php';
+require_once __DIR__ . '/../../config/init.php';
+
 try
 {
     $title = 'Portfolio';
+    $pictures = Picture::getAll();
 
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());

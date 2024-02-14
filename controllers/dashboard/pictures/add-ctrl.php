@@ -17,6 +17,29 @@ try {
     //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        //Récupération et nettoyage de la récupération de la donnée "title"
+        $pictureTitle = filter_input(INPUT_POST, 'pictureTitle', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($pictureTitle)) {
+            $error['pictureTitle'] = 'Le titre est obligatoire';
+        } else {
+        //Validation de la donnée "pictureTitle" grâce à la regex
+            $isOk = filter_var($pictureTitle, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9 ]{2,30}$/')));
+            if ($isOk == false){
+                $error['pictureTitle'] = 'Le titre n\'est pas valide !';
+            }
+        }
+
+        //Récupération et nettoyage de la récupération de la donnée "price"
+        $price = intval(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_INT));
+        if (!empty($price)) {
+            //Validation de la donnée "price" grâce à la regex
+            $isOk = filter_var($price, FILTER_VALIDATE_INT);
+            if ($isOk == false) {
+                $error['price'] = 'Le prix n\'est pas valide !';
+            }
+        }
+
+
         //Récupération et nettoyage de la récupération de la donnée "picture"
         if (!empty($_FILES['picture']['name'])) {
             try {
@@ -41,6 +64,16 @@ try {
             }
         }
 
+        //Récupération et nettoyage de la récupération de la donnée "model"
+        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (!empty($description)) {
+        //Validation de la donnée "description" grâce à la regex
+            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=> '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
+            if ($isOk == false){
+                $error['description'] = 'Le modèle n\'est pas valide !';
+            }
+        }
+
         //Récupération, nettoyage et validation de la donnée "category"
         $id_category = intval(filter_input(INPUT_POST, 'id_category', FILTER_SANITIZE_NUMBER_INT));
         if (empty($id_category)) {
@@ -58,7 +91,7 @@ try {
 
         // Insertion des données
         if (empty($error)) {
-            $pictures = new Picture($picture, NULL, NULL, NULL, NULL, $id_category, NULL);
+            $pictures = new Picture($pictureTitle, $price, $picture, $description, NULL, NULL, NULL, NULL, $id_category, NULL);
 
             $result = $pictures->insert();
 

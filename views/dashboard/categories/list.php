@@ -10,6 +10,8 @@
         <thead>
             <tr>
                 <th scope="col">Catégories</th>
+                <th scope="col">Sous catégories</th>
+                <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
@@ -17,6 +19,8 @@
             <?php foreach ($result as $category) : ?>
                 <tr>
                     <td><?= htmlspecialchars($category->category) ?></td>
+                    <td><?= htmlspecialchars($category->sub_category) ?></td>
+                    <td><a href="/controllers/dashboard/categories/update-ctrl.php?id=<?= $category->id_category ?>"><img src="/public/assets/img/téléchargement (3).png"></a></td>
                     <td><a href="/controllers/dashboard/categories/delete-ctrl.php?id=<?= $category->id_category ?>"><img src="/public/assets/img/téléchargement (4).png"></a></td>
                 </tr>
             <?php endforeach; ?>

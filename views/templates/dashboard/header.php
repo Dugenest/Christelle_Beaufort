@@ -44,7 +44,7 @@
                                     <a href="/controllers/dashboard/messages/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Messages</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-4"><span class="d-none d-sm-inline"> Tarifs</span></a>
+                                    <a href="/controllers/dashboard/performances/list-ctrl.php" class="nav-link px-4"><span class="d-none d-sm-inline"> Tarifs</span></a>
                                 </li>
                                 
                             </ul>

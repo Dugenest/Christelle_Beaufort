@@ -77,29 +77,12 @@
         <div class="col-sm-12 col-md-6 mb-3">
             <label for="role" class="form-label"><strong>Rôle</strong></label>
             <select class="form-select" id="role" name="role" required>
-                <option value="1" <?= $user->role == 1 ? "selected" : "" ?>>Administrateur</option>
-                <option value="2" <?= $user->role == 2 ? "selected" : "" ?>>Utilisateur</option>
-                <!-- <?php if (htmlspecialchars($user->role) == 1) { ?>
-                    Administrateur
-                <?php } elseif (htmlspecialchars($user->role) == 2) { ?>
-                    Utilisateur
-                <?php } ?> -->
+            <option value="1" <?= ($user->role ?? '') == '1' ? 'selected' : '' ?>>Administrateur</option>
+                <option value="2" <?= ($user->role ?? '') == '2' ? 'selected' : '' ?>>Utilisateur</option>
             </select>
             <div class="error">
                 <p id="error7" class="d-none alert alert-danger"></p><br>
                 <?= $error['role'] ?? '' ?>
-            </div>
-            <div class="success">
-                <?= $msg['success'] ?? '' ?>
-            </div><br>
-        </div>
-
-        <div class="col-sm-12 col-md-6 mb-3">
-            <label for="password" class="form-label"><strong>Mot de passe</strong></label>
-            <input type="password" class="form-control" id="password" name="password" value="<?= $user->password ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre mot de passe svp?">
-            <div class="error">
-                <p id="error8" class="d-none alert alert-danger"></p><br>
-                <?= $error['password'] ?? '' ?>
             </div>
             <div class="success">
                 <?= $msg['success'] ?? '' ?>

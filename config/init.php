@@ -14,4 +14,4 @@ define('PSWD', '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{
 
 //création des constantes pour définir les photos
 define('ARRAY_TYPES', ['image/jpeg', 'image/png']);
-define('UPLOAD_MAXSIZE', 2*1024*1024);
+define('UPLOAD_MAXSIZE', 10*1024*1024);

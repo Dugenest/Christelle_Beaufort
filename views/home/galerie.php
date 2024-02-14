@@ -4,6 +4,23 @@
         <div class="container-fluid py-md-5">
             <h1>GALERIE</h1>
             <div class="row py-5">
+                <?php  foreach ($pictures as $picture) {
+                    if ($picture->category == 'Gallerie') { ?>
+                        <div class="col-12 col-md-3 card" >
+                            <img src="/public/uploads/pictures/<?= $picture->picture ?>" class="card-img-top image-fluid" alt="<?= $picture->title ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $picture->pictureTitle ?></h5>
+                                <p class="card-text"><?= $picture->description ?></p>
+                            </div>
+                            <div class="card-footer text-end">
+                                <p>Prix: <?= $picture->price ?> € TTC</p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+
+<!-- 
+
                 <div class="col-12 col-md-4 card" >
                     <img src="/public/assets/img/Photo a vendre/DSC_6155-3.jpg" class="card-img-top image-fluid" alt="Léopard de dos">
                     <div class="card-body">
@@ -235,7 +252,7 @@
                         <p>Prix: ....€ TTC</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
         <div class="row text-center justify-content-center py-3">

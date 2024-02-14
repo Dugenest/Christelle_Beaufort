@@ -9,7 +9,10 @@ class Picture
 {
 
     // ! création des attributs
+    private string $pictureTitle;
+    private int $price;
     private ?string $picture;
+    private ?string $description;
     private ?string $created_at;
     private ?string $updated_at;
     private ?string $deleted_at;
@@ -20,9 +23,12 @@ class Picture
 
 
     // ! création de la méthode magique construct
-    public function __construct(?string $picture = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_picture = NULL, ?int $id_category = NULL, ?int $id_user = NULL)
+    public function __construct(string $pictureTitle = '', int $price = 0, ?string $picture = '', ?string $description = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_picture = NULL, ?int $id_category = NULL, ?int $id_user = NULL)
     {
+        $this->pictureTitle = $pictureTitle; 
+        $this->price = $price;
         $this->picture = $picture;
+        $this->description = $description;
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
         $this->deleted_at = $deleted_at;
@@ -34,6 +40,21 @@ class Picture
 
     // ! création des getters
 
+    /**
+     * @return string
+     */
+    public function getPictureTitle(): string
+    {
+        return $this->pictureTitle;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
 
     /**
      * @return string
@@ -43,6 +64,13 @@ class Picture
         return $this->picture;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
 
     /**
      * @return string
@@ -96,6 +124,26 @@ class Picture
     // ! création des setters
 
     /**
+     * @param string $pictureTitle
+     * 
+     * @return [type]
+     */
+    public function setPictureTitle(string $pictureTitle)
+    {
+        $this->pictureTitle = $pictureTitle;
+    }
+
+    /**
+     * @param string|null $price
+     * 
+     * @return [type]
+     */
+    public function setPrice(int $price)
+    {
+        $this->price = $price;
+    }
+
+    /**
      * @param string $picture
      * 
      * @return [type]
@@ -103,6 +151,16 @@ class Picture
     public function setPicture(?string $picture)
     {
         $this->picture = $picture;
+    }
+
+    /**
+     * @param string|null $description
+     * 
+     * @return [type]
+     */
+    public function setDescription(?string $description)
+    {
+        $this->description = $description;
     }
 
     /**
@@ -168,7 +226,6 @@ class Picture
 
     // ! création de ma méthode
 
-
     /**
      * @return bool
      */
@@ -176,14 +233,15 @@ class Picture
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO `pictures` (`picture`, `id_category`) 
-                VALUES (:picture, :id_category);';
+        $sql = 'INSERT INTO `pictures` (`pictureTitle`, `price`, `picture`, `description`, `id_category`) 
+                VALUES (:pictureTitle, :price, :picture, :description, :id_category);';
 
         $sth = $pdo->prepare($sql);
 
-
+        $sth->bindValue(':pictureTitle', $this->getPictureTitle());
+        $sth->bindValue(':price', $this->getPrice(), PDO::PARAM_INT);
         $sth->bindValue(':picture', $this->getpicture());
-        // $sth->bindValue(':id_picture', $this->getIdPicture(), PDO::PARAM_INT);
+        $sth->bindValue(':description', $this->getDescription());
         $sth->bindValue(':id_category', $this->getIdCategory(), PDO::PARAM_INT);
 
         $sth->execute();
@@ -201,7 +259,7 @@ class Picture
         $pdo = Database::connect();
 
         /*Sélectionne toutes les valeurs dans la table categories*/
-        $sql = 'SELECT pictures.id_picture, pictures.picture, pictures.created_at, pictures.updated_at, pictures.deleted_at, pictures.id_category, categories.id_category, categories.category 
+        $sql = 'SELECT *
                 FROM pictures
                 INNER JOIN categories ON pictures.id_category = categories.id_category';
                 
@@ -255,12 +313,15 @@ class Picture
     $pdo = Database::connect();
 
     $sql = 'UPDATE `pictures` 
-            SET `picture` = :picture, `id_category` = :id_category
+            SET `pictureTitle` = :pictureTitle, `price` = :price, `picture` = :picture, `description` = :description, `id_category` = :id_category
             WHERE `id_picture` = :id_picture;';
 
     $sth = $pdo->prepare($sql);
 
-    $sth->bindValue(':picture', $this->getpicture());
+    $sth->bindValue(':pictureTitle', $this->getPictureTitle());
+    $sth->bindValue(':price', $this->getPrice(), PDO::PARAM_INT);
+    $sth->bindValue(':picture', $this->getPicture());
+    $sth->bindValue(':description', $this->getDescription());
     $sth->bindValue(':id_category', $this->getIdCategory(), PDO::PARAM_INT);
     $sth->bindValue(':id_picture', $this->getIdPicture(), PDO::PARAM_INT);
 
@@ -303,7 +364,10 @@ class Picture
     {
         $pdo = Database::connect();
 
-        $sql = "SELECT id_picture FROM pictures WHERE picture = :picture";
+        $sql = "SELECT id_picture 
+                FROM pictures 
+                WHERE picture = :picture";
+
         $sth = $pdo->prepare($sql);
         $sth->bindParam(':picture', $picture, PDO::PARAM_STR);
         $sth->execute();
@@ -351,7 +415,7 @@ class Picture
 
         $sql = 'SELECT COUNT(`id_picture`) AS "count"
                 FROM `pictures` 
-                WHERE `picture`=:picture;';
+                WHERE `picture` = :picture;';
 
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':picture', $picture, PDO::PARAM_STR);

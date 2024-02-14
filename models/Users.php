@@ -351,7 +351,6 @@ class User
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        try {
             // Requête MySQL pour mettre à jour des données
             $sql = 'UPDATE `users` 
                 SET 
@@ -361,8 +360,7 @@ class User
                     `email` = :email,
                     `adress` = :adress,
                     `phone` = :phone,
-                    `role` = :role,
-                    `password` = :password
+                    `role` = :role
                 WHERE `id_user` = :id';
 
             $sth = $pdo->prepare($sql);
@@ -373,20 +371,10 @@ class User
             $sth->bindValue(':adress', $this->getAdress());
             $sth->bindValue(':phone', $this->getPhone());
             $sth->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
-            $sth->bindValue(':password', $this->getPassword());
             $sth->bindValue(':id', $this->getIdUser(), PDO::PARAM_INT);
+            $result = $sth->execute();
 
-            if ($sth->execute()) {
-                return true; // La mise à jour s'est bien déroulée
-            } else {
-                // En cas d'échec, afficher les détails de l'erreur
-                $errorInfo = $sth->errorInfo();
-                throw new Exception("Erreur lors de la mise à jour : {$errorInfo[2]}");
-            }
-        } catch (Exception $e) {
-            // En cas d'exception, afficher le message d'erreur
-            die('Erreur : ' . $e->getMessage());
-        }
+            return $result;
     }
 
 
