@@ -6,7 +6,7 @@
 
 <!-- Début du footer -->
 <footer>
-        <div class="container-fluid">
+
             <section class="row reseaux py-2 text-center">
                 <div class="col-4">
                     <a href="https://www.facebook.com/ChristelleFeryPhotographie" target="_blank"><img src="/public/assets/img/fb.png" class="logoSociaux" alt="Logo facebook"></a>
@@ -24,7 +24,7 @@
                 <a href="" target="_blank">Politique de confidentialité</a>
                 <a href="" target="_blank">Mentions Légales</a>
             </section>
-        </div>
+        
     </footer>
 <!-- Fin du footer -->
     <?php if ($title == 'Inscription') { ?>

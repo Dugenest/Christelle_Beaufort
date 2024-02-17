@@ -259,13 +259,13 @@ class Picture
         $pdo = Database::connect();
 
         /*Sélectionne toutes les valeurs dans la table categories*/
-        $sql = 'SELECT *
+        $sql = 'SELECT categories.category, pictures.pictureTitle, pictures.picture, pictures.description, pictures.id_picture, pictures.price, pictures.id_category
                 FROM pictures
                 INNER JOIN categories ON pictures.id_category = categories.id_category';
                 
         // Ajouter la clause WHERE si id_category est spécifié
         if ($id_category != 0) {
-            $sql .= ' WHERE messages.$id_category = :id_category';
+            $sql .= ' WHERE pictures.$id_category = :id_category';
         }
 
         $sth = $pdo->prepare($sql);
@@ -300,6 +300,30 @@ class Picture
         $sth->execute();
 
         $result = $sth->fetch(PDO::FETCH_OBJ);
+
+        return $result;
+    }
+
+
+    /**
+     * @param int $id_category
+     * 
+     * @return object
+     */
+    public static function getIdCat(int $id)
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT `pictures`.`picture`, `pictures`.`id_category`
+                FROM `pictures` 
+                INNER JOIN `categories` ON `pictures`.`id_category` = `categories`.`id_category`
+                WHERE `pictures`.`id_category`=:id;';
+
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->execute();
+
+        $result = $sth->fetchALL(PDO::FETCH_OBJ);
 
         return $result;
     }

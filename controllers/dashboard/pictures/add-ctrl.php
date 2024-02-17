@@ -56,7 +56,7 @@ try {
                 $extension = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
 
                 $from = $_FILES['picture']['tmp_name'];
-                $to = __DIR__ . '/../../../public/uploads/pictures/' . $filename . '.' . $extension;
+                $to = __DIR__ . '/../../../public/uploads/pictures/picture/' . $filename . '.' . $extension;
                 move_uploaded_file($from, $to);
                 $picture = $filename . '.' . $extension;
             } catch (\Throwable $th) {
@@ -91,7 +91,7 @@ try {
 
         // Insertion des données
         if (empty($error)) {
-            $pictures = new Picture($pictureTitle, $price, $picture, $description, NULL, NULL, NULL, NULL, $id_category, NULL);
+            $pictures = new Picture($pictureTitle, $price, $picture, $description, NULL, NULL, NULL, $id_picture, $id_category, NULL);
 
             $result = $pictures->insert();
 

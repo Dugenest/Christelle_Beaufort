@@ -22,7 +22,7 @@ require_once __DIR__ . '/../../../config/init.php';
         <link rel="stylesheet" href="/public/assets/css/styleGalerie.css">
     <?php } elseif ($title == 'Livre d\'or') { ?>
         <link rel="stylesheet" href="/public/assets/css/styleLivredor.css">
-    <?php } elseif ($title == 'Portfolio') { ?>
+    <?php } elseif ($title == 'Portfolio' || $title == 'Photos') { ?>
         <link rel="stylesheet" href="/public/assets/css/stylePortfolio.css">
     <?php } elseif ($title == 'Tarif') { ?>
         <link rel="stylesheet" href="/public/assets/css/styleTarif.css">

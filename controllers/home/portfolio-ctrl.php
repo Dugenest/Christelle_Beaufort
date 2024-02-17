@@ -1,12 +1,16 @@
 <?php
 
 require_once __DIR__ . '/../../models/Pictures.php';
+require_once __DIR__ . '/../../models/Categories.php';
 require_once __DIR__ . '/../../config/init.php';
 
 try
 {
     $title = 'Portfolio';
-    $pictures = Picture::getAll();
+
+// appel de la methode getAll pour afficher toutes les categories $categories
+    $categories = Category::getAll();
+
 
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());

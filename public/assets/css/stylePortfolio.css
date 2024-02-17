@@ -1,12 +1,7 @@
 
-/* .mariage {
-    background-color: rgba(205, 168, 144, 0.1);
-    height: max-content;
-} */
-
 h1 {
     text-align: center;
-    background-color: rgba(205, 168, 144, 0.1);
+    background-color: #FAF6F4;
     margin-bottom: 10px;
 }
 
@@ -33,7 +28,7 @@ button {
 }
 
 section {
-    background-color: rgba(205, 168, 144, 0.1);
+    background-color: #FAF6F4;
     display:flex;
     width:100%;
 }
@@ -42,7 +37,7 @@ section {
     text-align: center;
 }
 
-img {
+.portfolioPictures {
     height: 300px;
     width: 100%;
 }

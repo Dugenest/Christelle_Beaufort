@@ -9,5 +9,9 @@ li {
 
 .mentionsLegales{
     margin-top: 10px;
-    margin-left: 35px;
+    /* margin-left: 35px; */
+}
+
+footer {
+    background-color: #FAF6F4;
 }

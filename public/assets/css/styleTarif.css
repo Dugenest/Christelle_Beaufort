@@ -15,13 +15,13 @@ hr {
     width: 800px;
 }
 
-main {
-    background-image: url(../img/Mariage/_DSC1491.jpg);
-    background-repeat: no-repeat;
+.main-container {
     background-size: cover;
-    background-position: top;
-    z-index: -1;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
+
 
 .card-body ul li {
     list-style: circle;
@@ -38,7 +38,7 @@ main {
 }
 
 .card-body, h3 {
-    background-color: rgba(205, 168, 144, 0.1);
+    background-color: #FAF6F4;
 }
 
 #btnGalerie {

@@ -10,6 +10,7 @@
         <thead>
             <tr>
                 <th scope="col">Nom de la prestation</th>
+                <th scope="col">Titre</th>
                 <th scope="col">Description</th>
                 <th scope="col">Tarif en €</th>
                 <th scope="col">Modifier</th>
@@ -19,7 +20,8 @@
         <tbody>
             <?php foreach ($result as $performance) : ?>
                 <tr>
-                    <td><?= htmlspecialchars($performance->name) ?></td>
+                    <td><?= htmlspecialchars($performance->category) ?></td>
+                    <td><?= htmlspecialchars($performance->titlePerformance) ?></td>
                     <td><?= htmlspecialchars($performance->description) ?></td>
                     <td><?= htmlspecialchars($performance->price) ?></td>
                     <td><a href="/controllers/dashboard/performances/update-ctrl.php?id=<?= $performance->id_performance ?>"><img src="/public/assets/img/téléchargement (3).png"></a></td>

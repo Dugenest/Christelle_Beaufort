@@ -29,30 +29,16 @@
             </div>
         </div>
 
-        <!-- <div class="col col-md-6 mb-3">
-            <label for="category" class="form-label"><strong>Catégories <strong class="danger">*</strong></strong></label>
-            <select class="form-control" id="category" name="category" aria-describedby="categoryHelp" required>
-                <option value="Gallerie">Gallerie</option>
-                <option value="Portfolio">Portfolio</option>
-            </select>
-            <div class="error"></div>
-            <p id="error4" class="d-none"></p><br>
-            <?= $error['category'] ?? '' ?>
-        </div>
-        <div class="success">
-            <?= $msg['success'] ?? '' ?>
-        </div><br> -->
-
         <div class="col-md-6 mb-3">
             <label for="id_category" class="form-label"><strong>Catégories</strong></label>
             <select name="id_category" id="id_category" class="form-select">
                 <?php foreach ($categories as $category) { ?>
-                    <option value="<?= $category->id_category ?>"><?= $category->category ?> <?= $category->sub_category ?></option>
+                    <option value="<?= $category->id_category ?>"><?= $category->category ?></option>
                 <?php } ?>
             </select>
             <div class="error">
                 <p id="error4" class="d-none"></p><br>
-                <?= $error['category'] ?? '' ?>
+                <?= $error['id_category'] ?? '' ?>
             </div>
         </div>
 

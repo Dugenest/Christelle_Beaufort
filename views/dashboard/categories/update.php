@@ -1,38 +1,41 @@
 <h1>Modification d'une catégorie</h1>
 
-<form method="post" action="">
+<form method="post" enctype="multipart/form-data" action="">
     <div class="row justify-content-center py-5">
-        <div class="col col-md-6 mb-3">
-            <label for="category" class="form-label"><strong>Catégories <strong class="danger">*</strong></strong></label>
-            <select class="form-control" id="category" name="category" aria-describedby="categoryHelp" required>
-                <option value="Gallerie" <?= ($idCategories->category ?? '') === 'Gallerie' ? 'selected' : '' ?>>Gallerie</option>
-                <option value="Portfolio" <?= ($idCategories->category ?? '') === 'Portfolio' ? 'selected' : '' ?>>Portfolio</option>
+        <div class="col-md-6 mb-3">
+            <label for="category" class="form-label"><strong>Catégories</strong></label>
+            <select name="category" id="category" class="form-select">
+                    <option value="<?= $categories->id_category ?>" <?= $categories->category ? 'selected' : '' ?>>
+                    <?= $categories->category ?>
+                    </option>
             </select>
-            <div class="error"></div>
-            <p id="error1" class="d-none"></p><br>
-            <?= $error['category'] ?? '' ?>
-        </div>
-        <div class="success">
-            <?= $msg['success'] ?? '' ?>
-        </div><br>
-
-        <div class="col col-md-6 mb-3">
-            <label for="sub_category" class="form-label"><strong>Sous catégories <strong class="danger">*</strong></strong></label>
-            <input type="text" class="form-control" id="sub_category" name="sub_category" value="<?= $idCategories->sub_category ?? '' ?>" maxlength='30' aria-describedby="sub_categoryHelp" placeholder="Veuillez entrer votre sous catégorie svp?">
             <div class="error">
-                <p id="error1" class="d-none"></p><br>
-                <?= $error['sub_category'] ?? '' ?>
+                <p id="error4" class="d-none alert alert-danger"></p><br>
+                <?= $error['category'] ?? '' ?>
             </div>
             <div class="success">
                 <?= $msg['success'] ?? '' ?>
-            </div><br>
+            </div>
+        </div><br>
 
-            <div class="insert">
-                <input class="button" type="submit" name="insert" value="Modifier une catégorie">
+        <div class="col-md-6 mb-3">
+            <label for="picture" class="form-label"><strong>Photo</strong></label>
+            <input type="file" class="form-control" id="picture" name="picture" accept=".jpeg, .pdf, .gif, .png" value="<?= $categories->picture ?? '' ?>" maxlength='30' aria-describedby="pictureHelp" placeholder="Veuillez insérer la photo svp?">
+            <img id="pictureImg" src="/public/uploads/pictures/categories/<?= $categories->picture ?>" class="img-fluid" alt="Preview">
+            <div class="error">
+                <p id="error3" class="d-none"></p><br>
+                <?= $error['picture'] ?? '' ?>
             </div>
-            <div class="cancel">
-                <a href="/controllers/dashboard/categories/list-ctrl.php"><input class="button" type="submit" name="cancel" value="Annuler"></a>
+            <div class="success">
+                <?= $msg['success'] ?? '' ?>
             </div>
+        </div><br>
+
+        <div class="insert">
+            <input class="button" type="submit" name="insert" value="Modifier une catégorie">
+        </div>
+        <div class="cancel">
+            <a href="/controllers/dashboard/categories/list-ctrl.php"><input class="button" type="submit" name="cancel" value="Annuler"></a>
         </div>
     </div>
 </form>

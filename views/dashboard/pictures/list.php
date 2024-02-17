@@ -10,7 +10,6 @@
         <thead>
             <tr>
                 <th scope="col">Catégorie</th>
-                <th scope="col">Sous catégorie</th>
                 <th scope="col">Titre</th>
                 <th scope="col">Photo</th>
                 <th scope="col">Description</th>
@@ -23,10 +22,9 @@
             <?php foreach ($result as $picture) : ?>
                 <tr>
                     <td class="tablePicture"><?= $picture->category ?></td>
-                    <td class="tablePicture"><?= $picture->sub_category ?></td>
                     <td class="tablePicture"><?= $picture->pictureTitle ?></td>
                     <td class="tablePicture"><?php if (isset($picture->picture)) { ?>
-                        <img class="img" src="/public/uploads/pictures/<?= $picture->picture ?>">
+                        <img class="img" src="/public/uploads/pictures/picture/<?= $picture->picture ?>">
                         <?php } ?>
                     </td>
                     <td class="tablePicture"><?= $picture->description ?></td>

@@ -83,10 +83,10 @@ thead, tbody {
     color: blue;
 }
 
-.tableMessage, .tableImg, .tablePicture {
+.tableMessage, .tableImg, .tablePicture, .tablePerformance {
     vertical-align: middle;
 }
 
-.tableMessage, .tableComment, .tablePicture {
+.tableMessage, .tableComment, .tablePicture, .tablePerformance {
     word-wrap: normal;
 }

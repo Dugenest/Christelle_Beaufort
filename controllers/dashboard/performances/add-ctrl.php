@@ -2,13 +2,14 @@
 
 
 require_once __DIR__ . '/../../../models/Performances.php';
+require_once __DIR__ . '/../../../models/Categories.php';
 require_once __DIR__ . '/../../../config/init.php';
 
 
-try 
-{
+try {
     $title = 'Ajout d\'un tarif';
-    
+    $categories = Category::getAll();
+
     // Initialisation des tableaux pour les messages d'erreur
     $error = [];
     $msg = [];
@@ -17,14 +18,26 @@ try
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //Récupération et nettoyage de la récupération de la donnée "name"
-        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (empty($name)) {
-            $error['name'] = 'Le nom de la prestation est obligatoire';
+        $id_category = filter_input(INPUT_POST, 'id_category', FILTER_SANITIZE_NUMBER_INT);
+        if (empty($id_category)) {
+            $error['id_category'] = 'L\'id est obligatoire';
         } else {
-        //Validation de la donnée "name" grâce à la regex
-            $isOk = filter_var($name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
-            if ($isOk == false){
-                $error['name'] = 'Le nom de la prestation n\'est pas valide !';
+            //Validation de la donnée "id_category" grâce à la regex
+            $isOk = filter_var($id_category, FILTER_VALIDATE_INT);
+            if ($isOk == false) {
+                $error['id_category'] = 'L\'id n\'est pas valide !';
+            }
+        }
+
+        //Récupération et nettoyage de la récupération de la donnée "name"
+        $titlePerformance = filter_input(INPUT_POST, 'titlePerformance', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($titlePerformance)) {
+            $error['titlePerformance'] = 'Le titre est obligatoire';
+        } else {
+            //Validation de la donnée "titlePerformance" grâce à la regex
+            $isOk = filter_var($titlePerformance, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9]{2,30}$/')));
+            if ($isOk == false) {
+                $error['titlePerformance'] = 'Le titre n\'est pas valide !';
             }
         }
 
@@ -33,9 +46,9 @@ try
         if (empty($description)) {
             $error['description'] = 'La description est obligatoire';
         } else {
-        //Validation de la donnée "description" grâce à la regex
-            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
-            if ($isOk == false){
+            //Validation de la donnée "description" grâce à la regex
+            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
+            if ($isOk == false) {
                 $error['description'] = 'La description n\'est pas valide !';
             }
         }
@@ -45,9 +58,9 @@ try
         if (empty($price)) {
             $error['price'] = 'Le tarif est obligatoire';
         } else {
-        //Validation de la donnée "price" grâce à la regex
+            //Validation de la donnée "price" grâce à la regex
             $isOk = filter_var($price, FILTER_VALIDATE_INT);
-            if ($isOk == false){
+            if ($isOk == false) {
                 $error['price'] = 'Le tarif n\'est pas valide !';
             }
         }
@@ -56,13 +69,15 @@ try
         // Insertion des données
         if (empty($error)) {
             $performance = new Performance();
-            $performance->setName($name);
+            $performance->setIdCategory($id_category);
+
+            $performance->setTitlePerformance($titlePerformance);
             $performance->setDescription($description);
             $performance->setPrice($price);
-            
+
             $result = $performance->insert();
-    
-            if($result) {
+
+            if ($result) {
                 $msg['success'] = 'La donnée a bien été insérée !';
             } else {
                 $msg['error'] = 'Erreur, la donnée n\'a pas été insérée';
@@ -76,9 +91,8 @@ try
             exit;
         }
     }
-
 } catch (PDOException $e) {
-die('Erreur : ' . $e->getMessage());
+    die('Erreur : ' . $e->getMessage());
 }
 
 

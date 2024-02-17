@@ -10,7 +10,7 @@ class Category
 
     // ! création des attributs
     private string $category;
-    private ?string $sub_category;
+    private ?string $picture;
     private ?string $created_at;
     private ?string $updated_at;
     private ?string $deleted_at;
@@ -18,10 +18,10 @@ class Category
 
 
     // ! création de la méthode magique construct
-    public function __construct(string $category = '', ?string $sub_category = NULL, ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_category = NULL)
+    public function __construct(string $category = '', ?string $picture = NULL, ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_category = NULL)
     {
         $this->category = $category;
-        $this->sub_category = $sub_category;
+        $this->picture = $picture;
         $this->created_at = $created_at;
         $this->created_at = $updated_at;
         $this->deleted_at = $deleted_at;
@@ -43,9 +43,9 @@ class Category
     /**
      * @return string|null
      */
-    public function getSubCategory(): ?string
+    public function getPicture(): ?string
     {
-        return $this->sub_category;
+        return $this->picture;
     }
 
     /**
@@ -95,13 +95,13 @@ class Category
     }
 
     /**
-     * @param string|null $sub_category
+     * @param string|null $picture
      * 
      * @return [type]
      */
-    public function setSubCategory(?string $sub_category)
+    public function setPicture(?string $picture)
     {
-        $this->sub_category = $sub_category;
+        $this->picture = $picture;
     }
 
     /**
@@ -155,13 +155,13 @@ class Category
     {
         $pdo = Database::connect(); 
 
-        $sql =  'INSERT INTO `categories`(`id_category`, `category`, `sub_category`)
-                VALUES (:id_category, :category, :sub_category);';  
+        $sql =  'INSERT INTO `categories`(`id_category`, `category`, `picture`)
+                VALUES (:id_category, :category, :picture);';  
 
         $sth = $pdo->prepare($sql); 
         $sth->bindValue(':id_category', $this->getIdCategory(), PDO::PARAM_INT);
         $sth->bindValue(':category', $this->getCategory());
-        $sth->bindValue(':sub_category', $this->getSubCategory());
+        $sth->bindValue(':picture', $this->getPicture());
         $result = $sth->execute(); 
         
         return $result;
@@ -176,7 +176,7 @@ class Category
         $pdo = Database::connect(); 
 
         /*Sélectionne toutes les valeurs dans la table categories*/
-        $sql = 'SELECT * 
+        $sql = 'SELECT categories.id_category, categories.category, categories.picture
                 FROM categories'; 
         
         $sth = $pdo->prepare($sql);
@@ -201,6 +201,7 @@ class Category
 
         $sql = 'SELECT *    
                 FROM `categories` 
+                RIGHT JOIN `pictures` ON `pictures`.`id_category` = `categories`.`id_category`
                 WHERE `id_category`=:id;';
 
         $sth = $pdo->prepare($sql);
@@ -222,13 +223,11 @@ class Category
         
         // Requête mysql pour insérer des données
         $sql = 'UPDATE `categories` 
-                SET `category` = :category,
-                    `sub_category` = :sub_category
-                WHERE `id_category` = :id';
+                SET `picture` = :picture 
+                WHERE `id_category` = :id;';
 
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':category', $this->getCategory());
-        $sth->bindValue(':sub_category', $this->getSubCategory());
+        $sth->bindValue(':picture', $this->getPicture());
         $sth->bindValue(':id', $this->getIdCategory(), PDO::PARAM_INT);
         $result = $sth->execute();
 
@@ -265,9 +264,9 @@ class Category
     {
         $pdo = Database::connect();
 
-        $sql = 'SELECT *    
-                FROM `categories` 
-                WHERE `id_category`=:id;';
+        $sql = 'SELECT categories.id_category, categories.category, categories.picture  
+                FROM `categories`
+                WHERE id_category = :id;';
 
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $id, PDO::PARAM_INT);

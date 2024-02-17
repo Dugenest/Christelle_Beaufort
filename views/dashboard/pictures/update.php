@@ -6,7 +6,7 @@
         <div class="col-md-6 mb-3">
             <label for="picture" class="form-label"><strong>Photo</strong></label>
             <input type="file" class="form-control" id="picture" name="picture" accept="image/jpeg, .pdf, .gif, .png" value="<?= $pictures->picture ?>" maxlength='30' aria-describedby="pictureHelp" placeholder="Veuillez insérer la photo svp?"><br>
-            <img id="pictureImg" src="/public/uploads/pictures/<?= $pictures->picture ?>" class="img-fluid" alt="Preview">
+            <img id="pictureImg" src="/public/uploads/pictures/picture/<?= $pictures->picture ?>" class="img-fluid" alt="Preview">
             <div class="error">
                 <p id="error1" class="d-none alert alert-danger"></p><br>
                 <?= $error['picture'] ?? '' ?>
@@ -42,7 +42,7 @@
             <select name="id_category" id="id_category" class="form-select">
                 <?php foreach ($categories as $category) { ?>
                     <option value="<?= $category->id_category ?>" <?= ($category->id_category == $pictures->id_category) ? 'selected' : '' ?>>
-                    <?= $category->category ?> <?= $category->sub_category ?>
+                    <?= $category->category ?>
                     </option>
                 <?php } ?>
             </select>
