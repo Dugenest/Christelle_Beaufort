@@ -4,6 +4,7 @@
 require_once __DIR__ . '/../../../models/Pictures.php';
 require_once __DIR__ . '/../../../models/Categories.php';
 require_once __DIR__ . '/../../../config/init.php';
+require_once __DIR__ . '/../../../helpers/image.class.php';
 
 
 try {
@@ -39,7 +40,6 @@ try {
             }
         }
 
-
         //Récupération et nettoyage de la récupération de la donnée "picture"
         if (!empty($_FILES['picture']['name'])) {
             try {
@@ -59,6 +59,23 @@ try {
                 $to = __DIR__ . '/../../../public/uploads/pictures/picture/' . $filename . '.' . $extension;
                 move_uploaded_file($from, $to);
                 $picture = $filename . '.' . $extension;
+
+                $image = imagecreatefromjpeg($to); // use function from the library GD
+
+                $widthOriginal = imagesx($image);
+                $heightOriginal = imagesy($image);
+                if ($heightOriginal > $widthOriginal) { // it's portrait
+                    $height = 1280;
+                    $width = ceil(($widthOriginal * $height) / $heightOriginal);
+                } else {
+                    $width = 1280; // max to have great quality with reduced weight
+                    $height = -1;
+                }
+
+                $mode = IMG_BILINEAR_FIXED; // algo of img resizing
+                $resampledObject = imagescale($image, $width, $height, $mode); // transform img in object to apply changes
+                imagejpeg($resampledObject, $to, 80); // transform object in img
+
             } catch (\Throwable $th) {
                 $error['picture'] = $th->getMessage();
             }

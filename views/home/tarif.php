@@ -1,20 +1,15 @@
-<!-- <h1>TARIF PRESTATIONS</h1>
-<section class="container-fluid logo">
-    <div class="row justify-content-center">
-        <img src="/public/assets/img/Photo a vendre/Lueur gelée.jpg" alt="logo" id="imgLogo">
-    </div>
-</section> -->
+
 
 <!-- Début du main -->
-<main>
+<main class="mainImg">
     <div class="container-fluid py-md-5">
         <div class="row py-5">
-            <h2 class="titleH2 py-5">Tarifs prestations</h2>
+            <h1 class="titleH1 py-5">Tarifs prestations</h1>
         </div>
         <div class="row text-center py-5 justify-content-around">
             <?php foreach ($categories as $category) {
                 if (($category->category) != 'Gallerie') { ?>
-                    <div class="col col-md-5 card" style="width: 20rem;">
+                    <div class="col col-md-5 my-3 justify-content-center card" style="width: 20rem;">
                         <a href="/controllers/home/tarifCategory-ctrl.php?id=<?= $category->id_category ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $category->category ?></h5>

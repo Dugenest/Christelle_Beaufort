@@ -26,6 +26,8 @@ require_once __DIR__ . '/../../../config/init.php';
         <link rel="stylesheet" href="/public/assets/css/stylePortfolio.css">
     <?php } elseif ($title == 'Tarif') { ?>
         <link rel="stylesheet" href="/public/assets/css/styleTarif.css">
+    <?php } elseif ($title == 'Mot de passe oublié') { ?>
+        <link rel="stylesheet" href="/public/assets/css/styleMdpo.css">
     <?php } ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>Christelle Beaufort - <?= $title ?? '' ?></title>

@@ -33,12 +33,12 @@ strong {
 
 .green {
     border-color: green;
-    border-width: thick;
+    border-width: 5px;
 }
 
 .red {
     border-color: red;
-    border-width: thick;
+    border-width: 5px;
 }
 
 #error1, #error2, #error3, .error {

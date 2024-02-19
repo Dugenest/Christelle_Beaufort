@@ -1,10 +1,10 @@
 
 <!-- Début du main -->
-<main class="main-container" style="background-image: url('/public/uploads/pictures/categories/<?= $performance->picture ?>');">
+<main class="main-container py-5" style="background-image: url('/public/uploads/pictures/categories/<?= $imgPerformance ?>');">
     <div class="container-fluid">
-        <a class="text-black" href="/controllers/home/tarif-ctrl.php">Retour</a>
+        <a class="text-white" href="/controllers/home/tarif-ctrl.php">Retour</a>
         <div class="row">
-            <h2 class="titleH2">Tarifs prestations</h2>
+            <h2 class="titleH2 text-white">Tarifs prestations</h2>
             <?php foreach ($performances as $performance) { ?>
                 <div class="col-12 col-md-3 py-5 card">
                     <h3>∞ <?= $performance->titlePerformance ?> ∞</h3>

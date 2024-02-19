@@ -305,10 +305,11 @@ class Picture
     }
 
 
+
     /**
-     * @param int $id_category
+     * @param int $id
      * 
-     * @return object
+     * @return [type]
      */
     public static function getIdCat(int $id)
     {

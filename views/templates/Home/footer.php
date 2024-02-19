@@ -35,8 +35,6 @@
         <script src="/public/assets/js/scriptContact.js"></script>
     <?php } elseif ($title == 'Livre d\'or') { ?>
         <script src="/public/assets/js/scriptLivreDor.js"></script>
-    <?php } elseif ($title == 'Portfolio') { ?>
-        <script src="/public/assets/js/scriptPortfolio.js"></script>
     <?php } elseif ($title == 'Mot de passe oublié') { ?>
         <script src="./public/assets/js/scriptMdpo.js"></script>
     <?php } ?>

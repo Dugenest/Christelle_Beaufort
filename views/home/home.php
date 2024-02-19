@@ -19,7 +19,7 @@
                     <details>
                         Grâce aux nombreuses personnes qui ont cru en moi, j’ai développé durant toutes ces années, de manière autodidacte, mes compétences lors des évènements importants d’une vie (mariages, séances grossesse…etc).
                         Je suis aujourd’hui professionnelle et prête à immortaliser vos moments d’amour à transmettre de génération en génération.
-                        En parallèle, j’ai aussi développé mes compétences pour la photographie animalière et de paysage grâce à plusieurs voyages effectués au coté de grand professionnels de la photographie. (Tony Crocetta, Eric LeGo). Grâce à ces voyages, je peux également vous transmettre les plus belles choses que j’ai vu et immortalisé. Nous sommes loin d’imaginer ce que la nature peut nous offrir tant que nous ne l’avons pas vu de nos yeux … laissez moi vous faire voyager l’espace de quelques clichés.vg
+                        En parallèle, j’ai aussi développé mes compétences pour la photographie animalière et de paysage grâce à plusieurs voyages effectués au coté de grands professionnels de la photographie. (Tony Crocetta, Eric LeGo). Grâce à ces voyages, je peux également vous transmettre les plus belles choses que j’ai vu et immortalisé. Nous sommes loin d’imaginer ce que la nature peut nous offrir tant que nous ne l’avons pas vu de nos yeux … laissez moi vous faire voyager l’espace de quelques clichés.vg
                     </details>
                     </p>
                 </div>

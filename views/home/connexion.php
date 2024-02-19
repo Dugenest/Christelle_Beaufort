@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="row text-end py-3">
-                    <a href="./mot_de_passe_oublie.php" alt="Mot de passse oublié" id="MDPO">Mot de passe oublié ?</a>
+                    <a href="/controllers/home/mot_de_passe_oublie-ctrl.php" alt="Mot de passse oublié" id="MDPO">Mot de passe oublié ?</a>
                 </div>
                 <div class="row text-center justify-content-center py-3">
                     <button type="submit" id="btnConnexion" class="btn btn-light">S'identifier</button>

@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../../models/Categories.php';
 require_once __DIR__ . '/../../../config/init.php';
 
 
+
 try {
     $title = 'Modification d\'une photo';
 
@@ -87,10 +88,28 @@ try {
                 move_uploaded_file($from, $to);
                 $picture = $filename;
 
+                $image = imagecreatefromjpeg($to); // use function from the library GD
+
+                $widthOriginal = imagesx($image);
+                $heightOriginal = imagesy($image);
+                if ($heightOriginal > $widthOriginal) { // it's portrait
+                    $height = 1280;
+                    $width = ceil(($widthOriginal * $height) / $heightOriginal);
+                } else {
+                    $width = 1280; // max to have great quality with reduced weight
+                    $height = -1;
+                }
+
+                $mode = IMG_BILINEAR_FIXED; // algo of img resizing
+                $resampledObject = imagescale($image, $width, $height, $mode); // transform img in object to apply changes
+                imagejpeg($resampledObject, $to, 80); // transform object in img
+
+
             } catch (\Throwable $th) {
                 $error['picture'] = $th->getMessage();
             }
         }
+
 
         //Récupération et nettoyage de la récupération de la donnée "model"
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -122,7 +141,6 @@ try {
 
         $id_picture = Picture::getId($id_picture);
     }
-
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }

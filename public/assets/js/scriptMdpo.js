@@ -1,4 +1,4 @@
-const email = document.getElementById("Email"); 
+const email = document.getElementById("email"); 
 const message1 = "E-mail incorrect !";
 const errorMessage1 = document.getElementById("error1");
 

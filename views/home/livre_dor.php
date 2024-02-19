@@ -31,13 +31,18 @@
                     <label for="username" class="form-label">Identifiant de l'utilisateur<strong> *</strong></label>
                     <input type="text" class="form-control" id="username" aria-describedby="username" name="username" value="<?= $username ?? '' ?>" maxlength='30' placeholder="Votre identifiant" required>
                 </div>
-                <?php if (!empty($username) && $username != NULL){ 
-                    if ($isexistUsername) { ?>
-                    <p class="error-message text-success"><?= $error['message'] ?></p><br>
-                    <?php } else { ?>
-                    <p class="error-message text-danger"><?= $error['message'] ?></p><br>
+                <div class="error">
+                    <?php if (!empty($username) && $username != NULL) {
+                        if ($isexistUsername) { ?>
+                            <p class="error-message text-success"><?= $error['message'] ?></p><br>
+                        <?php } else { ?>
+                            <p class="error-message text-danger"><?= $error['message'] ?></p><br>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?>
+                    <p id="error1" class="d-none">
+                    <?= $error['username'] ?? '' ?>
+                    </p><br>
+                </div>
                 <div class="col-12 mb-3">
                     <label for="performance" class="form-label">Quelle prestation avons-nous partagée ?<strong> *</strong></label>
                     <input type="text" class="form-control" id="performance" aria-describedby="prestation" name="performance" value="<?= $performance ?? '' ?>" maxlength='50' placeholder="Votre prestation" required>

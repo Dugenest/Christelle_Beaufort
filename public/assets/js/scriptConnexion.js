@@ -1,5 +1,5 @@
-const userName = document.getElementById("userName");
-const pwdMedium = document.getElementById("Password1");
+const userName = document.getElementById("username");
+const pwdMedium = document.getElementById("password");
 
 const message1 = "Caractères non pris en compte !";
 const message2 = "Merci de mettre au moins 1 Majuscule, 1 minuscule, 1 chiffre et 1 caratère spécial (min 8)."
@@ -7,7 +7,8 @@ const message2 = "Merci de mettre au moins 1 Majuscule, 1 minuscule, 1 chiffre e
 const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
 
-const regexName = /^[a-zA-Z0-9]{2,30}$/;
+const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
+const regexName = /^[A-Za-zéèêëàâäôöûüïç' ]{2,30}$/;
 const regexPwdStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 // Création d'un écouteur d'événement pour le userName
@@ -16,7 +17,7 @@ userName.addEventListener("keyup", function () {
         userName.classList.remove("red", "green"); 
         errorMessage1.classList.add("d-none");
     //Test de la regexName pour tester la valeur
-        if (regexName.test(userName.value)) { 
+        if (regexUserName.test(userName.value)) { 
             userName.classList.add("green"); 
             errorMessage1.classList.add("d-none");
         } else { 

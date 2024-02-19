@@ -15,11 +15,14 @@ hr {
     width: 800px;
 }
 
-.main-container {
+.mainImg {
+    background-image: url(/public/assets/img/Photo_a_vendre/Lueur_gelée.jpg);
+    z-index: -1;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    height: 200px;
+    height: 100%;
 }
 
 

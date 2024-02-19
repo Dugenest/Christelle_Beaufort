@@ -18,12 +18,12 @@ const errorMessage5 = document.getElementById("error5");
 const errorMessage6 = document.getElementById("error6");
 const errorMessage7 = document.getElementById("error7");
 
-const regexUserName = /^[a-zA-Z0-9]{2,30}$/;
-const regexName = /^[a-zA-Z]{2,30}$/;
+const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
+const regexName = /^[A-Za-zéèêëàâäôöûüïç' ]{2,30}$/;
 const regexEmail = /^[A-Za-z0-9.\_\.\-]+@[a-z0-9\_\-]+\.[a-z]{2,5}$/;
 const regexPhone = /^[0-9]{10}$/;
-const regexPerformance = /^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,50}$/;
-const regexMessage = /^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,300}$/;
+const regexPerformance = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-:]{5,50}$/;
+const regexMessage = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-: ]{5,300}$/;
 
 
 // Création d'un écouteur d'événement pour le userName

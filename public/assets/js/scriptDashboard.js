@@ -30,12 +30,12 @@ const errorMessage9 = document.getElementById("error9");
 const errorMessage10 = document.getElementById("error10");
 
 // Création des regex
-const regexName = /^[a-zA-Z0-9]{2,30}$/;
-const regexEmail = /^[A-Za-z0-9.\_\.\-]+@[a-z0-9\_\-]+\.[a-z]{2,5}$/;
-const regexAdress = /^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{2,50}$/;
+const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
+const regexName = /^[A-Za-zéèêëàâäôöûüç' ]+$/;
+const regexEmail = /^[A-Za-z0-9.\_\.\-]+@[a-z0-9\_\-]+\.[a-z]{2,5}$/; 
 const regexPhone = /^[0-9]{10}$/;
+const regexAdress = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-: ]{10,250}$/;
 const regexPwdStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
 
 
 // Création d'un écouteur d'événement pour le lastname
@@ -44,7 +44,7 @@ userNameText.addEventListener("keyup", function () {
     userNameText.classList.remove("red", "green");
     errorMessage1.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
-    if (regexName.test(userNameText.value)) {
+    if (regexUserName.test(userNameText.value)) {
         userNameText.classList.add("green");
         errorMessage1.classList.add("d-none");
     } else {

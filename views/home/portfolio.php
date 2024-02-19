@@ -13,11 +13,11 @@
                 if (($value->category) != 'Gallerie') { ?>
                     <div class="col col-md-5 card" style="width: 20rem;">
                         <a href="./portfolioPicture-ctrl.php?id=<?= $value->id_category ?>">
-                            <img src="<?= $value->picture ?>" class="card-img-top" alt="<?= $value->category ?>">
+                            <img src="/public/uploads/pictures/categories/<?= $value->picture ?>" class="card-img-top" alt="<?= $value->category ?>">
+                        </a>
                             <div class="card-body">
                                 <h5 class="card-title"><?= $value->category ?></h5>
                             </div>
-                        </a>
                     </div>
                 <?php } ?>
             <?php } ?>

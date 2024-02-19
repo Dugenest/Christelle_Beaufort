@@ -1,6 +1,6 @@
-const userName = document.getElementById("userName");
-const performance = document.getElementById("Performance");
-const message = document.getElementById("Message");
+const userName = document.getElementById("username");
+const performance = document.getElementById("performance");
+const message = document.getElementById("message");
 
 const message1 = "Identifiant incorrect !";
 const message2 = "Caractères non pris en compte !";
@@ -9,9 +9,10 @@ const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
 const errorMessage3 = document.getElementById("error3");
 
-const regexName = /^[a-zA-Z0-9]{2,30}$/;
-const regexPerformance = /^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,50}$/;
-const regexMessage = /^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,300}$/;
+const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
+const regexName = /^[A-Za-zéèêëàâäôöûüç' ]+$/;
+const regexPerformance = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-:]{5,50}$/;
+const regexMessage = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-: ]{5,300}$/;
 
 
 // Création d'un écouteur d'événement pour le userName
@@ -20,7 +21,7 @@ userName.addEventListener("keyup", function () {
     userName.classList.remove("red", "green");
     errorMessage1.classList.add("d-none");
     //Test de la regexName pour tester la valeur
-    if (regexName.test(userName.value)) {
+    if (regexUserName.test(userName.value)) {
         userName.classList.add("green");
         errorMessage1.classList.add("d-none");
     } else {

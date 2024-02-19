@@ -19,6 +19,10 @@ try
     $id_category = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $performances = Performance::getIdCat($id_category);
 
+    foreach ($performances as $performance) {
+        $imgPerformance = $performance->picture;
+    }
+
 
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());

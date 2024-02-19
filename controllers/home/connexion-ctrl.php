@@ -17,7 +17,7 @@ try
                 $error['username'] = 'L\'identifiant est obligatoire';
             } else {
         //Validation de la donnée "username" grâce à la regex
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=> '/' . USER_NAME . '/')));
             if ($isOk == false){
                 $error['username'] = 'L\'identifiant n\'est pas valide !';
                 }
@@ -29,7 +29,7 @@ try
                 $error['password'] = 'Le Mot de Passe est obligatoire';
             } else {
         //Validation de la donnée "password" grâce à la regex
-                $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+                $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=> '/' . PSWD . '/')));
                 if ($isOk == false){
                     $error['password'] = 'Le Mot de Passe n\'est pas valide !';
                 }

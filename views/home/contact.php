@@ -6,7 +6,7 @@
                     <h1>CONTACT</h1>
                     <div class="col-12 mb-3">
                         <label for="username" class="form-label">Identifiant de l'utilisateur</label>
-                        <input type="text" class="form-control" id="username" aria-describedby="username" name="username" value="<?= $username ?? '' ?>" maxlength='30' placeholder="Votre identifiant">
+                        <input type="text" class="form-control" id="username" aria-describedby="username" name="username" value="<?= $username ?? '' ?>" maxlength='30' placeholder="Votre identifiant si vous êtes inscrit">
                     </div>
                     <?php if (!empty($username) && $username != NULL) {
                         if ($isexistUsername) { ?>

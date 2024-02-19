@@ -18,7 +18,7 @@ try {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
         if (!empty($username)) {
             //Validation de la donnée "username" grâce à la regex
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . USER_NAME . '/')));
             if ($isOk == false) {
                 $error['username'] = 'L\'identifiant n\'est pas valide !';
             }
@@ -66,7 +66,7 @@ try {
             $error['phone'] = 'Le numéro de téléphone est obligatoire';
         } else {
             //Validation de la donnée "phone" grâce à la regex
-            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[0-9]{10}$/')));
+            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . PHONE . '/')));
             if ($isOk == false) {
                 $error['phone'] = 'Le numéro de téléphone n\'est pas valide !';
             }
@@ -78,7 +78,7 @@ try {
             $error['performance'] = 'La prestation est obligatoire';
         } else {
             //Validation de la donnée "performance" grâce à la regex
-            $isOk = filter_var($performance, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,50}$/')));
+            $isOk = filter_var($performance, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . PERFORMANCE . '/')));
             if ($isOk == false) {
                 $error['performance'] = 'La prestation décrite n\'est pas valide !';
             }
@@ -90,7 +90,7 @@ try {
             $error['message'] = 'Le message est obligatoire';
         } else {
             //Validation de la donnée "message" grâce à la regex
-            $isOk = filter_var($message, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s\.,;\'\"!?()\[\]{}\-:]{5,300}$/')));
+            $isOk = filter_var($message, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . MESSAGE . '/')));
             if ($isOk == false) {
                 $error['Message'] = 'Le message décrit n\'est pas valide !';
             }
