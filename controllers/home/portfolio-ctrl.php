@@ -8,7 +8,7 @@ try
 {
     $title = 'Portfolio';
 
-// appel de la methode getAll pour afficher toutes les categories $categories
+// appel de la methode getAll pour afficher toutes les categories
     $categories = Category::getAll();
 
 

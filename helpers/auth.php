@@ -3,6 +3,7 @@
 class Auth
 {
 
+    //Vérification de la connexion admin sinon redirection vers la connexion
     /**
      * @return [type]
      */

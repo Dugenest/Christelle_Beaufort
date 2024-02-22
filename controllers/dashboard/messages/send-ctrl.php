@@ -13,16 +13,18 @@ try {
     $title = 'Description d\'un message';
     $result = Message::getAll();
 
+    // Récupération de l'id message dans l'url
     $id_message = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $idMessage = Message::getId($id_message);
 
-
+    // Validation du message et enregistrement en base de données
     Message::getRead($id_message, 1);
 
     // Utilisation de sessions pour stocker temporairement les messages
     $_SESSION['success'] = $msg;
     $_SESSION['error'] = $error;
 
+    // Rediriger vers la page des messages après la validation
     header('Location: /controllers/dashboard/messages/list-ctrl.php');
     exit;
     

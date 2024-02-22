@@ -49,21 +49,21 @@ try {
                 move_uploaded_file($from, $to);
                 $picture = $filename . '.' . $extension;
 
-                $image = imagecreatefromjpeg($to); // use function from the library GD
+                $image = imagecreatefromjpeg($to); // utilisation de la fonction pour la librairie GD
 
                 $widthOriginal = imagesx($image);
                 $heightOriginal = imagesy($image);
-                if ($heightOriginal > $widthOriginal) { // it's portrait
+                if ($heightOriginal > $widthOriginal) { // portrait
                     $height = 1280;
                     $width = ceil(($widthOriginal * $height) / $heightOriginal);
                 } else {
-                    $width = 1280; // max to have great quality with reduced weight
+                    $width = 1280; // max de qualité sans réduire la largeur
                     $height = -1;
                 }
 
-                $mode = IMG_BILINEAR_FIXED; // algo of img resizing
-                $resampledObject = imagescale($image, $width, $height, $mode); // transform img in object to apply changes
-                imagejpeg($resampledObject, $to, 80); // transform object in img
+                $mode = IMG_BILINEAR_FIXED; // algo de l'image
+                $resampledObject = imagescale($image, $width, $height, $mode); // transformation de l'image en objet
+                imagejpeg($resampledObject, $to, 80); // transformation de l'objet en image
 
             } catch (\Throwable $th) {
                 $error['picture'] = $th->getMessage();

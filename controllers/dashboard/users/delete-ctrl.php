@@ -26,7 +26,7 @@ try {
     // Utilisation de sessions pour stocker temporairement les messages
     $_SESSION['msg'] = $msg;
 
-    // Rediriger vers la page des catégories après la suppression
+    // Rediriger vers la liste des utilisateurs après la suppression
     header("Location:/controllers/dashboard/users/list-ctrl.php");
     exit();
 

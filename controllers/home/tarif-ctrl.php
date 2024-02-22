@@ -16,6 +16,7 @@ try
     unset($_SESSION['msg']);
     unset($_SESSION['error']);
 
+    //Récupération des données de category et performance
     $categories = Category::getAll();
     $result = Performance::getAll();
 

@@ -8,6 +8,8 @@ require_once __DIR__ . '/../../config/init.php';
 try
 {
     $title = 'Galerie';
+
+    //Récupération des données de picture et category
     $pictures = Picture::getAll();
     $categories = Category::getAll();
 

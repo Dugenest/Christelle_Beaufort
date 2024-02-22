@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../../helpers/auth.php';
 require_once __DIR__ . '/../../../models/Categories.php';
 require_once __DIR__ . '/../../../config/init.php';
 
-
+//Vérification si l'utilisateur est un admin
 Auth::check();
 
 try 

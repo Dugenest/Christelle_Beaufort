@@ -56,6 +56,7 @@ try {
             }
         }
 
+        //vérification de l'identifiant en base de donnée avec celui tapé par l'utilisateur 
         if (!empty($username) && $username != NULL) {
             $isexistUsername = User::isExist($username);
             if ($isexistUsername) {

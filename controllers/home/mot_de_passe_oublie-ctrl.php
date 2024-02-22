@@ -11,6 +11,7 @@ try
         if (empty($Email)) {
             $errorEmail = 'L\'Email est obligatoire';
         } else {
+            //Validation de la donnée "email"
             $isOk = filter_var($Email, FILTER_VALIDATE_EMAIL);
             if ($isOk == false){
                 $errorEmail = 'l\'Email n\'est pas valide !';

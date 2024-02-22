@@ -15,6 +15,7 @@ try {
     $categories = Category::getAll();
     $result = Performance::getAll();
 
+    //Récupération de l'id_performance dans l'URL
     $id_performance = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $performance = Performance::getId($id_performance);
 
@@ -23,11 +24,10 @@ try {
         die;
     }
 
-    // Si le formulaire est soumis en POST
     //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //Récupération et nettoyage de la récupération de la donnée "name"
+        //Récupération et nettoyage de la récupération de la donnée "id_category"
         $id_category = filter_input(INPUT_POST, 'id_category', FILTER_SANITIZE_NUMBER_INT);
         if (empty($id_category)) {
             $error['id_category'] = 'L\'id est obligatoire';
@@ -45,20 +45,21 @@ try {
             $error['titlePerformance'] = 'Le titre est obligatoire';
         } else {
             //Validation de la donnée "titlePerformance" grâce à la regex
-            $isOk = filter_var($titlePerformance, FILTER_VALIDATE_REGEXP,array("options" => array("regexp" => '/' . NAME . '/')));
+            $isOk = filter_var($titlePerformance, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false) {
                 $error['titlePerformance'] = 'Le titre n\'est pas valide !';
             }
         }
 
-        //Récupération et nettoyage de la récupération de la donnée "type"
+        //Récupération et nettoyage de la récupération de la donnée "description"
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($description)) {
-            $error['description'] = 'Le description est obligatoire';
+            $error['description'] = 'La description est obligatoire';
         } else {
             //Validation de la donnée "description" grâce à la regex
             $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . MESSAGE . '/')));
-                $error['description'] = 'Le type n\'est pas valide !';
+            if ($isOk == false) {
+                $error['description'] = 'La description n\'est pas valide !';
             }
         }
 
@@ -97,11 +98,12 @@ try {
         $_SESSION['msg'] = $msg;
         $_SESSION['error'] = $error;
 
+        //Redirection vers la page tarif après modification
         header('Location: /controllers/dashboard/performances/list-ctrl.php');
         exit;
 
         $performance = Performance::getId($id_performance);
-    
+    }
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }

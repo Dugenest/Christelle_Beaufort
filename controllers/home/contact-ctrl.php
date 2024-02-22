@@ -96,7 +96,7 @@ try {
             }
         }
 
-
+        //vérification de l'identifiant en base de donnée avec celui tapé par l'utilisateur
         if (!empty($username) && $username != NULL) {
             $isexistUsername = User::isExist($username);
             if ($isexistUsername) {
@@ -116,7 +116,8 @@ try {
             $_SESSION['msg'] = $msg;
             $_SESSION['error'] = $error;
 
-            header('Location: /controllers/home/contact-ctrl.php');
+            //Redirection ver la page d'accueil
+            header('Location: /index.php');
             exit;
         }
     }

@@ -22,7 +22,7 @@ try
             $error['username'] = 'L\'identifiant est obligatoire';
         } else {
         //Validation de la donnée "username" grâce à la regex
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false){
                 $error['username'] = 'L\'identifiant n\'est pas valide !';
             }
@@ -34,7 +34,7 @@ try
             $error['lastname'] = 'Le nom est obligatoire';
         } else {
         //Validation de la donnée "lastname" grâce à la regex
-            $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
+            $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false){
                 $error['lastname'] = 'Le nom n\'est pas valide !';
             }
@@ -46,7 +46,7 @@ try
             $error['firstname'] = 'Le prénom est obligatoire';
         } else {
         //Validation de la donnée "firstname" grâce à la regex
-            $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z]{2,30}$/')));
+            $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false){
                 $error['firstname'] = 'Le prénom n\'est pas valide !';
             }
@@ -70,7 +70,7 @@ try
             $error['adress'] = 'L\'adresse est obligatoire';
         } else {
         //Validation de la donnée "adress" grâce à la regex
-            $isOk = filter_var($adress, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9 ]{2,50}$/')));
+            $isOk = filter_var($adress, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . ADRESS . '/')));
             if ($isOk == false){
                 $error['adress'] = 'L\'adresse n\'est pas valide !';
             }
@@ -82,7 +82,7 @@ try
             $error['phone'] = 'Le numéro de téléphone est obligatoire';
         } else {
         //Validation de la donnée "phone" grâce à la regex
-            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[0-9]{10}$/')));
+            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . PHONE . '/')));
             if ($isOk == false){
                 $error['phone'] = 'Le numéro de téléphone n\'est pas valide !';
             }
@@ -106,7 +106,7 @@ try
             $error['password'] = 'Le mot de passe est obligatoire';
         } else {
         //Validation de la donnée "password" grâce à la regex
-            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . PSWD . '/')));
             if ($isOk == false){
                 $error['password'] = 'Le mot de passe n\'est pas valide !';
             }
@@ -118,12 +118,13 @@ try
             $error['confirmPassword'] = 'Le mot de passe est obligatoire';
         } else {
             //Validation de la donnée "confirmPassword" grâce à la regex
-            $isOk = filter_var($confirmPassword, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/')));
+            $isOk = filter_var($confirmPassword, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . PSWD . '/')));
             if ($isOk == false) {
                 $error['confirmPassword'] = 'Le mot de passe n\'est pas valide !';
             }
         }
 
+        //vérification de la correspondance des mots de passe
         if ($password != $confirmPassword) {
             $error["password"] = "les mots de passe ne correspondent pas";
         }
@@ -155,6 +156,7 @@ try
             $_SESSION['msg'] = $msg;
             $_SESSION['error'] = $error;
 
+            //Redirection vers la liste des utilisateurs
             header('Location:list-ctrl.php');
             exit;
         }

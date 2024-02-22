@@ -17,7 +17,7 @@ try {
     //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //Récupération et nettoyage de la récupération de la donnée "name"
+        //Récupération et nettoyage de la récupération de la donnée "id_category"
         $id_category = filter_input(INPUT_POST, 'id_category', FILTER_SANITIZE_NUMBER_INT);
         if (empty($id_category)) {
             $error['id_category'] = 'L\'id est obligatoire';
@@ -29,7 +29,7 @@ try {
             }
         }
 
-        //Récupération et nettoyage de la récupération de la donnée "name"
+        //Récupération et nettoyage de la récupération de la donnée "titlePerformance"
         $titlePerformance = filter_input(INPUT_POST, 'titlePerformance', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($titlePerformance)) {
             $error['titlePerformance'] = 'Le titre est obligatoire';
@@ -41,7 +41,7 @@ try {
             }
         }
 
-        //Récupération et nettoyage de la récupération de la donnée "type"
+        //Récupération et nettoyage de la récupération de la donnée "description"
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($description)) {
             $error['description'] = 'La description est obligatoire';
@@ -87,6 +87,7 @@ try {
             $_SESSION['msg'] = $msg;
             $_SESSION['error'] = $error;
 
+            //redirection vers la page des tarifs
             header('Location:list-ctrl.php');
             exit;
         }

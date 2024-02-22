@@ -8,7 +8,7 @@ try {
     $title = 'Supprimer une catégorie';
     $msg = [];
 
-    // Vérifiez si l'ID de l'utilisateur à supprimer est présent dans l'URL
+    // Vérifiez si l'ID de la catégorie à supprimer est présent dans l'URL
     if (isset($_GET['id'])) {
         $id_category = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 

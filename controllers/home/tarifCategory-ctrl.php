@@ -16,9 +16,11 @@ try
     unset($_SESSION['msg']);
     unset($_SESSION['error']);
 
+    //Récupération de l'id_category dans l'url
     $id_category = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $performances = Performance::getIdCat($id_category);
 
+    // Boucle pour afficher l'image dynamique en fond d'écran
     foreach ($performances as $performance) {
         $imgPerformance = $performance->picture;
     }

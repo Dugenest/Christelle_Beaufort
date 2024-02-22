@@ -8,7 +8,7 @@ try {
     $title = 'Supprimer un commentaire';
     $msg = [];
 
-    // Vérifiez si l'ID de l'utilisateur à supprimer est présent dans l'URL
+    // Vérifiez si l'ID du commentaire à supprimer est présent dans l'URL
     if (isset($_GET['id'])) {
         $id_comment = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 
@@ -27,7 +27,7 @@ try {
     session_start();
     $_SESSION['msg'] = $msg;
 
-    // Rediriger vers la page des catégories après la suppression
+    // Rediriger vers la page des commentaires après la suppression
     header("Location:/controllers/dashboard/comments/list-ctrl.php");
     exit();
 

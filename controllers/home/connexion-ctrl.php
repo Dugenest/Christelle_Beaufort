@@ -35,6 +35,7 @@ try
                 }
             }
     
+            
             if (empty($error)) {
                 $user = User::getByUsername($username);
             
@@ -61,10 +62,10 @@ try
                 foreach ($error as $value) {
                     echo $value . "<br>";
                 }
-                // Vous pouvez rediriger l'utilisateur vers une page d'erreur ou afficher un message approprié.
+
             } else {
-                // L'utilisateur est authentifié avec succès, redirigez-le vers la page d'accueil ou une autre page sécurisée.
-                header("Location: /../../../../index.php");
+                // L'utilisateur est authentifié avec succès, redirection vers la page d'accueil
+                header("Location: /../../index.php");
                 exit();
             }
         }     

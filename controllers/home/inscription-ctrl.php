@@ -144,6 +144,7 @@ try {
             $_SESSION['msg'] = $msg;
             $_SESSION['error'] = $error;
 
+            // Redirection vers la page inscription
             header('Location:/../../controllers/home/inscription-ctrl.php');
             exit;
         }

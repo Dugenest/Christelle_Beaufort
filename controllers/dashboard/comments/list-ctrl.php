@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../../models/Comments.php';
 require_once __DIR__ . '/../../../models/Users.php';
 require_once __DIR__ . '/../../../config/init.php';
 
-
+//Vérification si l'utilisateur est un admin
 Auth::check();
 
 try 

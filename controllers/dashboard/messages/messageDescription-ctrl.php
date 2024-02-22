@@ -8,6 +8,7 @@ require_once __DIR__ . '/../../../config/init.php';
 try {
     $title = 'Description d\'un message';
 
+    // Récupération de l'id message dans l'url
     $id_message = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $idMessage = Message::getId($id_message);
 

@@ -23,7 +23,7 @@ try {
         
         if (!empty($filename)) { // Vérifier si le nom du fichier est non vide
             
-            $filepath = __DIR__ . "/../../../public/uploads/pictures/$filename";
+            $filepath = __DIR__ . "/../../../public/uploads/pictures/picture/$filename";
             if (file_exists($filepath)) {
             
                 if (unlink($filepath)) {
@@ -45,7 +45,7 @@ try {
     // Utilisation de sessions pour stocker temporairement les messages
     $_SESSION['msg'] = $msg;
 
-    // Rediriger vers la page des catégories après la suppression
+    // Rediriger vers la page des photos après la suppression
     header("Location:/controllers/dashboard/pictures/list-ctrl.php");
     exit();
 
