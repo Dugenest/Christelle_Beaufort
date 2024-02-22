@@ -5,7 +5,7 @@
     <?php if (empty($result)): ?>
         <p>Aucun commentaire n'a été trouvé.</p>
     <?php else: ?>
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">Identifiant</th>

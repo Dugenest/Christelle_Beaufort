@@ -53,3 +53,16 @@ a:hover {
 .carousel-item, .row {
     text-align: center;
 }
+
+@media (max-width: 767px) {
+    #carouselExampleIndicators {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    #carouselExampleIndicators {
+        width: 80%;
+        margin: 0 auto;
+    }
+}

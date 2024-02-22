@@ -1,3 +1,7 @@
+main {
+    padding-top: 80px;
+}
+
 li {
     list-style: none;
 }
@@ -7,11 +11,22 @@ li {
     height: 60px;
 }
 
+.logoHeader {
+    width: 70px;
+    height: 45px;
+}
+
 .mentionsLegales{
     margin-top: 10px;
-    /* margin-left: 35px; */
 }
 
 footer {
     background-color: #FAF6F4;
 }
+
+section {
+    background-color: #FAF6F4;
+    display:flex;
+    width:100%;
+}
+

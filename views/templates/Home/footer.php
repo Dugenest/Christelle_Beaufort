@@ -21,8 +21,8 @@
 
             <section class="row mentionsLegales text-center py-3">
                 <a target="_blank">© Christelle-Beaufort - <?="$year"?></a>
-                <a href="" target="_blank">Politique de confidentialité</a>
-                <a href="" target="_blank">Mentions Légales</a>
+                <a href="/controllers/home/politiquedeconfidentialite-ctrl.php" target="_blank">Politique de confidentialité</a>
+                <a href="/controllers/home/mentionslegales-ctrl.php" target="_blank">Mentions Légales</a>
             </section>
         
     </footer>
@@ -36,7 +36,7 @@
     <?php } elseif ($title == 'Livre d\'or') { ?>
         <script src="/public/assets/js/scriptLivreDor.js"></script>
     <?php } elseif ($title == 'Mot de passe oublié') { ?>
-        <script src="./public/assets/js/scriptMdpo.js"></script>
+        <script src="/public/assets/js/scriptMdpo.js"></script>
     <?php } ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

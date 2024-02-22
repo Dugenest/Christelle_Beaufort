@@ -2,7 +2,7 @@ const userName = document.getElementById("username");
 const pwdMedium = document.getElementById("password");
 
 const message1 = "Caractères non pris en compte !";
-const message2 = "Merci de mettre au moins 1 Majuscule, 1 minuscule, 1 chiffre et 1 caratère spécial (min 8)."
+
 
 const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
@@ -13,28 +13,28 @@ const regexPwdStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@
 
 // Création d'un écouteur d'événement pour le userName
 userName.addEventListener("keyup", function () { 
-    // Supprimer les classes "red" et "green" à chaque saisie 
-        userName.classList.remove("red", "green"); 
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+        userName.classList.remove("border-danger", "border-success"); 
         errorMessage1.classList.add("d-none");
     //Test de la regexName pour tester la valeur
         if (regexUserName.test(userName.value)) { 
-            userName.classList.add("green"); 
+            userName.classList.add("border-success"); 
             errorMessage1.classList.add("d-none");
         } else { 
-            userName.classList.add("red"); 
+            userName.classList.add("border-danger"); 
             errorMessage1.classList.remove("d-none");
             errorMessage1.textContent = message1; }; 
     });
 
 // Création d'un écouteur d'événement pour le mot de passe
 pwdMedium.addEventListener("input", function () { 
-    pwdMedium.classList.remove("red", "green",);
+    pwdMedium.classList.remove("border-danger", "border-success",);
     errorMessage2.classList.add("d-none");  
     if (regexPwdStrong.test(pwdMedium.value)) { 
-        pwdMedium.classList.add("green"); 
+        pwdMedium.classList.add("border-success"); 
         errorMessage2.classList.add("d-none");
     } else { 
-        pwdMedium.classList.add("red"); 
+        pwdMedium.classList.add("border-danger"); 
         errorMessage2.classList.remove("d-none");
-        errorMessage2.textContent = message2; };
+    };
 }); 

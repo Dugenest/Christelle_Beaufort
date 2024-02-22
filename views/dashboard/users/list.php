@@ -6,7 +6,7 @@
         <a href="/controllers/dashboard/users/add-ctrl.php"><input class="button" type="submit" name="insert" value="Ajouter un utilisateur"></a>
     </div>
 <?php else : ?>
-    <table class="table">
+    <table class="table table-bordered table-responsive">
         <thead>
             <tr>
                 <th scope="col">Identifiant</th>

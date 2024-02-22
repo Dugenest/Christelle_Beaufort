@@ -10,18 +10,13 @@ title, h1 {
     text-align: center;
 }
 
+.styleCard {
+    width: auto;
+    background-color: #FAF6F4;
+}
+
 #name {
     border: solid;
-}
-
-.green {
-    border-color: green;
-    border-width: thick;
-}
-
-.red {
-    border-color: red;
-    border-width: thick;
 }
 
 img {

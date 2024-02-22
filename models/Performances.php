@@ -9,7 +9,6 @@ class Performance
 {
 
     // ! création des attributs
-    private string $name;
     private string $titlePerformance;
     private string $description;
     private int $price;
@@ -22,10 +21,9 @@ class Performance
 
 
     // ! création de la méthode magique construct
-    public function __construct(string $name = '', string $titlePerformance = '', string $description = '', int $price = 0, ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_performance = NULL, ?int $id_category = NULL, ?int $id_user = NULL)
+    public function __construct(string $titlePerformance = '', string $description = '', int $price = 0, ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_performance = NULL, ?int $id_category = NULL, ?int $id_user = NULL)
     {
-        $this->name = $name;
-        $this->name = $titlePerformance;
+        $this->titlePerformance = $titlePerformance;
         $this->description = $description;
         $this->price = $price;
         $this->created_at = $created_at;
@@ -39,15 +37,6 @@ class Performance
 
     // ! création des getters
 
-
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
 
     /**
      * @return string
@@ -125,16 +114,6 @@ class Performance
 
     // ! création des setters
 
-
-    /**
-     * @param string $name
-     * 
-     * @return [type]
-     */
-    public function setName(string $name)
-    {
-        $this->name = $name;
-    }
 
     /**
      * @param string $titlePerformance
@@ -237,13 +216,12 @@ class Performance
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO `performances` (`id_performance`, `name`, `titlePerformance`, `description`, `price`, `id_category`, `id_user`) 
-                VALUES (:id_performance, :name, :titlePerformance, :description, :price, :id_category, :id_user);';
+        $sql = 'INSERT INTO `performances` (`id_performance`, `titlePerformance`, `description`, `price`, `id_category`, `id_user`) 
+                VALUES (:id_performance, :titlePerformance, :description, :price, :id_category, :id_user);';
 
         $sth = $pdo->prepare($sql);
 
         $sth->bindValue(':id_performance', $this->getIdPerformance(), PDO::PARAM_INT);
-        $sth->bindValue(':name', $this->getName());
         $sth->bindValue(':titlePerformance', $this->getTitlePerformance());
         $sth->bindValue(':description', $this->getDescription());
         $sth->bindValue(':price', $this->getPrice());
@@ -306,7 +284,7 @@ class Performance
     {
         $pdo = Database::connect();
 
-        $sql = 'SELECT categories.picture, performances.titlePerformance, performances.description, performances.price, performances.id_category, performances.id_performance   
+        $sql = 'SELECT categories.picture, performances.titlePerformance, performances.description, performances.price, performances.id_category, performances.id_performance, categories.category   
                 FROM `performances` 
                 INNER JOIN `categories`ON `performances`.`id_category` = `categories`.`id_category` 
                 WHERE `performances`.`id_category`=:id;';
@@ -331,15 +309,14 @@ class Performance
 
         // Requête MySQL pour mettre à jour des données
         $sql = 'UPDATE `performances` 
-                SET 
-                    `name` = :name,
+                SET `id_category` = :id_category,
                     `titlePerformance` = :titlePerformance, 
                     `description` = :description,
                     `price` = :price
                 WHERE `id_performance` = :id';
 
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':name', $this->getName());
+        $sth->bindValue(':id_category', $this->getIdCategory(), PDO::PARAM_INT);
         $sth->bindValue(':titlePerformance', $this->getTitlePerformance());
         $sth->bindValue(':description', $this->getDescription());
         $sth->bindValue(':price', $this->getPrice());
@@ -374,19 +351,19 @@ class Performance
 
 
     /**
-     * @param string $name
+     * @param string $titlePerformance
      * 
      * @return object
      */
-    public static function getByname(string $name): object|false
+    public static function getByTitle(string $titlePerformance): object|false
     {
         $pdo = Database::connect();
         $sql = 'SELECT *
                 FROM `performances`
-                WHERE `name` = :name;';
+                WHERE `titlePerformance` = :titlePerformance;';
 
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':name', $name);
+        $sth->bindValue(':titlePerformance', $titlePerformance);
         $sth->execute();
 
         if ($sth->rowCount() > 0) {
@@ -399,20 +376,20 @@ class Performance
 
 
     /**
-     * @param mixed $name
+     * @param mixed $titlePerformance
      * 
      * @return bool
      */
-    public static function isExist($name): bool
+    public static function isExist($titlePerformance): bool
     {
         $pdo = Database::connect();
 
         $sql = 'SELECT COUNT(`id_performance`) AS "count"
                 FROM `performances` 
-                WHERE `name`=:name;';
+                WHERE `title$titlePerformance` = :title;';
 
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':name', $name, PDO::PARAM_STR);
+        $sth->bindValue(':title', $titlePerformance, PDO::PARAM_STR);
         $sth->execute();
 
         $count = $sth->fetchColumn();

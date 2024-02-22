@@ -21,7 +21,6 @@ hr {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 200px;
     height: 100%;
 }
 
@@ -30,13 +29,12 @@ hr {
     list-style: circle;
 }
 
-.row {
+.tarifCard {
     justify-content: space-around;
 }
 
 .card {
     margin-top: 35px;
-    margin-left: 15px;
     opacity: 0.8;
 }
 
@@ -46,7 +44,6 @@ hr {
 
 #btnGalerie {
     width: 150px;
-    max-width: 500px;
     height: 40px;
     font-weight: 700;
     font-size: 16px;
@@ -56,4 +53,10 @@ hr {
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
     color: #303030;
     margin-top: 100px;
+}
+
+.main-container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
 }

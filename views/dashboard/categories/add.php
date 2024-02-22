@@ -1,7 +1,8 @@
 <h1>Ajout d'une catégorie</h1>
 
 <form method="post" enctype="multipart/form-data" action="">
-    <div class="row justify-content-center py-5">
+<div class="card m-5">
+    <div class="row styleCard justify-content-center m-3 py-5">
         <div class="col col-md-6 mb-3">
             <label for="category" class="form-label"><strong>Catégories <strong class="danger">*</strong></strong></label>
             <input type="text" class="form-control" id="category" name="category" accept=".jpeg, .pdf, .gif, .png" value="<?= $category ?? '' ?>" maxlength='30' aria-describedby="categoryHelp" placeholder="Veuillez insérer la catégorie svp?" required>
@@ -34,4 +35,5 @@
             <a href="/controllers/dashboard/users/list-ctrl.php"><input class="button" type="submit" name="cancel" value="Annuler"></a>
         </div>
     </div>
+</div>
 </form>

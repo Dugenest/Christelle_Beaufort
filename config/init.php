@@ -15,7 +15,7 @@ define('PHONE', "^[0-9]{10}$");
 define('PERFORMANCE', "^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-:]{5,50}$");
 define('MESSAGE', "^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-: ]{5,300}$");
 define('ADRESS', "^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-: ]{10,250}$");
-define('PSWD', '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
+define('PSWD', '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z0-9\d@$!%*?&]{8,}$');
 
 //création des constantes pour définir les photos
 define('ARRAY_TYPES', ['image/jpeg', 'image/png']);

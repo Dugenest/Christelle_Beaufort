@@ -28,15 +28,15 @@ const regexMessage = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;
 
 // Création d'un écouteur d'événement pour le userName
 userName.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    userName.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    userName.classList.remove("border-danger", "border-success");
     errorMessage1.classList.add("d-none");
     //Test de la regexName pour tester la valeur
     if (regexUserName.test(userName.value)) {
-        userName.classList.add("green");
+        userName.classList.add("border-success");
         errorMessage1.classList.add("d-none");
     } else {
-        userName.classList.add("red");
+        userName.classList.add("border-danger");
         errorMessage1.classList.remove("d-none");
         errorMessage1.textContent = message1;
     };
@@ -44,15 +44,15 @@ userName.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le lastname
 lastName.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    lastName.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    lastName.classList.remove("border-danger", "border-success");
     errorMessage2.classList.add("d-none");
     //Test de la regexName pour tester la valeur
     if (regexName.test(lastName.value)) {
-        lastName.classList.add("green");
+        lastName.classList.add("border-success");
         errorMessage2.classList.add("d-none");
     } else {
-        lastName.classList.add("red");
+        lastName.classList.add("border-danger");
         errorMessage2.classList.remove("d-none");
         errorMessage2.textContent = message2;
     };
@@ -60,15 +60,15 @@ lastName.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le firstName
 firstName.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    firstName.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    firstName.classList.remove("border-danger", "border-success");
     errorMessage3.classList.add("d-none");
     //Test de la regexName pour tester la valeur
     if (regexName.test(firstName.value)) {
-        firstName.classList.add("green");
+        firstName.classList.add("border-success");
         errorMessage3.classList.add("d-none");
     } else {
-        firstName.classList.add("red");
+        firstName.classList.add("border-danger");
         errorMessage3.classList.remove("d-none");
         errorMessage3.textContent = message2;
     };
@@ -76,13 +76,13 @@ firstName.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour l'email
 email.addEventListener("keyup", function () {
-    email.classList.remove("red", "green",);
+    email.classList.remove("border-danger", "border-success",);
     errorMessage4.classList.add("d-none");
     if (regexEmail.test(email.value)) {
-        email.classList.add("green");
+        email.classList.add("border-success");
         errorMessage4.classList.add("d-none");
     } else {
-        email.classList.add("red");
+        email.classList.add("border-danger");
         errorMessage4.classList.remove("d-none");
         errorMessage4.textContent = message3;
     };
@@ -90,30 +90,30 @@ email.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le phone
 phone.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    phone.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    phone.classList.remove("border-danger", "border-success");
     errorMessage5.classList.add("d-none");
     //Test de la regexPhone pour tester la valeur
     if (regexPhone.test(phone.value)) {
-        phone.classList.add("green");
+        phone.classList.add("border-success");
         errorMessage5.classList.add("d-none");
     } else {
-        phone.classList.add("red");
+        phone.classList.add("border-danger");
         errorMessage5.classList.remove("d-none");
-        errorMessage5.textContent = message1;
+        errorMessage5.textContent = message2;
     };
 });
 
 // Création d'un écouteur d'événement pour la prestation
 performance.addEventListener("keyup", function () {
-    performance.classList.remove("red", "green",);
+    performance.classList.remove("border-danger", "border-success",);
     errorMessage6.classList.add("d-none");
     //Test de la regexPerformance pour tester la valeur
     if (regexPerformance.test(performance.value)) {
-        performance.classList.add("green");
+        performance.classList.add("border-success");
         errorMessage6.classList.add("d-none");
     } else {
-        performance.classList.add("red");
+        performance.classList.add("border-danger");
         errorMessage6.classList.remove("d-none");
         errorMessage6.textContent = message2;
     };
@@ -121,14 +121,14 @@ performance.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le message
 message.addEventListener("keyup", function () {
-    message.classList.remove("red", "green",);
+    message.classList.remove("border-danger", "border-success",);
     errorMessage7.classList.add("d-none");
     //Test de la regexMessage pour tester la valeur
     if (regexMessage.test(message.value)) {
-        message.classList.add("green");
+        message.classList.add("border-success");
         errorMessage7.classList.add("d-none");
     } else {
-        message.classList.add("red");
+        message.classList.add("border-danger");
         errorMessage7.classList.remove("d-none");
         errorMessage7.textContent = message2;
     };

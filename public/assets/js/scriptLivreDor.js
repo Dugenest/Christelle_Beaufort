@@ -17,15 +17,15 @@ const regexMessage = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;
 
 // Création d'un écouteur d'événement pour le userName
 userName.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    userName.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    userName.classList.remove("border-danger", "border-success");
     errorMessage1.classList.add("d-none");
     //Test de la regexName pour tester la valeur
     if (regexUserName.test(userName.value)) {
-        userName.classList.add("green");
+        userName.classList.add("border-success");
         errorMessage1.classList.add("d-none");
     } else {
-        userName.classList.add("red");
+        userName.classList.add("border-danger");
         errorMessage1.classList.remove("d-none");
         errorMessage1.textContent = message1;
     };
@@ -33,13 +33,13 @@ userName.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour la prestation
 performance.addEventListener("keyup", function () {
-    performance.classList.remove("red", "green",);
+    performance.classList.remove("border-danger", "border-success",);
     errorMessage2.classList.add("d-none");
     if (regexPerformance.test(performance.value)) {
-        performance.classList.add("green");
+        performance.classList.add("border-success");
         errorMessage2.classList.add("d-none");
     } else {
-        performance.classList.add("red");
+        performance.classList.add("border-danger");
         errorMessage2.classList.remove("d-none");
         errorMessage2.textContent = message2;
     };
@@ -47,13 +47,13 @@ performance.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour la prestation
 message.addEventListener("keyup", function () {
-    message.classList.remove("red", "green",);
+    message.classList.remove("border-danger", "border-success",);
     errorMessage3.classList.add("d-none");
     if (regexMessage.test(message.value)) {
-        message.classList.add("green");
+        message.classList.add("border-success");
         errorMessage3.classList.add("d-none");
     } else {
-        message.classList.add("red");
+        message.classList.add("border-danger");
         errorMessage3.classList.remove("d-none");
         errorMessage3.textContent = message2;
     };

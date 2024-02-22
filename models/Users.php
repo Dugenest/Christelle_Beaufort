@@ -442,7 +442,7 @@ class User
             return $row;
         }
 
-        return null;
+        return false;
     }
 
     

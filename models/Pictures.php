@@ -315,7 +315,7 @@ class Picture
     {
         $pdo = Database::connect();
 
-        $sql = 'SELECT `pictures`.`picture`, `pictures`.`id_category`
+        $sql = 'SELECT `pictures`.`picture`, `pictures`.`id_category`, `categories`.`category`
                 FROM `pictures` 
                 INNER JOIN `categories` ON `pictures`.`id_category` = `categories`.`id_category`
                 WHERE `pictures`.`id_category`=:id;';

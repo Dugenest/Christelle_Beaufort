@@ -94,6 +94,7 @@ try {
         } else {
             //Validation de la donnée "password" grâce à la regex
             $isOk = filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . PSWD . '/')));
+            if ($isOk == false) {    
                 $error['password'] = 'Le mot de passe n\'est pas valide !';
             }
         }
@@ -109,10 +110,7 @@ try {
                 $error['confirmPassword'] = 'Le mot de passe n\'est pas valide !';
             }
         }
-
-        if ($password != $confirmPassword) {
-            $errors["password"] = "les mots de passe ne correspondent pas";
-        }
+        
 
         // Insertion des données
         if (empty($error)) {
@@ -149,6 +147,7 @@ try {
             header('Location:/../../controllers/home/inscription-ctrl.php');
             exit;
         }
+    }
     
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());

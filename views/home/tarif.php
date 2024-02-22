@@ -1,7 +1,7 @@
 
 
 <!-- Début du main -->
-<main class="mainImg">
+<main class="mainImg object-fit img-fluid">
     <div class="container-fluid py-md-5">
         <div class="row py-5">
             <h1 class="titleH1 py-5">Tarifs prestations</h1>
@@ -9,7 +9,7 @@
         <div class="row text-center py-5 justify-content-around">
             <?php foreach ($categories as $category) {
                 if (($category->category) != 'Gallerie') { ?>
-                    <div class="col col-md-5 my-3 justify-content-center card" style="width: 20rem;">
+                    <div class="col-12 col-md-5 my-3 justify-content-center card" style="width: 20rem;">
                         <a href="/controllers/home/tarifCategory-ctrl.php?id=<?= $category->id_category ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $category->category ?></h5>

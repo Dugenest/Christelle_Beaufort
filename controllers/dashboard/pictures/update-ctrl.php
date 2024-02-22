@@ -35,7 +35,7 @@ try {
             $error['pictureTitle'] = 'Le titre est obligatoire';
         } else {
             //Validation de la donnée "pictureTitle" grâce à la regex
-            $isOk = filter_var($pictureTitle, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($pictureTitle, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false) {
                 $error['pictureTitle'] = 'Le titre n\'est pas valide !';
             }
@@ -70,7 +70,6 @@ try {
         //Récupération et nettoyage de la récupération de la donnée "picture"
         if (!empty($_FILES['picture']['name'])) {
             try {
-                @unlink(__DIR__ . '/../../../public/uploads/pictures/picture/' . $filename . '.' . $extension); //le @ permet de ne pas mettre de message d'erreurs car ici on veut juste supprimer l'image si on la change
                 if ($_FILES['picture']['error'] != 0) {
                     throw new Exception("Une erreur s'est produite.");
                 }
@@ -115,7 +114,7 @@ try {
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
         if (!empty($description)) {
             //Validation de la donnée "description" grâce à la regex
-            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
+            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . MESSAGE . '/')));
             if ($isOk == false) {
                 $error['description'] = 'Le modèle n\'est pas valide !';
             }

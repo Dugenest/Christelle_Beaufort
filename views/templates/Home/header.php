@@ -39,13 +39,13 @@ require_once __DIR__ . '/../../../config/init.php';
     <!-- Début de la navbar -->
     <nav class="navbar bg-light fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/controllers//home/home-ctrl.php">Accueil</a>
+            <a class="navbar-brand" href="/controllers//home/home-ctrl.php"><img class="object-fit img-fluid logoHeader" src="/public/assets/img/Christelle-Beaufort-rev-2.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navbar</h5>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -60,7 +60,7 @@ require_once __DIR__ . '/../../../config/init.php';
                             <a class="nav-link active" aria-current="page" href="/controllers/home/livre_dor-ctrl.php">Livre d'or</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/controllers/home/tarif-ctrl.php">Tarif</a>
+                            <a class="nav-link active" aria-current="page" href="/controllers/home/tarif-ctrl.php">Tarifs</a>
                         </li>
                         <?php if (!isset($_SESSION['user'])) { ?>
                         <li class="nav-item dropdown">
@@ -97,5 +97,4 @@ require_once __DIR__ . '/../../../config/init.php';
 <!-- Fin du header -->
 
 <!-- Début du body -->
-
 <body>

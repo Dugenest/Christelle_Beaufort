@@ -33,7 +33,7 @@ try {
             $error['category'] = 'La catégorie est obligatoire';
         } else {
             //Validation de la donnée "category" grâce à la regex
-            $isOk = filter_var($category, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9 ]{2,40}$/')));
+            $isOk = filter_var($category, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false) {
                 $error['category'] = 'La catégorie n\'est pas valide !';
             }

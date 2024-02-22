@@ -65,16 +65,19 @@ try {
 
                     $comments = new Comment($message, $performance, NULL, NULL, NULL, NULL, $id_user);
                     $results = $comments->insert();
-                    $error['message'] = 'Identifiant correct! Votre message a été envoyé à l\'admin pour validation.';
+                    $success['messageSuccess'] = 'Identifiant correct! Votre message a été envoyé à l\'admin pour validation.';
                 }
             } else {
-                $error['message'] = 'Identifiant incorrect! Message non envoyé!';
+                $error['messageError'] = 'Identifiant incorrect! Message non envoyé!';
             }
         }
 
         // Utilisation de sessions pour stocker temporairement les messages
         $_SESSION['msg'] = $msg;
         $_SESSION['error'] = $error;
+        $_SESSION['messageSuccess'] = $success;
+        $_SESSION['messageError'] = $error;
+        
     }
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());

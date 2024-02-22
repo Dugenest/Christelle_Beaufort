@@ -24,7 +24,7 @@ try {
             $error['pictureTitle'] = 'Le titre est obligatoire';
         } else {
         //Validation de la donnée "pictureTitle" grâce à la regex
-            $isOk = filter_var($pictureTitle, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/^[a-zA-Z0-9 ]{2,30}$/')));
+            $isOk = filter_var($pictureTitle, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false){
                 $error['pictureTitle'] = 'Le titre n\'est pas valide !';
             }
@@ -85,9 +85,8 @@ try {
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
         if (!empty($description)) {
         //Validation de la donnée "description" grâce à la regex
-            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=> '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
-            if ($isOk == false){
-                $error['description'] = 'Le modèle n\'est pas valide !';
+            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . MESSAGE . '/')));
+                $error['description'] = 'La description n\'est pas valide !';
             }
         }
 
@@ -125,7 +124,7 @@ try {
             header('Location:list-ctrl.php');
             exit;
         }
-    }
+    
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }

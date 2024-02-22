@@ -3,7 +3,7 @@
 <?php if (empty($result)) : ?>
     <p>Aucun message reçu.</p>
 <?php else : ?>
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th scope="col">Identifiant</th>
@@ -29,7 +29,7 @@
                             <div class="message" id="message<?= $message->id_message ?>">
                             <?php if ($message->reading == 0) { ?>
                                 <p class="text-danger" id="status<?= $message->id_message ?>">Message reçu</p>
-                                <a href="/controllers/dashboard/messages/send-ctrl.php?id=<?= $message->id_message ?>" class="btn btn-primary mark-as-read" data-message-id="<?= $message->id_message ?>">Marquer comme lu</a>
+                                <a href="/controllers/dashboard/messages/send-ctrl.php?id=<?= $message->id_message ?>" class="btn btn-primary mark-as-read" data-message-id="<?= $message->id_message ?>">Message lu</a>
                             <?php } else { ?>
                                 <p class="text-success" id="status<?= $message->id_message ?>">Message lu</p>
                             <?php } ?>

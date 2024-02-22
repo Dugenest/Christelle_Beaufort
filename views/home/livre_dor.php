@@ -34,9 +34,9 @@
                 <div class="error">
                     <?php if (!empty($username) && $username != NULL) {
                         if ($isexistUsername) { ?>
-                            <p class="error-message text-success"><?= $error['message'] ?></p><br>
+                            <p class="error-message text-success"><?= $success['messageSuccess'] ?? '' ?></p><br>
                         <?php } else { ?>
-                            <p class="error-message text-danger"><?= $error['message'] ?></p><br>
+                            <p class="error-message text-danger"><?= $error['messageError'] ?? '' ?></p><br>
                         <?php } ?>
                     <?php } ?>
                     <p id="error1" class="d-none">

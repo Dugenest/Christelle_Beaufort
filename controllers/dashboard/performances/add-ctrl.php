@@ -35,7 +35,7 @@ try {
             $error['titlePerformance'] = 'Le titre est obligatoire';
         } else {
             //Validation de la donnée "titlePerformance" grâce à la regex
-            $isOk = filter_var($titlePerformance, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($titlePerformance, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . PERFORMANCE . '/')));
             if ($isOk == false) {
                 $error['titlePerformance'] = 'Le titre n\'est pas valide !';
             }
@@ -47,7 +47,7 @@ try {
             $error['description'] = 'La description est obligatoire';
         } else {
             //Validation de la donnée "description" grâce à la regex
-            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
+            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . MESSAGE . '/')));
             if ($isOk == false) {
                 $error['description'] = 'La description n\'est pas valide !';
             }

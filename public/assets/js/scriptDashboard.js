@@ -40,15 +40,15 @@ const regexPwdStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@
 
 // Création d'un écouteur d'événement pour le lastname
 userNameText.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    userNameText.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    userNameText.classList.remove("border-danger", "border-success");
     errorMessage1.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexUserName.test(userNameText.value)) {
-        userNameText.classList.add("green");
+        userNameText.classList.add("border-success");
         errorMessage1.classList.add("d-none");
     } else {
-        userNameText.classList.add("red");
+        userNameText.classList.add("border-danger");
         errorMessage1.classList.remove("d-none");
         errorMessage1.textContent = message1;
     };
@@ -56,15 +56,15 @@ userNameText.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le lastname
 lastNameText.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    lastNameText.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    lastNameText.classList.remove("border-danger", "border-success");
     errorMessage2.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexName.test(lastNameText.value)) {
-        lastNameText.classList.add("green");
+        lastNameText.classList.add("border-success");
         errorMessage2.classList.add("d-none");
     } else {
-        lastNameText.classList.add("red");
+        lastNameText.classList.add("border-danger");
         errorMessage2.classList.remove("d-none");
         errorMessage2.textContent = message1;
     };
@@ -72,15 +72,15 @@ lastNameText.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le lastname
 firstNameText.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    firstNameText.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    firstNameText.classList.remove("border-danger", "border-success");
     errorMessage3.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexName.test(firstNameText.value)) {
-        firstNameText.classList.add("green");
+        firstNameText.classList.add("border-success");
         errorMessage3.classList.add("d-none");
     } else {
-        firstNameText.classList.add("red");
+        firstNameText.classList.add("border-danger");
         errorMessage3.classList.remove("d-none");
         errorMessage3.textContent = message1;
     };
@@ -88,13 +88,13 @@ firstNameText.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour l'email (pas obligatoire d'utiliser une regex ici)
 emailText.addEventListener("keyup", function () {
-    emailText.classList.remove("red", "green",);
+    emailText.classList.remove("border-danger", "border-success",);
     errorMessage4.classList.add("d-none");
     if (regexEmail.test(emailText.value)) {
-        emailText.classList.add("green");
+        emailText.classList.add("border-success");
         errorMessage4.classList.add("d-none");
     } else {
-        emailText.classList.add("red");
+        emailText.classList.add("border-danger");
         errorMessage4.classList.remove("d-none");
         errorMessage4.textContent = message2;
     };
@@ -102,15 +102,15 @@ emailText.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le lastname
 adressText.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    adressText.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    adressText.classList.remove("border-danger", "border-success");
     errorMessage5.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexAdress.test(adressText.value)) {
-        adressText.classList.add("green");
+        adressText.classList.add("border-success");
         errorMessage5.classList.add("d-none");
     } else {
-        adressText.classList.add("red");
+        adressText.classList.add("border-danger");
         errorMessage5.classList.remove("d-none");
         errorMessage5.textContent = message3;
     };
@@ -118,15 +118,15 @@ adressText.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le lastname
 phoneText.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    phoneText.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    phoneText.classList.remove("border-danger", "border-success");
     errorMessage6.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexPhone.test(phoneText.value)) {
-        phoneText.classList.add("green");
+        phoneText.classList.add("border-success");
         errorMessage6.classList.add("d-none");
     } else {
-        phoneText.classList.add("red");
+        phoneText.classList.add("border-danger");
         errorMessage6.classList.remove("d-none");
         errorMessage6.textContent = message4;
     };
@@ -134,15 +134,15 @@ phoneText.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le lastname
 roleText.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    roleText.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    roleText.classList.remove("border-danger", "border-success");
     errorMessage7.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexName.test(roleText.value)) {
-        roleText.classList.add("green");
+        roleText.classList.add("border-success");
         errorMessage7.classList.add("d-none");
     } else {
-        roleText.classList.add("red");
+        roleText.classList.add("border-danger");
         errorMessage7.classList.remove("d-none");
         errorMessage7.textContent = message1;
     };
@@ -150,13 +150,13 @@ roleText.addEventListener("keyup", function () {
 
 // Création d'un écouteur d'événement pour le mot de passe
 pwdMedium.addEventListener("input", function () {
-    pwdMedium.classList.remove("red", "green",);
+    pwdMedium.classList.remove("border-danger", "border-success",);
     errorMessage8.classList.add("d-none");
     if (regexPwdStrong.test(pwdMedium.value)) {
-        pwdMedium.classList.add("green");
+        pwdMedium.classList.add("border-success");
         errorMessage8.classList.add("d-none");
     } else {
-        pwdMedium.classList.add("red");
+        pwdMedium.classList.add("border-danger");
         errorMessage8.classList.remove("d-none");
         errorMessage8.textContent = message6;
     };
@@ -164,13 +164,13 @@ pwdMedium.addEventListener("input", function () {
 
 // Création d'un écouteur d'événement pour la confirmation du mot de passe
 pwdStrong.addEventListener("input", function () {
-    pwdStrong.classList.remove("red", "green",);
+    pwdStrong.classList.remove("border-danger", "border-success",);
     errorMessage9.classList.add("d-none");
     if (regexPwdStrong.test(pwdStrong.value)) {
-        pwdStrong.classList.add("green");
+        pwdStrong.classList.add("border-success");
         errorMessage9.classList.add("d-none");
     } else {
-        pwdStrong.classList.add("red");
+        pwdStrong.classList.add("border-danger");
         errorMessage9.classList.remove("d-none");
         errorMessage9.textContent = message6;
     };
@@ -178,9 +178,9 @@ pwdStrong.addEventListener("input", function () {
 
 // Fonction vérification des mots de passe
 pwdStrong.addEventListener("keyup", function () {
-    // Supprimer les classes "red" et "green" à chaque saisie 
-    pwdMedium.classList.remove("red", "green");
-    pwdStrong.classList.remove("red", "green");
+    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+    pwdMedium.classList.remove("border-danger", "border-success");
+    pwdStrong.classList.remove("border-danger", "border-success");
     errorMessage10.classList.add("d-none");
     errorMessage10.textContent = '';
     // Conditions
@@ -188,12 +188,12 @@ pwdStrong.addEventListener("keyup", function () {
         return
     }
     if (pwdMedium.value === pwdStrong.value) {
-        pwdMedium.classList.add("green");
-        pwdStrong.classList.add("green");
+        pwdMedium.classList.add("border-success");
+        pwdStrong.classList.add("border-success");
         errorMessage10.classList.add("d-none");
     } else {
-        pwdMedium.classList.add("red");
-        pwdStrong.classList.add("red");
+        pwdMedium.classList.add("border-danger");
+        pwdStrong.classList.add("border-danger");
         errorMessage10.classList.remove("d-none");
         errorMessage10.textContent = message5;
     }

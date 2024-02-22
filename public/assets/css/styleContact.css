@@ -5,6 +5,7 @@ main {
 
 h1 {
     text-align: center;
+    padding-bottom: 40px;
 }
 
 #btnForm {
@@ -42,4 +43,9 @@ a:hover {
 
 #error1, #error2, #error3, #error4, #error5, .error {
     color: red;
+}
+
+.styleCard {
+    width: auto;
+    background-color: #FAF6F4;
 }

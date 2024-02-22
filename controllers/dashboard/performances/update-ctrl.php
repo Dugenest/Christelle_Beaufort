@@ -45,7 +45,7 @@ try {
             $error['titlePerformance'] = 'Le titre est obligatoire';
         } else {
             //Validation de la donnée "titlePerformance" grâce à la regex
-            $isOk = filter_var($titlePerformance, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[a-zA-Z0-9]{2,30}$/')));
+            $isOk = filter_var($titlePerformance, FILTER_VALIDATE_REGEXP,array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false) {
                 $error['titlePerformance'] = 'Le titre n\'est pas valide !';
             }
@@ -57,8 +57,7 @@ try {
             $error['description'] = 'Le description est obligatoire';
         } else {
             //Validation de la donnée "description" grâce à la regex
-            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/^[A-Za-z0-9À-ÖØ-öø-ÿéè\s.,;\'\"!?()\[\]{}\-_:€\*%=\+@ ]{5,300}$/')));
-            if ($isOk == false) {
+            $isOk = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . MESSAGE . '/')));
                 $error['description'] = 'Le type n\'est pas valide !';
             }
         }
@@ -102,7 +101,7 @@ try {
         exit;
 
         $performance = Performance::getId($id_performance);
-    }
+    
 } catch (PDOException $e) {
     die('Erreur : ' . $e->getMessage());
 }

@@ -34,11 +34,11 @@ try
                     $error['password'] = 'Le Mot de Passe n\'est pas valide !';
                 }
             }
-                
+    
             if (empty($error)) {
                 $user = User::getByUsername($username);
             
-                if (!$user) {
+                if ($user == false) {
                     $error[] = "Nom d'utilisateur incorrect";
                 } else {
                     $passwordHash = $user->password;

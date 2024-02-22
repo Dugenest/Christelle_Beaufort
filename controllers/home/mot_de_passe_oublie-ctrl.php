@@ -3,6 +3,7 @@
 try
 {
     $title = 'Mot de passe oublié';
+    
 //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Récupération, nettoyage et validation de la donnée "Email"

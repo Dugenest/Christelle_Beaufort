@@ -1,32 +1,39 @@
 <h1>Modification d'un tarif</h1>
 
 <form method="post" action="">
-    <div class="row justify-content-center">
-        <div class="col col-md-6 mb-3">
-            <label for="id_category" class="form-label"><strong>Nom de la prestation</strong></label>
-            <select name="id_category" id="id_category" class="form-select">
-                <?php foreach ($categories as $category) { ?>
-                    <option value="<?= $category->id_category ?>"><?= $category->sub_category ?></option>
-                <?php } ?>
-            </select>
-            <div class="error">
-                <p id="error4" class="d-none"></p><br>
-                <?= $error['category'] ?? '' ?>
-            </div>
-
-            <label for="titlePerformance" class="form-label"><strong>Titre <strong class="danger">*</strong></strong></label>
-            <input type="text" class="form-control" id="titlePerformance" name="titlePerformance" value="<?= $performance->titlePerformance ?? '' ?>" maxlength='30' aria-describedby="titlePerformanceHelp" placeholder="Veuillez entrer le titre de la prestation svp?">
-            <div class="error">
-                <p id="error1" class="d-none"></p><br>
-                <?= $error['titlePerformance'] ?? '' ?>
-            </div>
-            <div class="success">
-                <?= $msg['success'] ?? '' ?>
+    <div class="card m-5">
+        <div class="row styleCard justify-content-center m-3 py-5">
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label for="id_category" class="form-label"><strong>Nom de la prestation</strong></label>
+                <select name="id_category" id="id_category" class="form-select">
+                    <?php foreach ($categories as $category) { ?>
+                        <option value="<?= $category->id_category ?>" <?= ($category->id_category == $performance->id_category) ? 'selected' : '' ?>><?= $category->category ?></option>
+                    <?php } ?>
+                </select>
+                <div class="error">
+                    <p id="error1" class="d-none alert alert-danger"></p><br>
+                    <?= $error['category'] ?? '' ?>
+                </div>
+                <div class="success">
+                    <?= $msg['success'] ?? '' ?>
+                </div>
             </div><br>
 
             <div class="col-sm-12 col-md-6 mb-3">
+                <label for="titlePerformance" class="form-label"><strong>Titre <strong class="danger">*</strong></strong></label>
+                <input type="text" class="form-control" id="titlePerformance" name="titlePerformance" value="<?= $performance->titlePerformance ?? '' ?>" maxlength='30' aria-describedby="titlePerformanceHelp" placeholder="Veuillez entrer le titre de la prestation svp?">
+                <div class="error">
+                    <p id="error1" class="d-none"></p><br>
+                    <?= $error['titlePerformance'] ?? '' ?>
+                </div>
+                <div class="success">
+                    <?= $msg['success'] ?? '' ?>
+                </div><br>
+            </div>
+
+            <div class="col-sm-12 col-md-6 mb-3">
                 <label for="description" class="form-label"><strong>Description</strong></label>
-                <input type="text" class="form-control" id="description" name="description" value="<?= $performance->description ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre description de la prestation svp?">
+                <textarea class="form-control" rows="5" id="description" name="description" maxlength='300' placeholder="<?= $performance->description ?? '' ?>"><?= $performance->description ?? '' ?></textarea>
                 <div class="error">
                     <p id="error2" class="d-none alert alert-danger"></p><br>
                     <?= $error['description'] ?? '' ?>
@@ -35,6 +42,7 @@
                     <?= $msg['success'] ?? '' ?>
                 </div><br>
             </div>
+
 
             <div class="col-sm-12 col-md-6 mb-3">
                 <label for="price" class="form-label"><strong>Tarif</strong></label>
@@ -57,4 +65,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </form>

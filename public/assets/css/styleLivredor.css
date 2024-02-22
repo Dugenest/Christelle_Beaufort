@@ -26,33 +26,13 @@ strong {
 
 .comment {
     background-color: white;
-    height: 400px;
     text-align: center;
     justify-content: center;
-}
-
-.green {
-    border-color: green;
-    border-width: 5px;
-}
-
-.red {
-    border-color: red;
-    border-width: 5px;
+    border-bottom: 1px solid #eee;
+    height: auto;
+    
 }
 
 #error1, #error2, #error3, .error {
     color: red;
-}
-
-
-
-.comment {
-    border-bottom: 1px solid #eee;
-    height: auto;
-    justify-content: center;
-}
-
-.title {
-    padding-top: 50px;
 }
