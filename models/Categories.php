@@ -155,6 +155,7 @@ class Category
     {
         $pdo = Database::connect(); 
 
+        //Insertion des données dans la table categories
         $sql =  'INSERT INTO `categories`(`id_category`, `category`, `picture`)
                 VALUES (:id_category, :category, :picture);';  
 
@@ -199,6 +200,7 @@ class Category
     {
         $pdo = Database::connect();
 
+        /*Sélectionne toutes les valeurs dans la table categories*/
         $sql = 'SELECT *    
                 FROM `categories` 
                 RIGHT JOIN `pictures` ON `pictures`.`id_category` = `categories`.`id_category`
@@ -221,7 +223,7 @@ class Category
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
         
-        // Requête mysql pour insérer des données
+        // Requête mysql pour insérer des données modifiées
         $sql = 'UPDATE `categories` 
                 SET `picture` = :picture 
                 WHERE `id_category` = :id;';
@@ -243,6 +245,7 @@ class Category
     public static function delete(int $id) {
         $pdo = Database::connect();
 
+        //Suppression des données de la table categories
         $sql = 'DELETE 
                 FROM categories 
                 WHERE id_category = :id;';

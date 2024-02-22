@@ -233,6 +233,7 @@ class Picture
     {
         $pdo = Database::connect();
 
+         //Insertion des données de la table pictures
         $sql = 'INSERT INTO `pictures` (`pictureTitle`, `price`, `picture`, `description`, `id_category`) 
                 VALUES (:pictureTitle, :price, :picture, :description, :id_category);';
 
@@ -258,7 +259,7 @@ class Picture
     {
         $pdo = Database::connect();
 
-        /*Sélectionne toutes les valeurs dans la table categories*/
+        /*Sélectionne toutes les valeurs dans la table pictures*/
         $sql = 'SELECT categories.category, pictures.pictureTitle, pictures.picture, pictures.description, pictures.id_picture, pictures.price, pictures.id_category
                 FROM pictures
                 INNER JOIN categories ON pictures.id_category = categories.id_category';
@@ -291,6 +292,7 @@ class Picture
     {
         $pdo = Database::connect();
 
+        /*Sélectionne toutes les valeurs communes de la table pictures*/
         $sql = 'SELECT *    
                 FROM `pictures` 
                 WHERE `id_picture`=:id;';
@@ -315,6 +317,7 @@ class Picture
     {
         $pdo = Database::connect();
 
+        // Sélectionner les colonnes nécessaires de la table pictures et categories
         $sql = 'SELECT `pictures`.`picture`, `pictures`.`id_category`, `categories`.`category`
                 FROM `pictures` 
                 INNER JOIN `categories` ON `pictures`.`id_category` = `categories`.`id_category`
@@ -337,6 +340,7 @@ class Picture
 {
     $pdo = Database::connect();
 
+    // Requête MySQL pour mettre à jour des données
     $sql = 'UPDATE `pictures` 
             SET `pictureTitle` = :pictureTitle, `price` = :price, `picture` = :picture, `description` = :description, `id_category` = :id_category
             WHERE `id_picture` = :id_picture;';
@@ -368,6 +372,7 @@ class Picture
     {
         $pdo = Database::connect();
 
+        //Suppression des données de la table pictures en fonction de l'id_picture
         $sql = 'DELETE 
                 FROM pictures 
                 WHERE id_picture = :id;';
@@ -389,6 +394,7 @@ class Picture
     {
         $pdo = Database::connect();
 
+        //Sélectionne tous les id_picture en fonction des photos
         $sql = "SELECT id_picture 
                 FROM pictures 
                 WHERE picture = :picture";
@@ -413,6 +419,8 @@ class Picture
     public static function getByPicture(string $picture): object|false
     {
         $pdo = Database::connect();
+
+        /*Sélectionne toutes les valeurs dans la table pictures*/
         $sql = 'SELECT *
                 FROM `pictures`
                 WHERE `picture` = :picture;';
@@ -438,6 +446,7 @@ class Picture
     {
         $pdo = Database::connect();
 
+        //selectionne tous les id_picture en fonction des photos
         $sql = 'SELECT COUNT(`id_picture`) AS "count"
                 FROM `pictures` 
                 WHERE `picture` = :picture;';

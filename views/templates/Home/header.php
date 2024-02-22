@@ -5,7 +5,6 @@ require_once __DIR__ . '/../../../config/init.php';
 <!DOCTYPE html>
 <html lang="fr">
 <!-- Début du head -->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,10 +90,10 @@ require_once __DIR__ . '/../../../config/init.php';
                 </div>
             </div>
         </div>
+        <!-- Fin de la navbar -->
     </nav>
-    <!-- Fin de la navbar -->
+    <!-- Fin du header -->
 </header>
-<!-- Fin du header -->
 
 <!-- Début du body -->
 <body>

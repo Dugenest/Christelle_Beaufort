@@ -1,5 +1,6 @@
 <h1 class="text-center">Modification d'une photo</h1>
 
+<!-- Création du formulaire -->
 <form method="post" enctype="multipart/form-data" action="">
     <div class="card m-5">
         <div class="row styleCard justify-content-center m-3 py-5">
@@ -77,4 +78,5 @@
             </div>
         </div>
     </div>
+<!-- Fin du formulaire -->
 </form>

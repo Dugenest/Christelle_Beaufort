@@ -6,6 +6,7 @@
         <a href="/controllers/dashboard/pictures/add-ctrl.php"><input class="button" type="submit" name="insert" value="Ajouter une photo"></a>
     </div>
 <?php else : ?>
+    <!-- Affichage de la liste  -->
     <table class="table table-bordered">
         <thead>
             <tr>

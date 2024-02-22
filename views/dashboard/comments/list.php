@@ -5,6 +5,7 @@
     <?php if (empty($result)): ?>
         <p>Aucun commentaire n'a été trouvé.</p>
     <?php else: ?>
+        <!-- Affichage de la liste  -->
         <table class="table table-bordered">
             <thead>
                 <tr>

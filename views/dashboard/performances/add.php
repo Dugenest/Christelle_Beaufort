@@ -1,5 +1,6 @@
 <h1>Ajout d'un tarif</h1>
 
+<!-- Création du formulaire -->
 <form method="post" action="">
     <div class="card m-5">
         <div class="row styleCard justify-content-center m-3 py-5">
@@ -60,4 +61,5 @@
             </div>
         </div>
     </div>
+<!-- Fin du formulaire -->
 </form>

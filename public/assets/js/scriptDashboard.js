@@ -9,7 +9,7 @@ const roleText = document.getElementById("role");
 const pwdMedium = document.getElementById("password");
 const pwdStrong = document.getElementById("password1");
 
-
+//création des messages
 const message1 = "Caractères non pris en compte !";
 const message2 = "E-mail incorrect !";
 const message3 = "Le texte n'est pas valide !";
@@ -17,7 +17,7 @@ const message4 = "Le numéro de téléphone n'est pas valide !";
 const message5 = "Mot de Passe différent du premier !";
 const message6 = "Merci de mettre au moins 1 Majuscule, 1 minuscule, 1 chiffre et 1 caratère spécial (min 8)."
 
-
+//création des constantes pour afficher les messages
 const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
 const errorMessage3 = document.getElementById("error3");

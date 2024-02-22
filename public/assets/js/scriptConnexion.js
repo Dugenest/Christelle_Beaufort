@@ -1,12 +1,15 @@
+// Déclaration des variables
 const userName = document.getElementById("username");
 const pwdMedium = document.getElementById("password");
 
+//création du message
 const message1 = "Caractères non pris en compte !";
 
-
+//création des constantes pour afficher les messages
 const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
 
+//Création des régex
 const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
 const regexName = /^[A-Za-zéèêëàâäôöûüïç' ]{2,30}$/;
 const regexPwdStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;

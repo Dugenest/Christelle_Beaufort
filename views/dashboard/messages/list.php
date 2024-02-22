@@ -3,6 +3,7 @@
 <?php if (empty($result)) : ?>
     <p>Aucun message reçu.</p>
 <?php else : ?>
+    <!-- Affichage de la liste  -->
     <table class="table table-bordered">
         <thead>
             <tr>

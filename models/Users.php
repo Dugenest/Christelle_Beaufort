@@ -278,6 +278,7 @@ class User
     {
         $pdo = Database::connect();
 
+        //Insertion des données de la table users
         $sql = 'INSERT INTO `users` (`id_user`, `username`, `lastname`, `firstname`, `email`, `adress`, `phone`, `role`, `password`) 
                 VALUES (:id_user, :username, :lastname, :firstname, :email, :adress, :phone, :role, :password);';
 
@@ -307,7 +308,7 @@ class User
     {
         $pdo = Database::connect();
 
-        /*Sélectionne toutes les valeurs dans la table categories*/
+        /*Sélectionne toutes les valeurs dans la table users*/
         $sql = 'SELECT * FROM users';
 
         $sth = $pdo->prepare($sql);
@@ -329,6 +330,7 @@ class User
     {
         $pdo = Database::connect();
 
+        /*Sélectionne toutes les valeurs communes de la table users*/
         $sql = 'SELECT *    
                 FROM `users` 
                 WHERE `id_user`=:id;';
@@ -388,6 +390,7 @@ class User
     {
         $pdo = Database::connect();
 
+        // Requête MySQL pour mettre à jour des données
         $sql = 'DELETE 
                 FROM users 
                 WHERE id_user = :id;';
@@ -409,6 +412,7 @@ class User
     {
         $pdo = Database::connect();
 
+        //Sélectionne tous les id_user en fonction des identifiants
         $sql = "SELECT id_user FROM users WHERE username = :username";
         $sth = $pdo->prepare($sql);
         $sth->bindParam(':username', $username, PDO::PARAM_STR);
@@ -430,6 +434,8 @@ class User
     public static function getByUsername(string $username): object|false
     {
         $pdo = Database::connect();
+
+        /*Sélectionne toutes les valeurs dans la table users en fonction de l'identifiant*/
         $sql = 'SELECT *
                 FROM `users`
                 WHERE `username` = :username;';
@@ -455,6 +461,7 @@ class User
     {
         $pdo = Database::connect();
 
+        //selectionne tous les id_user en fonction de l'identifiant
         $sql = 'SELECT COUNT(`id_user`) AS "count"
                 FROM `users` 
                 WHERE `username`=:username;';

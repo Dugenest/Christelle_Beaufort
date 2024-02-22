@@ -1,5 +1,6 @@
 <h1>Description d'un message</h1>
 
+<!-- Création du formulaire -->
 <form method="post" class="row align-items-center py-3" action="">
     <div class="card">
         <div class="row styleCard m-3 py-5">
@@ -18,4 +19,5 @@
             </div>
         </div>
     </div>
+<!-- Fin du formulaire -->
 </form>

@@ -233,6 +233,7 @@ class Comment
     {
         $pdo = Database::connect();
 
+        //Selectionne toutes les données de la table comments
         $sql = 'SELECT *    
                 FROM `comments`
                 INNER JOIN `users` ON `users`.id_user = `comments`.id_user
@@ -257,7 +258,7 @@ class Comment
     {
         $pdo = Database::connect();
 
-        // Sélection du commentaire
+        // insére les nouvelles données de la table comments
         $sql = 'UPDATE `comments` 
                 SET `validated_at` = now() 
                 WHERE `id_comment` = :id';
@@ -267,12 +268,12 @@ class Comment
         $sth->execute();
         $comment = $sth->fetch(PDO::FETCH_OBJ);
 
-        // Validation basique (ajustez selon vos critères de validation)
+        // Validation
         if ($comment) {
             header("Location: /./controllers/home/livre_dor-ctrl.php");
-            exit(); // Assurez-vous de terminer le script après la redirection
+            exit();
         } else {
-            // Gérez le cas où le commentaire n'est pas valide selon vos besoins
+            // cas où le commentaire n'est pas valide
             echo "Le commentaire n'est pas valide.";
         }
     }
@@ -287,6 +288,7 @@ class Comment
     {
         $pdo = Database::connect();
 
+        //suppression des données de la table comments en fonction de l'id_comment
         $sql = 'DELETE 
                 FROM comments 
                 WHERE id_comment = :id;';

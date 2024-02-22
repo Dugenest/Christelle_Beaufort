@@ -6,6 +6,7 @@
         <a href="/controllers/dashboard/performances/add-ctrl.php"><input class="button" type="submit" name="insert" value="Ajouter un tarif"></a>
     </div>
 <?php else : ?>
+    <!-- Affichage de la liste  -->
     <table class="table table-bordered">
         <thead>
             <tr>

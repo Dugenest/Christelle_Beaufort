@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+<!-- Début du head -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
     <title>
         Christelle Beaufort - <?= $title ?? '' ?>
     </title>
+<!-- Fin du head -->
 </head>
 
+<!-- Début du main -->
 <main>
     <div class="container-fluid">
         <div class="row flex-nowrap">

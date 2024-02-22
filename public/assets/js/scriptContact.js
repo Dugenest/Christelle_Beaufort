@@ -1,3 +1,4 @@
+// Déclaration des variables
 const userName = document.getElementById("username");
 const lastName = document.getElementById("lastname");
 const firstName = document.getElementById("firstname");
@@ -6,10 +7,12 @@ const phone = document.getElementById("phone");
 const performance = document.getElementById("performance");
 const message = document.getElementById("message");
 
+//création des messages
 const message1 = "Identifiant incorrect !";
 const message2 = "Caractères non pris en compte !";
 const message3 = "E-mail incorrect !";
 
+//création des constantes pour afficher les messages
 const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
 const errorMessage3 = document.getElementById("error3");
@@ -18,6 +21,7 @@ const errorMessage5 = document.getElementById("error5");
 const errorMessage6 = document.getElementById("error6");
 const errorMessage7 = document.getElementById("error7");
 
+//Création des régex
 const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
 const regexName = /^[A-Za-zéèêëàâäôöûüïç' ]{2,30}$/;
 const regexEmail = /^[A-Za-z0-9.\_\.\-]+@[a-z0-9\_\-]+\.[a-z]{2,5}$/;

@@ -1,5 +1,6 @@
 <h1>Modification d'une catégorie</h1>
 
+<!-- Création du formulaire -->
 <form method="post" enctype="multipart/form-data" action="">
     <div class="card m-5">
         <div class="row styleCard justify-content-center m-3 py-5">
@@ -40,4 +41,5 @@
             </div>
         </div>
     </div>
+<!-- fin du formaulaire -->
 </form>

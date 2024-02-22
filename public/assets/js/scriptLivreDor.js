@@ -1,14 +1,18 @@
+// Déclaration des variables
 const userName = document.getElementById("username");
 const performance = document.getElementById("performance");
 const message = document.getElementById("message");
 
+//création des messages
 const message1 = "Identifiant incorrect !";
 const message2 = "Caractères non pris en compte !";
 
+//création des constantes pour afficher les messages
 const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
 const errorMessage3 = document.getElementById("error3");
 
+// Création des regex
 const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
 const regexName = /^[A-Za-zéèêëàâäôöûüç' ]+$/;
 const regexPerformance = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-:]{5,50}$/;

@@ -6,6 +6,7 @@
         <a href="/controllers/dashboard/categories/add-ctrl.php"><input class="button" type="submit" name="insert" value="Ajouter une catégorie"></a>
     </div>
 <?php else : ?>
+    <!-- Affichage de la liste  -->
     <table class="table table-bordered">
         <thead>
             <tr>

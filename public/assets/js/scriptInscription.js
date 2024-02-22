@@ -8,13 +8,13 @@ const username = document.getElementById("username");
 const pwdMedium = document.getElementById("password");
 const pwdStrong = document.getElementById("confirmPassword");
 
-
+//création des messages
 const message1 = "Caractères non pris en compte !";
 const message2 = "E-mail incorrect !";
 const message3 = "Mot de Passe différent du premier !";
 const message4 = "Merci de mettre au moins 1 Majuscule, 1 minuscule, 1 chiffre et 1 caratère spécial (min 8)."
 
-
+//création des constantes pour afficher les messages
 const errorMessage1 = document.getElementById("error1");
 const errorMessage2 = document.getElementById("error2");
 const errorMessage3 = document.getElementById("error3");

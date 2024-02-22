@@ -216,6 +216,7 @@ class Performance
     {
         $pdo = Database::connect();
 
+        //Insertion des données de la table performances
         $sql = 'INSERT INTO `performances` (`id_performance`, `titlePerformance`, `description`, `price`, `id_category`, `id_user`) 
                 VALUES (:id_performance, :titlePerformance, :description, :price, :id_category, :id_user);';
 
@@ -242,7 +243,7 @@ class Performance
     {
         $pdo = Database::connect();
 
-        /*Sélectionne toutes les valeurs dans la table categories*/
+        /*Sélectionne toutes les valeurs communes de la table performances et categories*/
         $sql = 'SELECT * 
                 FROM performances
                 INNER JOIN categories ON categories.id_category = performances.id_category
@@ -267,6 +268,7 @@ class Performance
     {
         $pdo = Database::connect();
 
+        /*Sélectionne toutes les valeurs dans la table performances*/
         $sql = 'SELECT *    
                 FROM `performances` 
                 WHERE `id_performance`=:id;';
@@ -284,6 +286,7 @@ class Performance
     {
         $pdo = Database::connect();
 
+        // Sélectionner les colonnes nécessaires de la table performances et categories
         $sql = 'SELECT categories.picture, performances.titlePerformance, performances.description, performances.price, performances.id_category, performances.id_performance, categories.category   
                 FROM `performances` 
                 INNER JOIN `categories`ON `performances`.`id_category` = `categories`.`id_category` 
@@ -337,6 +340,7 @@ class Performance
     {
         $pdo = Database::connect();
 
+        //Suppression des données de la table performances en fonction de l'id_performance
         $sql = 'DELETE 
                 FROM performances 
                 WHERE id_performance = :id;';
@@ -358,6 +362,8 @@ class Performance
     public static function getByTitle(string $titlePerformance): object|false
     {
         $pdo = Database::connect();
+
+        /*Sélectionne toutes les valeurs dans la table performances en fonction du titre*/
         $sql = 'SELECT *
                 FROM `performances`
                 WHERE `titlePerformance` = :titlePerformance;';
@@ -384,9 +390,10 @@ class Performance
     {
         $pdo = Database::connect();
 
+        //selectionne tous les id_performance en fonction du titre
         $sql = 'SELECT COUNT(`id_performance`) AS "count"
                 FROM `performances` 
-                WHERE `title$titlePerformance` = :title;';
+                WHERE `titlePerformance` = :title;';
 
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':title', $titlePerformance, PDO::PARAM_STR);

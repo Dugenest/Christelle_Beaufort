@@ -1,8 +1,15 @@
+// Déclaration des variables
 const email = document.getElementById("email"); 
+
+//création du message
 const message1 = "E-mail incorrect !";
+
+//création des constantes pour afficher le message
 const errorMessage1 = document.getElementById("error1");
 
+// Création de la regex
 const regexEmail = /^[A-Za-z0-9.\_\.\-]+@[a-z0-9\_\-]+\.[a-z]{2,5}$/; 
+
 
 // Création d'un écouteur d'événement pour l'email
 email.addEventListener("keyup", function () { 

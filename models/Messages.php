@@ -252,6 +252,7 @@ class Message
     {
         $pdo = Database::connect();
 
+        //Insertion des données de la table messages
         $sql = 'INSERT INTO `messages` (`id_message`, `message`, `lastname`, `firstname`, `email`, `phone`, `performance`, `reading`, `id_user`) 
                 VALUES (:id_message, :message, :lastname, :firstname, :email, :phone, :performance, :reading, :id_user);';
 
@@ -314,6 +315,7 @@ class Message
     {
         $pdo = Database::connect();
 
+        // Sélectionner les colonnes nécessaires de la table messages et users
         $sql = 'SELECT users.username, messages.lastname, messages.firstname, messages.email, messages.phone, messages.performance, messages.created_at, messages.message, messages.id_message    
                 FROM `messages` 
                 LEFT JOIN `users` ON `users`.id_user = `messages`.id_user
@@ -338,6 +340,7 @@ class Message
     {
         $pdo = Database::connect();
 
+        //Supprime les données de la table messages en fonction de l'id_message
         $sql = 'DELETE 
                 FROM messages 
                 WHERE id_message = :id;';
