@@ -14,21 +14,46 @@ try {
     // Initialisation des tableaux pour les messages d'erreur
     $error = [];
     $msg = [];
+    $success = [];
 
     //Condition principale pour tous les input (es ce que la méthode de récupération est bien 'POST'?)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Création d'un tableau d'erreurs
         $error = [];
 
-        //Récupération, nettoyage et validation de la donnée "username"
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (empty($username)) {
-            $error['username'] = 'L\'identifiant est obligatoire';
+        // //Récupération, nettoyage et validation de la donnée "username"
+        // $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        // if (empty($username)) {
+        //     $error['username'] = 'L\'identifiant est obligatoire';
+        // } else {
+        //     //Validation de la donnée "username" grâce à la regex
+        //     $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . USER_NAME . '/')));
+        //     if ($isOk == false) {
+        //         $error['username'] = 'L\'identifiant décrite n\'est pas valide !';
+        //     }
+        // }
+
+        //Récupération et nettoyage de la récupération de la donnée "lastname"
+        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($lastname)) {
+            $error['lastname'] = 'Le Nom est obligatoire';
         } else {
-            //Validation de la donnée "username" grâce à la regex
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . USER_NAME . '/')));
+            //Validation de la donnée "lastname" grâce à la regex
+            $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
             if ($isOk == false) {
-                $error['username'] = 'L\'identifiant décrite n\'est pas valide !';
+                $error['lastname'] = 'Le Nom n\'est pas valide !';
+            }
+        }
+
+        //Récupération et nettoyage de la récupération de la donnée "firstName"
+        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($firstname)) {
+            $error['firstname'] = 'Le Prénom est obligatoire';
+        } else {
+            //Validation de la donnée "firstname" grâce à la regex
+            $isOk = filter_var($firstname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . NAME . '/')));
+            if ($isOk == false) {
+                $error['firstname'] = 'Le Prénom n\'est pas valide !';
             }
         }
 
@@ -56,22 +81,23 @@ try {
             }
         }
 
-        //vérification de l'identifiant en base de donnée avec celui tapé par l'utilisateur 
-        if (!empty($username) && $username != NULL) {
-            $isexistUsername = User::isExist($username);
-            if ($isexistUsername) {
-                if (empty($error)) {
-                    $users = User::getByUsername($username);
-                    $id_user = $users->id_user;
 
-                    $comments = new Comment($message, $performance, NULL, NULL, NULL, NULL, $id_user);
+        //vérification de l'identifiant en base de donnée avec celui tapé par l'utilisateur 
+        // if (!empty($username) && $username != NULL) {
+            //     $isexistUsername = User::isExist($username);
+            //     if ($isexistUsername) {
+                if (empty($error)) {
+                    // $users = User::getByUsername($username);
+                    // $id_user = $users->id_user;
+                    
+                    $comments = new Comment($lastname, $firstname, $message, $performance, NULL, NULL, NULL, NULL, NULL);
                     $results = $comments->insert();
-                    $success['messageSuccess'] = 'Identifiant correct! Votre message a été envoyé à l\'admin pour validation.';
+                    $success['messageSuccess'] = 'Votre message a été envoyé à l\'admin pour validation.';
                 }
-            } else {
-                $error['messageError'] = 'Identifiant incorrect! Message non envoyé!';
-            }
-        }
+        //     } else {
+        //         $error['messageError'] = 'Identifiant incorrect! Message non envoyé!';
+        //     }
+        // }
 
         // Utilisation de sessions pour stocker temporairement les messages
         $_SESSION['msg'] = $msg;

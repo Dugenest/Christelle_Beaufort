@@ -1,5 +1,5 @@
 <!-- Début du main -->
-<main>
+<!-- <main>
     <section class="container-fluid py-3">
         <div class="card m-5">
             <form method="post" id="formulaire" action="">
@@ -11,7 +11,7 @@
                         <div class="error">
                             <p id="error1" class="d-none"></p><br>
                             <!-- coalescente du message d'erreur de lastname -->
-                            <?= $error['lastname'] ?? '' ?><br>
+                            <!-- <?= $error['lastname'] ?? '' ?><br>
                         </div>
                     </div>
 
@@ -83,7 +83,7 @@
                         <div class="form-check">
                             <label class="form-check-label" for="disabledFieldsetCheck">
                                 <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" required>
-                                J’accepte les conditions générales du site et J’accepte que mes information soient
+                                J’accepte les conditions générales du site et J’accepte que mes informations soient
                                 utilisées uniquement dans le cadre de ma demande et de la relation commerciale
                                 éthique et personnalisée qui peut en découler
                             </label>
@@ -95,5 +95,5 @@
             </form>
         </div>
     </section>
-</main>
+</main> -->
 <!-- fin du main -->

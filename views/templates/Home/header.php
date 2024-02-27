@@ -62,7 +62,10 @@ require_once __DIR__ . '/../../../config/init.php';
                             <a class="nav-link active" aria-current="page" href="/controllers/home/tarif-ctrl.php">Tarifs</a>
                         </li>
                         <?php if (!isset($_SESSION['user'])) { ?>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"  href="/controllers/home/connexion-ctrl.php">Connexion</a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Inscription / Connexion
                             </a>
@@ -70,7 +73,7 @@ require_once __DIR__ . '/../../../config/init.php';
                                 <li><a class="dropdown-item" href="/controllers/home/inscription-ctrl.php">Inscription</a></li>
                                 <li><a class="dropdown-item" href="/controllers/home/connexion-ctrl.php">Connexion</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <?php } else { ?>
                             <li>
                                 <a class="nav-link active" href="/controllers/dashboard/users/logout-ctrl.php">Déconnexion</a>

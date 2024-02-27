@@ -14,15 +14,15 @@ try {
         //Création d'un tableau d'erreurs
         $error = [];
 
-        //Récupération et nettoyage de la récupération de la donnée "username"
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (!empty($username)) {
-            //Validation de la donnée "username" grâce à la regex
-            $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . USER_NAME . '/')));
-            if ($isOk == false) {
-                $error['username'] = 'L\'identifiant n\'est pas valide !';
-            }
-        }
+        // //Récupération et nettoyage de la récupération de la donnée "username"
+        // $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        // if (!empty($username)) {
+        //     //Validation de la donnée "username" grâce à la regex
+        //     $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . USER_NAME . '/')));
+        //     if ($isOk == false) {
+        //         $error['username'] = 'L\'identifiant n\'est pas valide !';
+        //     }
+        // }
 
         //Récupération et nettoyage de la récupération de la donnée "lastname"
         $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -96,17 +96,17 @@ try {
             }
         }
 
-        //vérification de l'identifiant en base de donnée avec celui tapé par l'utilisateur
-        if (!empty($username) && $username != NULL) {
-            $isexistUsername = User::isExist($username);
-            if ($isexistUsername) {
-                $users = User::getByUsername($username);
-                $id_user = $users->id_user;
-                $errorMessage = 'Identifiant correct! Votre formulaire a été envoyé à l\'admin.';
-            } else {
-                $errorMessage = 'Identifiant incorrect! Formulaire non envoyé!';
-            }
-        }
+        // //vérification de l'identifiant en base de donnée avec celui tapé par l'utilisateur
+        // if (!empty($username) && $username != NULL) {
+        //     $isexistUsername = User::isExist($username);
+        //     if ($isexistUsername) {
+        //         $users = User::getByUsername($username);
+        //         $id_user = $users->id_user;
+        //         $errorMessage = 'Identifiant correct! Votre formulaire a été envoyé à l\'admin.';
+        //     } else {
+        //         $errorMessage = 'Identifiant incorrect! Formulaire non envoyé!';
+        //     }
+        // }
 
         if (empty($error)) {
             $messages = new Message($message, $lastname, $firstname, $email, $phone, $performance, $reading = 0, NULL, NULL, NULL, $id_user);

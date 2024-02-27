@@ -9,6 +9,8 @@ class Comment
 {
 
     // ! création des attributs
+    private string $lastname;
+    private string $firstname;
     private string $message;
     private string $performance;
     private ?string $created_at;
@@ -20,8 +22,10 @@ class Comment
 
 
     // ! création de la méthode magique construct
-    public function __construct(string $message = '', string $performance = '', ?string $created_at = NULL, ?string $validated_at = NULL, ?string $deleted_at = NULL, ?int $id_comment = NULL, ?int $id_user = NULL)
+    public function __construct(string $lastname = '', string $firstname = '', string $message = '', string $performance = '', ?string $created_at = NULL, ?string $validated_at = NULL, ?string $deleted_at = NULL, ?int $id_comment = NULL, ?int $id_user = NULL)
     {
+        $this->lastname = $lastname;
+        $this->firstname = $firstname;
         $this->message = $message;
         $this->performance = $performance;
         $this->created_at = $created_at;
@@ -33,6 +37,23 @@ class Comment
 
 
     // ! création des getters
+
+
+    /**
+     * @return string
+     */
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
 
     /**
      * @return string
@@ -92,6 +113,26 @@ class Comment
 
 
     // ! création des Setters
+
+    /**
+     * @param string $lastname
+     * 
+     * @return [type]
+     */
+    public function setLastname(string $lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @param string $firstname
+     * 
+     * @return [type]
+     */
+    public function setFirstname(string $firstname)
+    {
+        $this->firstname = $firstname;
+    }
 
     /**
      * @param string $message
@@ -174,11 +215,13 @@ class Comment
         $pdo = Database::connect();
         
         // Insérer les données dans la table comments
-        $sqlInsert = 'INSERT INTO `comments` (`id_comment`, `message`, `performance`, `id_user`) 
-                    VALUES (:id_comment, :message, :performance, :id_user);';
+        $sqlInsert = 'INSERT INTO `comments` (`id_comment`, `lastname`, `firstname`, `message`, `performance`, `id_user`) 
+                    VALUES (:id_comment, :lastname, :firstname, :message, :performance, :id_user);';
         $sthInsert = $pdo->prepare($sqlInsert);
         
         $sthInsert->bindValue(':id_comment', $this->getIdComment(), PDO::PARAM_INT);
+        $sthInsert->bindValue(':lastname', $this->getLastname());
+        $sthInsert->bindValue(':firstname', $this->getFirstname());
         $sthInsert->bindValue(':message', $this->getMessage());
         $sthInsert->bindValue(':performance', $this->getPerformance());
         $sthInsert->bindValue(':id_user', $this->getIdUser(), PDO::PARAM_INT);
@@ -199,9 +242,9 @@ class Comment
 
         
         // Sélectionner les colonnes nécessaires avec une jointure sur la table comments
-        $sql = 'SELECT users.username, comments.message, comments.performance, comments.created_at, comments.id_comment, comments.validated_at
-                FROM `comments`
-                INNER JOIN `users` ON comments.id_user = users.id_user';
+        $sql = 'SELECT comments.message, comments.performance, comments.created_at, comments.id_comment, comments.validated_at, comments.lastname, comments.firstname
+                FROM `comments`;';
+                //INNER JOIN `users` ON comments.id_user = users.id_user';
 
         // Ajouter la clause WHERE si id_user est spécifié
         if ($id_user != 0) {

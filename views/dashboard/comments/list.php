@@ -9,7 +9,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Identifiant</th>
+                    <th scope="col">Nom / Prénom</th>
                     <th scope="col">Commentaire</th>
                     <th scope="col">Prestation</th>
                     <th scope="col">Date de création</th>
@@ -21,7 +21,7 @@
             <tbody>
             <?php foreach ($result as $value): ?>
                 <tr>
-                    <td class="tableComment"><?= $value->username ?? '' ?></td>
+                    <td class="tableComment"><?= $value->lastname ?? '' ?> <?= $value->firstname ?? '' ?></td>
                     <td class="tableComment"><?= $value->message ?></td>
                     <td class="tableComment"><?= $value->performance ?></td>
                     <td class="tableComment"><?= $value->created_at ?></td>

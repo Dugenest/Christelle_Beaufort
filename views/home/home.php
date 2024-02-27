@@ -26,7 +26,7 @@
                 </p>
             </div>
             <div class="col-12 col-lg-4 py-3 justify-content-end">
-                <img class="object-fit img-fluid border rounded" src="/public/assets/img/Photo_a_vendre/_BOT0842-4.jpg" alt="photo profil">
+                <img class="object-fit img-fluid border rounded" src="/public/assets/img/Photos_a_vendre/_BOT0842-4.jpg" alt="photo profil">
             </div>
         </div>
     </div>
@@ -44,19 +44,19 @@
                 </div>
                 <div id="carouselExampleIndicators" class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/wetransfer__dsc3136-jpg_2024-02-14_0828/_DSC3349.jpg" class="d-block w-100" alt="Tête de cheval">
+                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/Animaux_de_compagnie/_DSC3349.jpg" class="d-block w-100" alt="Tête de cheval">
                     </div>
                     <div class="carousel-item">
                         <img class="object-fit img-fluid border rounded" src="/public/assets/img/Mariage/DSC_6643.jpg" class="d-block w-100" alt="Mariés main dans la main">
                     </div>
                     <div class="carousel-item">
-                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/Portrait de famille/DSC_5235.jpg" class="d-block w-100" alt="Homme embrassant sa femme enceinte">
+                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/Portrait_de_famille/DSC_5235.jpg" class="d-block w-100" alt="Homme embrassant sa femme enceinte">
                     </div>
                     <div class="carousel-item">
-                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/Love Yourself/DSC_6390-2.jpg" class="d-block w-100" alt="Homme posant seul">
+                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/Love_yourself/DSC_6390-2.jpg" class="d-block w-100" alt="Homme posant seul">
                     </div>
                     <div class="carousel-item">
-                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/Portrait de famille/DSC_2649-2.jpg" class="d-block w-100" alt="Bébé allongé">
+                        <img class="object-fit img-fluid border rounded" src="/public/assets/img/Portrait_de_famille/DSC_2649-2.jpg" class="d-block w-100" alt="Bébé allongé">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

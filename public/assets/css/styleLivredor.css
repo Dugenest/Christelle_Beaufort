@@ -36,3 +36,8 @@ strong {
 #error1, #error2, #error3, .error {
     color: red;
 }
+
+.styleCard {
+    width: auto;
+    background-color: #FAF6F4;
+}

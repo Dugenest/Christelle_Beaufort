@@ -4,7 +4,7 @@
             <form method="post" action="">
                 <div class="row styleCard justify-content-center m-3 py-3">
                     <h1>CONTACT</h1>
-                    <div class="col-sm-12 col-md-6 mb-3">
+                    <!-- <div class="col-sm-12 col-md-6 mb-3">
                         <label for="username" class="form-label">Identifiant de l'utilisateur</label>
                         <input type="text" class="form-control" id="username" aria-describedby="username" name="username" value="<?= $username ?? '' ?>" maxlength='30' placeholder="Votre identifiant si vous êtes inscrit">
                         <?php if (!empty($username) && $username != NULL) {
@@ -18,7 +18,7 @@
                             <p id="error1" class="d-none"></p><br>
                             <?= $error['username'] ?? '' ?><br>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-sm-12 col-md-6 mb-3">
                         <label for="lastname" class="form-label">Nom<strong> *</strong></label>
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="col-12 mb-3">
-                        <div class="form-check">
+                        <div class="form-check text-center">
                             <label class="form-check-label" for="disabledFieldsetCheck">
                                 <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" required>
                                 En soumettant ce formulaire, j’accepte que mes informations soient utilisées uniquement dans le cadre de ma demande et de la relation commerciale éthique et personnalisée qui peut en découler
