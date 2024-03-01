@@ -53,22 +53,10 @@
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="adress" class="form-label"><strong>Adresse <strong class="danger">*</strong></strong></label>
-                <textarea class="form-control" id="adress" rows="3" name="adress" value="<?= $user->adress ?? '' ?>" maxlength='50' aria-describedby="adressHelp" placeholder="Veuillez entrer votre adresse svp?" required></textarea>
-                <div class="error">
-                    <p id="error5" class="d-none"></p><br>
-                    <?= $error['adress'] ?? '' ?>
-                </div>
-                <div class="success">
-                    <?= $msg['success'] ?? '' ?>
-                </div><br>
-            </div>
-
-            <div class="col-sm-12 col-md-6 mb-3">
                 <label for="phone" class="form-label"><strong>Téléphone <strong class="danger">*</strong></strong></label>
                 <input type="text" class="form-control" id="phone" name="phone" value="<?= $phone ?? '' ?>" maxlength='30' aria-describedby="phoneHelp" placeholder="Veuillez entrer votre numéro de téléphone svp?" required>
                 <div class="error">
-                    <p id="error6" class="d-none"></p><br>
+                    <p id="error5" class="d-none"></p><br>
                     <?= $error['phone'] ?? '' ?>
                 </div>
                 <div class="success">
@@ -83,7 +71,7 @@
                     <option value="2">Utilisateur</option>
                 </select>
                 <div class="error">
-                    <p id="error7" class="d-none alert alert-danger"></p><br>
+                    <p id="error6" class="d-none alert alert-danger"></p><br>
                     <?= $error['role'] ?? '' ?>
                 </div>
                 <div class="success">
@@ -95,7 +83,7 @@
                 <label for="password" class="form-label"><strong>Mot de passe <strong class="danger">*</strong></strong></label>
                 <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" maxlength='30' aria-describedby="passwordHelp" placeholder="Veuillez entrer votre mot de passe svp?" required>
                 <div class="error">
-                    <p id="error8" class="d-none"></p><br>
+                    <p id="error7" class="d-none"></p><br>
                     <?= $error['password'] ?? '' ?>
                 </div>
                 <div class="success">
@@ -104,12 +92,12 @@
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="confirmPassword" class="form-label">Confirmation mot de passe<strong class="danger">*</strong></label>
+                <label for="confirmPassword" class="form-label"><strong>Confirmation mot de passe <strong class="danger">*</strong></strong></label>
                 <input type="password" class="form-control" id="confirmPassword" aria-describedby="confirmPassword" name="confirmPassword" value="<?= $confirmPassword ?? '' ?>" placeholder="Confirmer votre mot de passe" required>
                 <div class="error">
-                    <p id="error8" class="d-none"></p><br>
+                    <p id="error8" class="d-none"></p>
                     <p id="error9" class="d-none"></p><br>
-                    <?= $error['password'] ?? '' ?><br>
+                    <?= $error['confirmPassword'] ?? '' ?>
                 </div>
             </div>
 

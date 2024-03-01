@@ -13,7 +13,6 @@ class User
     private string $lastname;
     private string $firstname;
     private string $email;
-    private string $adress;
     private string $phone;
     private int $role;
     private string $password;
@@ -24,13 +23,12 @@ class User
 
 
     // ! création de la méthode magique construct
-    public function __construct(string $username = '', string $lastname = '', string $firstname = '', string $email = '', string $adress = '', string $phone = '', int $role = 0, string $password = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_user = NULL)
+    public function __construct(string $username = '', string $lastname = '', string $firstname = '', string $email = '', string $phone = '', int $role = 0, string $password = '', ?string $created_at = NULL, ?string $updated_at = NULL, ?string $deleted_at = NULL, ?int $id_user = NULL)
     {
         $this->username = $username;
         $this->lastname = $lastname;
         $this->firstname = $firstname;
         $this->email = $email;
-        $this->adress = $adress;
         $this->phone = $phone;
         $this->role = $role;
         $this->password = $password;
@@ -86,19 +84,10 @@ class User
     /**
      * @return string
      */
-    public function getAdress(): string
-    {
-        return $this->adress;
-    }
-
-    /**
-     * @return string
-     */
     public function getPhone(): string
     {
         return $this->phone;
     }
-
 
     /**
      * @return string
@@ -196,16 +185,6 @@ class User
     }
 
     /**
-     * @param string $adress
-     * 
-     * @return [type]
-     */
-    public function setAdress(string $adress)
-    {
-        $this->adress = $adress;
-    }
-
-    /**
      * @param string $phone
      * 
      * @return [type]
@@ -214,8 +193,6 @@ class User
     {
         $this->phone = $phone;
     }
-
-
     
     /**
      * @param int $role
@@ -279,8 +256,8 @@ class User
         $pdo = Database::connect();
 
         //Insertion des données de la table users
-        $sql = 'INSERT INTO `users` (`id_user`, `username`, `lastname`, `firstname`, `email`, `adress`, `phone`, `role`, `password`) 
-                VALUES (:id_user, :username, :lastname, :firstname, :email, :adress, :phone, :role, :password);';
+        $sql = 'INSERT INTO `users` (`id_user`, `username`, `lastname`, `firstname`, `email`, `phone`, `role`, `password`) 
+                VALUES (:id_user, :username, :lastname, :firstname, :email, :phone, :role, :password);';
 
         $sth = $pdo->prepare($sql);
 
@@ -289,7 +266,6 @@ class User
         $sth->bindValue(':lastname', $this->getLastname());
         $sth->bindValue(':firstname', $this->getFirstname());
         $sth->bindValue(':email', $this->getEmail());
-        $sth->bindValue(':adress', $this->getAdress());
         $sth->bindValue(':phone', $this->getPhone());
         $sth->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
         $sth->bindValue(':password', $this->getPassword());
@@ -360,7 +336,6 @@ class User
                     `lastname` = :lastname,
                     `firstname` = :firstname,
                     `email` = :email,
-                    `adress` = :adress,
                     `phone` = :phone,
                     `role` = :role
                 WHERE `id_user` = :id';
@@ -370,7 +345,6 @@ class User
             $sth->bindValue(':lastname', $this->getLastname());
             $sth->bindValue(':firstname', $this->getFirstname());
             $sth->bindValue(':email', $this->getEmail());
-            $sth->bindValue(':adress', $this->getAdress());
             $sth->bindValue(':phone', $this->getPhone());
             $sth->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
             $sth->bindValue(':id', $this->getIdUser(), PDO::PARAM_INT);
@@ -378,7 +352,6 @@ class User
 
             return $result;
     }
-
 
 
     /**

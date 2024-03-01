@@ -29,7 +29,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="firstname" class="form-label"><strong>Nom</strong></label>
+                <label for="firstname" class="form-label"><strong>Prénom</strong></label>
                 <input type="text" class="form-control" id="firstname" name="firstname" value="<?= $user->firstname ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre prénom svp?">
                 <div class="error">
                     <p id="error3" class="d-none alert alert-danger"></p><br>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="email" class="form-label"><strong>Nom</strong></label>
+                <label for="email" class="form-label"><strong>Email</strong></label>
                 <input type="email" class="form-control" id="email" name="email" value="<?= $user->email ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre email svp?">
                 <div class="error">
                     <p id="error4" class="d-none alert alert-danger"></p><br>
@@ -53,22 +53,10 @@
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="adress" class="form-label"><strong>Adresse</strong></label>
-                <textarea class="form-control" id="adress" name="adress" maxlength='50' placeholder="Veuillez entrer votre adresse svp?"><?= $user->adress ?? '' ?></textarea>
-                <div class="error">
-                    <p id="error5" class="d-none alert alert-danger"></p><br>
-                    <?= $error['adress'] ?? '' ?>
-                </div>
-                <div class="success">
-                    <?= $msg['success'] ?? '' ?>
-                </div><br>
-            </div>
-
-            <div class="col-sm-12 col-md-6 mb-3">
                 <label for="phone" class="form-label"><strong>Téléphone</strong></label>
                 <input type="text" class="form-control" id="phone" name="phone" value="<?= $user->phone ?? '' ?>" maxlength='30' placeholder="Veuillez entrer votre numéro de téléphone svp?">
                 <div class="error">
-                    <p id="error6" class="d-none alert alert-danger"></p><br>
+                    <p id="error5" class="d-none alert alert-danger"></p><br>
                     <?= $error['phone'] ?? '' ?>
                 </div>
                 <div class="success">
@@ -83,7 +71,7 @@
                     <option value="2" <?= ($user->role ?? '') == '2' ? 'selected' : '' ?>>Utilisateur</option>
                 </select>
                 <div class="error">
-                    <p id="error7" class="d-none alert alert-danger"></p><br>
+                    <p id="error6" class="d-none alert alert-danger"></p><br>
                     <?= $error['role'] ?? '' ?>
                 </div>
                 <div class="success">

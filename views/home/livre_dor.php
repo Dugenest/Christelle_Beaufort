@@ -54,7 +54,7 @@
                         <label for="lastname" class="form-label">Nom<strong> *</strong></label>
                         <input type="text" class="form-control" id="lastname" aria-describedby="nom" name="lastname" value="<?= $lastname ?? '' ?>" maxlength='30' autocomplete="lastname" placeholder="Votre nom" required>
                         <div class="error">
-                            <p id="error1" class="d-none"></p><br>
+                            <p id="error2" class="d-none"></p><br>
                             <?= $error['lastname'] ?? '' ?><br>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <label for="firstname" class="form-label">Prénom<strong> *</strong></label>
                         <input type="text" class="form-control" id="firstname" aria-describedby="prénom" name="firstname" value="<?= $firstname ?? '' ?>" maxlength='30' autocomplete="firstname" placeholder="Votre prénom" required>
                         <div class="error">
-                            <p id="error2" class="d-none"></p><br>
+                            <p id="error3" class="d-none"></p><br>
                             <?= $error['firstname'] ?? '' ?><br>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         <label for="performance" class="form-label">Quelle prestation avons-nous partagée ?<strong> *</strong></label>
                         <input type="text" class="form-control" id="performance" aria-describedby="prestation" name="performance" value="<?= $performance ?? '' ?>" maxlength='50' placeholder="Votre prestation" required>
                         <div class="error">
-                            <p id="error3" class="d-none"></p>
+                            <p id="error4" class="d-none"></p>
                             <?= $error['performance'] ?? '' ?><br>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                         <label for="message" class="form-label">Message<strong> *</strong></label>
                         <textarea id="message" class="form-control" rows="5" aria-describedby="message" name="message" maxlength='300' placeholder="Votre message" required><?= $message ?? '' ?></textarea>
                         <div class="error">
-                            <p id="error4" class="d-none"></p>
+                            <p id="error5" class="d-none"></p>
                             <?= $error['Message'] ?? '' ?><br>
                         </div>
                     </div>

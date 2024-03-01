@@ -7,7 +7,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">Identifiant</th>
+                <!-- <th scope="col">Identifiant</th> -->
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Prestation</th>
@@ -20,7 +20,7 @@
         <tbody>
             <?php foreach ($result as $message) : ?>
                 <tr>
-                    <td class="tableMessage"><?= $message->username ?? '' ?></td>
+                    <!-- <td class="tableMessage"><?= $message->username ?? '' ?></td> -->
                     <td class="tableMessage"><?= $message->lastname ?></td>
                     <td class="tableMessage"><?= $message->firstname ?></td>
                     <td class="tableMessage"><?= $message->performance ?></td>

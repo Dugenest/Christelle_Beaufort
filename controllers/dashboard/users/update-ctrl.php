@@ -75,18 +75,6 @@ try {
             }
         }
 
-        //Récupération et nettoyage de la récupération de la donnée "adress"
-        $adress = filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (empty($adress)) {
-            $error['adress'] = 'L\'adresse est obligatoire';
-        } else {
-            //Validation de la donnée "adress" grâce à la regex
-            $isOk = filter_var($adress, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . ADRESS . '/')));
-            if ($isOk == false) {
-                $error['adress'] = 'L\'adresse n\'est pas valide !';
-            }
-        }
-
         //Récupération et nettoyage de la récupération de la donnée "phone"
         $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($phone)) {
@@ -119,7 +107,6 @@ try {
             $user->setLastname($lastname);
             $user->setFirstname($firstname);
             $user->setEmail($email);
-            $user->setAdress($adress);
             $user->setPhone($phone);
             $user->setRole($role);
             $user->setIduser($id_user);

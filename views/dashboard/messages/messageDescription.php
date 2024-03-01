@@ -5,7 +5,7 @@
     <div class="card">
         <div class="row styleCard m-3 py-5">
             <div class="col-sm-12 col-md-6 mb-3 description text-start">
-                <p class="tableMessage"><strong>Identifiant : </strong><?= $idMessage->username ?? '' ?></p>
+                <!-- <p class="tableMessage"><strong>Identifiant : </strong><?= $idMessage->username ?? '' ?></p> -->
                 <p class="tableMessage"><strong>Nom : </strong><?= $idMessage->lastname ?></p>
                 <p class="tableMessage"><strong>Prénom : </strong><?= $idMessage->firstname ?></p>
                 <p class="tableMessage"><strong>Email : </strong><?= $idMessage->email ?></p>

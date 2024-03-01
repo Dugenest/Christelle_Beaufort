@@ -14,7 +14,6 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Email</th>
-                <th scope="col">Adresse</th>
                 <th scope="col">Téléphone</th>
                 <th scope="col">Rôle</th>
                 <th scope="col">Modifier</th>
@@ -28,7 +27,6 @@
                     <td><?= htmlspecialchars($user->lastname) ?></td>
                     <td><?= htmlspecialchars($user->firstname) ?></td>
                     <td><?= htmlspecialchars($user->email) ?></td>
-                    <td><?= htmlspecialchars($user->adress) ?></td>
                     <td><?= htmlspecialchars($user->phone) ?></td>
                     <td><?php if (htmlspecialchars($user->role) == 1) { ?>
                             Administrateur

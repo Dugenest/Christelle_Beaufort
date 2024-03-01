@@ -3,11 +3,10 @@ const userNameText = document.getElementById("username");
 const lastNameText = document.getElementById("lastname");
 const firstNameText = document.getElementById("firstname");
 const emailText = document.getElementById("email");
-const adressText = document.getElementById("adress");
 const phoneText = document.getElementById("phone");
 const roleText = document.getElementById("role");
 const pwdMedium = document.getElementById("password");
-const pwdStrong = document.getElementById("password1");
+const pwdStrong = document.getElementById("confirmPassword");
 
 //création des messages
 const message1 = "Caractères non pris en compte !";
@@ -27,14 +26,13 @@ const errorMessage6 = document.getElementById("error6");
 const errorMessage7 = document.getElementById("error7");
 const errorMessage8 = document.getElementById("error8");
 const errorMessage9 = document.getElementById("error9");
-const errorMessage10 = document.getElementById("error10");
+
 
 // Création des regex
 const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
 const regexName = /^[A-Za-zéèêëàâäôöûüç' ]+$/;
 const regexEmail = /^[A-Za-z0-9.\_\.\-]+@[a-z0-9\_\-]+\.[a-z]{2,5}$/; 
 const regexPhone = /^[0-9]{10}$/;
-const regexAdress = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-: ]{10,250}$/;
 const regexPwdStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 
@@ -101,34 +99,18 @@ emailText.addEventListener("keyup", function () {
 });
 
 // Création d'un écouteur d'événement pour le lastname
-adressText.addEventListener("keyup", function () {
-    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
-    adressText.classList.remove("border-danger", "border-success");
-    errorMessage5.classList.add("d-none");
-    // Utilisation de regexLastname.test() pour tester la valeur 
-    if (regexAdress.test(adressText.value)) {
-        adressText.classList.add("border-success");
-        errorMessage5.classList.add("d-none");
-    } else {
-        adressText.classList.add("border-danger");
-        errorMessage5.classList.remove("d-none");
-        errorMessage5.textContent = message3;
-    };
-});
-
-// Création d'un écouteur d'événement pour le lastname
 phoneText.addEventListener("keyup", function () {
     // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
     phoneText.classList.remove("border-danger", "border-success");
-    errorMessage6.classList.add("d-none");
+    errorMessage5.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexPhone.test(phoneText.value)) {
         phoneText.classList.add("border-success");
-        errorMessage6.classList.add("d-none");
+        errorMessage5.classList.add("d-none");
     } else {
         phoneText.classList.add("border-danger");
-        errorMessage6.classList.remove("d-none");
-        errorMessage6.textContent = message4;
+        errorMessage5.classList.remove("d-none");
+        errorMessage5.textContent = message4;
     };
 });
 
@@ -136,43 +118,43 @@ phoneText.addEventListener("keyup", function () {
 roleText.addEventListener("keyup", function () {
     // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
     roleText.classList.remove("border-danger", "border-success");
-    errorMessage7.classList.add("d-none");
+    errorMessage6.classList.add("d-none");
     // Utilisation de regexLastname.test() pour tester la valeur 
     if (regexName.test(roleText.value)) {
         roleText.classList.add("border-success");
-        errorMessage7.classList.add("d-none");
+        errorMessage6.classList.add("d-none");
     } else {
         roleText.classList.add("border-danger");
-        errorMessage7.classList.remove("d-none");
-        errorMessage7.textContent = message1;
+        errorMessage6.classList.remove("d-none");
+        errorMessage6.textContent = message1;
     };
 });
 
 // Création d'un écouteur d'événement pour le mot de passe
 pwdMedium.addEventListener("input", function () {
     pwdMedium.classList.remove("border-danger", "border-success",);
-    errorMessage8.classList.add("d-none");
+    errorMessage7.classList.add("d-none");
     if (regexPwdStrong.test(pwdMedium.value)) {
         pwdMedium.classList.add("border-success");
-        errorMessage8.classList.add("d-none");
+        errorMessage7.classList.add("d-none");
     } else {
         pwdMedium.classList.add("border-danger");
-        errorMessage8.classList.remove("d-none");
-        errorMessage8.textContent = message6;
+        errorMessage7.classList.remove("d-none");
+        errorMessage7.textContent = message6;
     };
 });
 
 // Création d'un écouteur d'événement pour la confirmation du mot de passe
 pwdStrong.addEventListener("input", function () {
     pwdStrong.classList.remove("border-danger", "border-success",);
-    errorMessage9.classList.add("d-none");
+    errorMessage8.classList.add("d-none");
     if (regexPwdStrong.test(pwdStrong.value)) {
         pwdStrong.classList.add("border-success");
-        errorMessage9.classList.add("d-none");
+        errorMessage8.classList.add("d-none");
     } else {
         pwdStrong.classList.add("border-danger");
-        errorMessage9.classList.remove("d-none");
-        errorMessage9.textContent = message6;
+        errorMessage8.classList.remove("d-none");
+        errorMessage8.textContent = message6;
     };
 });
 
@@ -181,8 +163,8 @@ pwdStrong.addEventListener("keyup", function () {
     // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
     pwdMedium.classList.remove("border-danger", "border-success");
     pwdStrong.classList.remove("border-danger", "border-success");
-    errorMessage10.classList.add("d-none");
-    errorMessage10.textContent = '';
+    errorMessage9.classList.add("d-none");
+    errorMessage9.textContent = '';
     // Conditions
     if (pwdMedium.value == '' && pwdStrong.value == '') {
         return
@@ -190,11 +172,11 @@ pwdStrong.addEventListener("keyup", function () {
     if (pwdMedium.value === pwdStrong.value) {
         pwdMedium.classList.add("border-success");
         pwdStrong.classList.add("border-success");
-        errorMessage10.classList.add("d-none");
+        errorMessage9.classList.add("d-none");
     } else {
         pwdMedium.classList.add("border-danger");
         pwdStrong.classList.add("border-danger");
-        errorMessage10.classList.remove("d-none");
-        errorMessage10.textContent = message5;
+        errorMessage9.classList.remove("d-none");
+        errorMessage9.textContent = message5;
     }
 });

@@ -1,5 +1,5 @@
 // Déclaration des variables
-const userName = document.getElementById("username");
+// const userName = document.getElementById("username");
 const lastName = document.getElementById("lastname");
 const firstName = document.getElementById("firstname");
 const email = document.getElementById("email");
@@ -22,29 +22,29 @@ const errorMessage6 = document.getElementById("error6");
 const errorMessage7 = document.getElementById("error7");
 
 //Création des régex
-const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
+// const regexUserName = /^[A-Za-z0-9éèêëàâäôöûüïç' ]{2,30}$/;
 const regexName = /^[A-Za-zéèêëàâäôöûüïç' ]{2,30}$/;
 const regexEmail = /^[A-Za-z0-9.\_\.\-]+@[a-z0-9\_\-]+\.[a-z]{2,5}$/;
 const regexPhone = /^[0-9]{10}$/;
-const regexPerformance = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-:]{5,50}$/;
+const regexPerformance = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?/()\[\]{}\-:]{5,50}$/;
 const regexMessage = /^[A-Za-z0-9À-ÖØ-öø-ÿéèêëàâäôöûüïç\s\.,;\'\"!?()\[\]{}\-: ]{5,300}$/;
 
 
 // Création d'un écouteur d'événement pour le userName
-userName.addEventListener("keyup", function () {
-    // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
-    userName.classList.remove("border-danger", "border-success");
-    errorMessage1.classList.add("d-none");
-    //Test de la regexName pour tester la valeur
-    if (regexUserName.test(userName.value)) {
-        userName.classList.add("border-success");
-        errorMessage1.classList.add("d-none");
-    } else {
-        userName.classList.add("border-danger");
-        errorMessage1.classList.remove("d-none");
-        errorMessage1.textContent = message1;
-    };
-});
+// userName.addEventListener("keyup", function () {
+//     // Supprimer les classes "border-danger" et "border-success" à chaque saisie 
+//     userName.classList.remove("border-danger", "border-success");
+//     errorMessage1.classList.add("d-none");
+//     //Test de la regexName pour tester la valeur
+//     if (regexUserName.test(userName.value)) {
+//         userName.classList.add("border-success");
+//         errorMessage1.classList.add("d-none");
+//     } else {
+//         userName.classList.add("border-danger");
+//         errorMessage1.classList.remove("d-none");
+//         errorMessage1.textContent = message1;
+//     };
+// });
 
 // Création d'un écouteur d'événement pour le lastname
 lastName.addEventListener("keyup", function () {
